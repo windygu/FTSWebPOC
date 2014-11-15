@@ -1,0 +1,304 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ReportPara">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="REPORT_ID" type="xs:string" />
+              <xs:element name="TABLE_NAME" type="xs:string" />
+              <xs:element name="DISPLAY_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="ID" type="xs:string" />
+              <xs:element name="NAME" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_REPORT">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="REPORT_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="PARENT_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="REPORT_GROUP_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="LIST_ORDER" type="xs:int" minOccurs="0" />
+              <xs:element name="TEMPLATE_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="TEMPLATE_TABLE" type="xs:string" minOccurs="0" />
+              <xs:element name="TEMPLATE_TABLE_TMP" type="xs:string" minOccurs="0" />
+              <xs:element name="NUM_FILE_REPORT" type="xs:int" minOccurs="0" />
+              <xs:element name="PAPER_SIZE" type="xs:string" minOccurs="0" />
+              <xs:element name="PAGE_ORIENT" type="xs:string" minOccurs="0" />
+              <xs:element name="PAGE_MARGIN_TOP" type="xs:int" minOccurs="0" />
+              <xs:element name="PAGE_MARGIN_BOTTOM" type="xs:int" minOccurs="0" />
+              <xs:element name="PAGE_MARGIN_LEFT" type="xs:int" minOccurs="0" />
+              <xs:element name="PAGE_MARGIN_RIGHT" type="xs:int" minOccurs="0" />
+              <xs:element name="REQUIRED_FILTER" type="xs:string" minOccurs="0" />
+              <xs:element name="REQUIRED_FILTER_DISTINCT" type="xs:string" minOccurs="0" />
+              <xs:element name="FILTER_LIST" type="xs:string" minOccurs="0" />
+              <xs:element name="SUBTITLE1" type="xs:string" minOccurs="0" />
+              <xs:element name="SUBTITLE2" type="xs:string" minOccurs="0" />
+              <xs:element name="SUBTITLE3" type="xs:string" minOccurs="0" />
+              <xs:element name="SUBTITLE4" type="xs:string" minOccurs="0" />
+              <xs:element name="SUBTITLE5" type="xs:string" minOccurs="0" />
+              <xs:element name="GROUP_FIELD1" type="xs:string" minOccurs="0" />
+              <xs:element name="GROUP_FIELD2" type="xs:string" minOccurs="0" />
+              <xs:element name="GROUP_FIELD3" type="xs:string" minOccurs="0" />
+              <xs:element name="GROUP_FIELD4" type="xs:string" minOccurs="0" />
+              <xs:element name="GROUP_FIELD5" type="xs:string" minOccurs="0" />
+              <xs:element name="GROUP_TABLE1" type="xs:string" minOccurs="0" />
+              <xs:element name="GROUP_TABLE2" type="xs:string" minOccurs="0" />
+              <xs:element name="GROUP_TABLE3" type="xs:string" minOccurs="0" />
+              <xs:element name="GROUP_TABLE4" type="xs:string" minOccurs="0" />
+              <xs:element name="GROUP_TABLE5" type="xs:string" minOccurs="0" />
+              <xs:element name="SORT_FIELD1" type="xs:string" minOccurs="0" />
+              <xs:element name="SORT_FIELD2" type="xs:string" minOccurs="0" />
+              <xs:element name="SORT_FIELD3" type="xs:string" minOccurs="0" />
+              <xs:element name="SORT_FIELD4" type="xs:string" minOccurs="0" />
+              <xs:element name="SORT_FIELD5" type="xs:string" minOccurs="0" />
+              <xs:element name="SORT_DIRECTION1" type="xs:string" minOccurs="0" />
+              <xs:element name="SORT_DIRECTION2" type="xs:string" minOccurs="0" />
+              <xs:element name="SORT_DIRECTION3" type="xs:string" minOccurs="0" />
+              <xs:element name="SORT_DIRECTION4" type="xs:string" minOccurs="0" />
+              <xs:element name="SORT_DIRECTION5" type="xs:string" minOccurs="0" />
+              <xs:element name="FOOTER_NAME1" type="xs:string" minOccurs="0" />
+              <xs:element name="FOOTER_NAME2" type="xs:string" minOccurs="0" />
+              <xs:element name="FOOTER_NAME3" type="xs:string" minOccurs="0" />
+              <xs:element name="FOOTER_NAME4" type="xs:string" minOccurs="0" />
+              <xs:element name="TITLE_FONT_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="TITLE_FONT_STYLE" type="xs:string" minOccurs="0" />
+              <xs:element name="TITLE_FONT_SIZE" type="xs:int" minOccurs="0" />
+              <xs:element name="TITLE_FONT_COLOR" type="xs:string" minOccurs="0" />
+              <xs:element name="SUBTITLE_FONT_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="SUBTITLE_FONT_STYLE" type="xs:string" minOccurs="0" />
+              <xs:element name="SUBTITLE_FONT_SIZE" type="xs:int" minOccurs="0" />
+              <xs:element name="SUBTITLE_FONT_COLOR" type="xs:string" minOccurs="0" />
+              <xs:element name="HEADER_FONT_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="HEADER_FONT_STYLE" type="xs:string" minOccurs="0" />
+              <xs:element name="HEADER_FONT_SIZE" type="xs:int" minOccurs="0" />
+              <xs:element name="HEADER_FONT_COLOR" type="xs:string" minOccurs="0" />
+              <xs:element name="FOOTER_FONT_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="FOOTER_FONT_STYLE" type="xs:string" minOccurs="0" />
+              <xs:element name="FOOTER_FONT_SIZE" type="xs:int" minOccurs="0" />
+              <xs:element name="FOOTER_FONT_COLOR" type="xs:string" minOccurs="0" />
+              <xs:element name="GROUP_FONT_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="GROUP_FONT_STYLE" type="xs:string" minOccurs="0" />
+              <xs:element name="GROUP_FONT_SIZE" type="xs:int" minOccurs="0" />
+              <xs:element name="GROUP_FONT_COLOR" type="xs:string" minOccurs="0" />
+              <xs:element name="DETAIL_FONT_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="DETAIL_FONT_STYLE" type="xs:string" minOccurs="0" />
+              <xs:element name="DETAIL_FONT_SIZE" type="xs:int" minOccurs="0" />
+              <xs:element name="DETAIL_FONT_COLOR" type="xs:string" minOccurs="0" />
+              <xs:element name="DETAIL_HEIGHT" type="xs:int" minOccurs="0" />
+              <xs:element name="REPEAT_COLUMN" type="xs:short" minOccurs="0" />
+              <xs:element name="FORMULA" type="xs:short" minOccurs="0" />
+              <xs:element name="PRINT_CONDITION" type="xs:string" minOccurs="0" />
+              <xs:element name="PRINT_STYLE" type="xs:string" minOccurs="0" />
+              <xs:element name="SHOW_ORDER" type="xs:short" minOccurs="0" />
+              <xs:element name="SHOW_BALANCE" type="xs:short" minOccurs="0" />
+              <xs:element name="SHOW_LKE" type="xs:short" minOccurs="0" />
+              <xs:element name="SHOW_BALANCE_NTE" type="xs:short" minOccurs="0" />
+              <xs:element name="SHOW_LKE_NTE" type="xs:short" minOccurs="0" />
+              <xs:element name="LOAI_TTE" type="xs:string" minOccurs="0" />
+              <xs:element name="ORDER_WIDTH" type="xs:int" minOccurs="0" />
+              <xs:element name="ACTIVE" type="xs:short" minOccurs="0" />
+			  <xs:element name="SHOW_BALANCE_EXTRA" type="xs:short" minOccurs="0" />
+              <xs:element name="SHOW_LKE_EXTRA" type="xs:short" minOccurs="0" />
+              <xs:element name="CURRENCY_TEXT" type="xs:string" minOccurs="0" />
+              <xs:element name="SHOW_HOUR" type="xs:short" minOccurs="0" />
+              </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_REPORT_CONFIG">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="REPORT_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="CONFIG_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="CONFIG_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="CONFIG_TYPE" type="xs:string" minOccurs="0" />
+              <xs:element name="CONFIG_VALUE" type="xs:string" minOccurs="0" />
+              <xs:element name="ACTIVE" type="xs:short" minOccurs="0" />
+              <xs:element name="USER_ID" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_REPORT_FORMULA">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TRAN_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="REPORT_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="LIST_ORDER" type="xs:string" minOccurs="0" />
+              <xs:element name="ORDER_FIELD" type="xs:string" minOccurs="0" />
+              <xs:element name="ID_FIELD" type="xs:string" minOccurs="0" />
+              <xs:element name="DESCRIPTION" type="xs:string" minOccurs="0" />
+              <xs:element name="ROW_FORMULA" type="xs:string" minOccurs="0" />
+              <xs:element name="FONT_BOLD" type="xs:short" minOccurs="0" />
+              <xs:element name="VISIBLE" type="xs:short" minOccurs="0" />
+              <xs:element name="POSITIVE_RESULT" type="xs:short" minOccurs="0" />
+			  <xs:element name="GROUP_FIELD" type="xs:string" minOccurs="0" />
+			  <xs:element name="GROUP_TABLE" type="xs:string" minOccurs="0" />
+			  <xs:element name="APPLY_ALL_ROWS" type="xs:short" minOccurs="0" />
+			  <xs:element name="IS_SUMMARY" type="xs:short" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_REPORT_FORMULA_DETAIL">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="LIST_ORDER" type="xs:int" minOccurs="0" />
+              <xs:element name="COLUMN_NO" type="xs:int" minOccurs="0" />
+              <xs:element name="DATASOURCE_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="OPERATOR" type="xs:string" minOccurs="0" />
+              <xs:element name="FIX_VALUE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ACCOUNT_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="ACCOUNT_ID_CONTRA" type="xs:string" minOccurs="0" />
+              <xs:element name="NOT_ACCOUNT_ID_CONTRA" type="xs:short" minOccurs="0" />
+              <xs:element name="SQLSTRING" type="xs:string" minOccurs="0" />
+              <xs:element name="VAT_TAX_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="PR_DETAIL_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="NOT_PR_DETAIL_ID" type="xs:short" minOccurs="0" />
+              <xs:element name="PR_DETAIL_CLASS_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="NOT_PR_DETAIL_CLASS_ID" type="xs:short" minOccurs="0" />
+              <xs:element name="EXPENSE_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="NOT_EXPENSE_ID" type="xs:short" minOccurs="0" />
+              <xs:element name="EXPENSE_CLASS_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="NOT_EXPENSE_CLASS_ID" type="xs:short" minOccurs="0" />
+              <xs:element name="JOB_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="NOT_JOB_ID" type="xs:short" minOccurs="0" />
+              <xs:element name="JOB_CLASS_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="NOT_JOB_CLASS_ID" type="xs:short" minOccurs="0" />
+              <xs:element name="FA_CLASS_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="FA_SOURCE_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="FA_OPERATION_ID" type="xs:string" minOccurs="0" />
+	      <xs:element name="ITEM_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="NOT_ITEM_ID" type="xs:short" minOccurs="0" />
+	      <xs:element name="ITEM_CLASS_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="NOT_ITEM_CLASS_ID" type="xs:short" minOccurs="0" />
+	      <xs:element name="WAREHOUSE_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="NOT_WAREHOUSE_ID" type="xs:short" minOccurs="0" />
+	      <xs:element name="WAREHOUSE_CLASS_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="NOT_WAREHOUSE_CLASS_ID" type="xs:short" minOccurs="0" />
+	      <xs:element name="ITEM_OP_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="NOT_ITEM_OP_ID" type="xs:short" minOccurs="0" />
+	      <xs:element name="ITEM_SOURCE_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="NOT_ITEM_SOURCE_ID" type="xs:short" minOccurs="0" />
+	      <xs:element name="ORGANIZATION_ID" type="xs:string" minOccurs="0" />
+	      <xs:element name="BUDGET_ID" type="xs:string" minOccurs="0" />
+	      <xs:element name="DEPARTMENT_ID" type="xs:string" minOccurs="0" />
+	      <xs:element name="INSURANCE_SOURCE_ID" type="xs:string" minOccurs="0" />
+		  <xs:element name="IS_BUDGET_INSURANCE_SOURCE_ID" type="xs:short" minOccurs="0" />
+		  <xs:element name="IS_BUDGET_PR_DETAIL_CLASS_ID" type="xs:short" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_REPORT_GROUP">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="REPORT_GROUP_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="REPORT_GROUP_NAME" type="xs:string" minOccurs="0" />
+	      <xs:element name="MODULE_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="ACTIVE" type="xs:short" minOccurs="0" />
+	      <xs:element name="PROJECT_ID" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_REPORTFIELD">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="REPORT_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="FIELD_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="FIELD_GROUP_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="FIELD_TYPE" type="xs:string" minOccurs="0" />
+              <xs:element name="VISIBLE" type="xs:short" minOccurs="0" />
+              <xs:element name="DECIMAL_DIGIT" type="xs:int" minOccurs="0" />
+              <xs:element name="FIELD_WIDTH" type="xs:int" minOccurs="0" />
+              <xs:element name="FIELD_ORDER" type="xs:int" minOccurs="0" />
+              <xs:element name="IS_SUM" type="xs:short" minOccurs="0" />
+              <xs:element name="PART" type="xs:int" minOccurs="0" />
+              <xs:element name="FORMULA" type="xs:string" minOccurs="0" />
+              <xs:element name="SHOW_IN_GROUP" type="xs:short" minOccurs="0" />
+              <xs:element name="HIDE_DETAIL" type="xs:short" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_RESOURCE">
+          <xs:complexType>
+            <xs:sequence>
+			<xs:element name="PR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RES_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="RES_VALUE" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+		<xs:element name="SYS_RESOURCE_EN">
+          <xs:complexType>
+            <xs:sequence>
+			<xs:element name="PR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RES_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="RES_VALUE" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+		<xs:element name="SYS_RESOURCE_JP">
+          <xs:complexType>
+            <xs:sequence>
+			<xs:element name="PR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RES_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="RES_VALUE" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+		<xs:element name="SYS_RESOURCE_KR">
+          <xs:complexType>
+            <xs:sequence>
+			<xs:element name="PR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RES_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="RES_VALUE" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_TABLE">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TABLE_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="ID_FIELD" type="xs:string" minOccurs="0" />
+              <xs:element name="NAME_FIELD" type="xs:string" minOccurs="0" />
+              <xs:element name="TABLE_TYPE" type="xs:string" minOccurs="0" />
+              <xs:element name="BACKUPS" type="xs:short" minOccurs="0" />
+              <xs:element name="NUM_ORDER" type="xs:int" minOccurs="0" />
+              <xs:element name="RES_ORDER" type="xs:int" minOccurs="0" />
+              <xs:element name="CAN_GROUP" type="xs:short" minOccurs="0" />
+              <xs:element name="ID_AUTO" type="xs:short" minOccurs="0" />
+              <xs:element name="ID_MASK" type="xs:string" minOccurs="0" />
+              <xs:element name="ID_LENGTH" type="xs:int" minOccurs="0" />
+              <xs:element name="ID_PARTS" type="xs:int" minOccurs="0" />
+              <xs:element name="ID_SPLIT" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ReportPara1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="REPORT_ID" type="xs:string" />
+              <xs:element name="DAY_START" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DAY_END" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//ReportPara" />
+      <xs:field xpath="REPORT_ID" />
+      <xs:field xpath="TABLE_NAME" />
+      <xs:field xpath="ID" />
+    </xs:unique>
+    <xs:unique name="ReportPara1_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//ReportPara1" />
+      <xs:field xpath="REPORT_ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

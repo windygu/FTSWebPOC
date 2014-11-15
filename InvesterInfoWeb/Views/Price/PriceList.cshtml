@@ -1,0 +1,99 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "Danh Mục Khách Hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bảng Giá</h2>
+<br />
+
+<div id="example">
+    
+    <div id="serverValidationMessage">
+    </div>
+    <div id="grid"></div>
+   
+    
+    <script type="text/kendo-template" id="validation_template">       
+        <div id="#=field#_validationMessage" class="k-widget k-tooltip k-tooltip-validation k-invalid-msg field-validation-error" style="margin: 0.5em; display: block;" data-for="#=field#" data-valmsg-for="#=field#" role="alert"><span class="k-icon k-warning"></span>Có lỗi ở #=field#<div class="k-callout k-callout-n"></div></div>
+    </script>
+
+    <script src="@Url.Content("~/Scripts/datasource/productSource.js")"></script>
+    <script src="@Url.Content("~/Scripts/datasource/salePriceSource.js")"></script>
+    
+    <script>
+     
+        var validationMessageTmpl = kendo.template($("#validation_template").html());
+
+        function handleError(args) {
+            if (args.errors) {
+                var grid = $("#grid").data("kendoGrid");
+                
+                grid.one("dataBinding", function (e) {
+                    e.preventDefault();   // cancel grid rebind if error occurs                             
+
+                    for (var error in args.errors) {
+                        showMessage(grid, error, args.errors[error].errors);
+                    }
+                    
+                });
+            }
+        }
+
+        function showMessage(container, name, errors) {
+            //add the validation message to the form
+            $("#serverValidationMessage")
+                .replaceWith(validationMessageTmpl({ field: name, message: errors[0] }));
+        }
+
+        $(document).ready(function () {
+            salePriceSource.error = handleError;
+               
+            $("#grid").kendoGrid({
+                dataSource: salePriceSource,
+                navigatable: true,
+                autoSync: true,
+                filterable: true,
+                pageable: true,
+                height: 350,
+                toolbar: ["create", "save", "cancel"],
+                columns: [
+                    { field: "ITEM_ID", title: "Mã Hàng Hóa", editor: productDropDownEditor, template: "#=getProductName(ITEM_ID)#" },
+                    { field: "UNIT_PRICE", title: "Đơn Giá", format: "{0:c}", width: "130px" },
+                    { field: "VALID_DATE", title: "Ngày Hiệu Lực", template: "#= kendo.toString(kendo.parseDate(VALID_DATE, 'yyyy-MM-dd'), 'MM/dd/yyyy') #", width: "200px" },
+                    { command: ["destroy"], title: "", width: "120px" }
+                ],
+                editable: true
+            });
+        });
+       
+            function getProductName(itemId) {
+                var products = productSource.data();
+                for (var j = 0; j < products.length; j++) {
+                    if (products[j].ITEM_ID === itemId) {
+                        return products[j].ITEM_NAME;
+                    }
+                }
+
+                return itemId;
+            }
+        
+        
+
+        function productDropDownEditor(container, options) {
+            $('<input required name="' + options.field + '"  data-bind="value:' + options.field + '" data-value-field="ITEM_ID" data-text-field="ITEM_NAME"/>')
+                .appendTo(container)
+                .kendoDropDownList({
+                    autoBind: false,
+                    dataSource: productSource
+                });
+        }
+
+        productSource.read();
+    </script>
+    
+    
+
+</div>
+
+

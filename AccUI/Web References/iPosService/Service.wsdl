@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetDataTable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tablename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDataTableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDataTableResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSale">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="from" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="to" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="isvat" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSaleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSaleResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSaleWorkstation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="from" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="to" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="isvat" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="workstationid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSaleWorkstationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSaleWorkstationResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSaleDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="prkey" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSaleDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSaleDetailResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPurchase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="from" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="to" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPurchaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPurchaseResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPurchaseWorkstation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="from" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="to" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="workstationid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPurchaseWorkstationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPurchaseWorkstationResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPurchaseDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="prkey" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPurchaseDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPurchaseDetailResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteScalar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteScalarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExecuteScalarResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Ping">
+        <s:complexType />
+      </s:element>
+      <s:element name="PingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PingResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataTable" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="anyType" nillable="true" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetDataTableSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetDataTableSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDataTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSaleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSale" />
+  </wsdl:message>
+  <wsdl:message name="GetSaleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSaleWorkstationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSaleWorkstation" />
+  </wsdl:message>
+  <wsdl:message name="GetSaleWorkstationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSaleWorkstationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSaleDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSaleDetail" />
+  </wsdl:message>
+  <wsdl:message name="GetSaleDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSaleDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPurchaseSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPurchase" />
+  </wsdl:message>
+  <wsdl:message name="GetPurchaseSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPurchaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPurchaseWorkstationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPurchaseWorkstation" />
+  </wsdl:message>
+  <wsdl:message name="GetPurchaseWorkstationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPurchaseWorkstationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPurchaseDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPurchaseDetail" />
+  </wsdl:message>
+  <wsdl:message name="GetPurchaseDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPurchaseDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteScalarSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecuteScalar" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteScalarSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecuteScalarResponse" />
+  </wsdl:message>
+  <wsdl:message name="PingSoapIn">
+    <wsdl:part name="parameters" element="tns:Ping" />
+  </wsdl:message>
+  <wsdl:message name="PingSoapOut">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDataTableHttpGetIn">
+    <wsdl:part name="sql" type="s:string" />
+    <wsdl:part name="tablename" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDataTableHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetSaleHttpGetIn">
+    <wsdl:part name="from" type="s:string" />
+    <wsdl:part name="to" type="s:string" />
+    <wsdl:part name="isvat" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSaleHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetSaleWorkstationHttpGetIn">
+    <wsdl:part name="from" type="s:string" />
+    <wsdl:part name="to" type="s:string" />
+    <wsdl:part name="isvat" type="s:string" />
+    <wsdl:part name="workstationid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSaleWorkstationHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetPurchaseHttpGetIn">
+    <wsdl:part name="from" type="s:string" />
+    <wsdl:part name="to" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPurchaseHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetPurchaseWorkstationHttpGetIn">
+    <wsdl:part name="from" type="s:string" />
+    <wsdl:part name="to" type="s:string" />
+    <wsdl:part name="workstationid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPurchaseWorkstationHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteScalarHttpGetIn">
+    <wsdl:part name="sql" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteScalarHttpGetOut">
+    <wsdl:part name="Body" element="tns:anyType" />
+  </wsdl:message>
+  <wsdl:message name="PingHttpGetIn" />
+  <wsdl:message name="PingHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetDataTableHttpPostIn">
+    <wsdl:part name="sql" type="s:string" />
+    <wsdl:part name="tablename" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDataTableHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetSaleHttpPostIn">
+    <wsdl:part name="from" type="s:string" />
+    <wsdl:part name="to" type="s:string" />
+    <wsdl:part name="isvat" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSaleHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetSaleWorkstationHttpPostIn">
+    <wsdl:part name="from" type="s:string" />
+    <wsdl:part name="to" type="s:string" />
+    <wsdl:part name="isvat" type="s:string" />
+    <wsdl:part name="workstationid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSaleWorkstationHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetPurchaseHttpPostIn">
+    <wsdl:part name="from" type="s:string" />
+    <wsdl:part name="to" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPurchaseHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetPurchaseWorkstationHttpPostIn">
+    <wsdl:part name="from" type="s:string" />
+    <wsdl:part name="to" type="s:string" />
+    <wsdl:part name="workstationid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPurchaseWorkstationHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteScalarHttpPostIn">
+    <wsdl:part name="sql" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteScalarHttpPostOut">
+    <wsdl:part name="Body" element="tns:anyType" />
+  </wsdl:message>
+  <wsdl:message name="PingHttpPostIn" />
+  <wsdl:message name="PingHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="GetDataTable">
+      <wsdl:input message="tns:GetDataTableSoapIn" />
+      <wsdl:output message="tns:GetDataTableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSale">
+      <wsdl:input message="tns:GetSaleSoapIn" />
+      <wsdl:output message="tns:GetSaleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleWorkstation">
+      <wsdl:input message="tns:GetSaleWorkstationSoapIn" />
+      <wsdl:output message="tns:GetSaleWorkstationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleDetail">
+      <wsdl:input message="tns:GetSaleDetailSoapIn" />
+      <wsdl:output message="tns:GetSaleDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchase">
+      <wsdl:input message="tns:GetPurchaseSoapIn" />
+      <wsdl:output message="tns:GetPurchaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaseWorkstation">
+      <wsdl:input message="tns:GetPurchaseWorkstationSoapIn" />
+      <wsdl:output message="tns:GetPurchaseWorkstationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaseDetail">
+      <wsdl:input message="tns:GetPurchaseDetailSoapIn" />
+      <wsdl:output message="tns:GetPurchaseDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteScalar">
+      <wsdl:input message="tns:ExecuteScalarSoapIn" />
+      <wsdl:output message="tns:ExecuteScalarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <wsdl:input message="tns:PingSoapIn" />
+      <wsdl:output message="tns:PingSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpGet">
+    <wsdl:operation name="GetDataTable">
+      <wsdl:input message="tns:GetDataTableHttpGetIn" />
+      <wsdl:output message="tns:GetDataTableHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSale">
+      <wsdl:input message="tns:GetSaleHttpGetIn" />
+      <wsdl:output message="tns:GetSaleHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleWorkstation">
+      <wsdl:input message="tns:GetSaleWorkstationHttpGetIn" />
+      <wsdl:output message="tns:GetSaleWorkstationHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchase">
+      <wsdl:input message="tns:GetPurchaseHttpGetIn" />
+      <wsdl:output message="tns:GetPurchaseHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaseWorkstation">
+      <wsdl:input message="tns:GetPurchaseWorkstationHttpGetIn" />
+      <wsdl:output message="tns:GetPurchaseWorkstationHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteScalar">
+      <wsdl:input message="tns:ExecuteScalarHttpGetIn" />
+      <wsdl:output message="tns:ExecuteScalarHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <wsdl:input message="tns:PingHttpGetIn" />
+      <wsdl:output message="tns:PingHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpPost">
+    <wsdl:operation name="GetDataTable">
+      <wsdl:input message="tns:GetDataTableHttpPostIn" />
+      <wsdl:output message="tns:GetDataTableHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSale">
+      <wsdl:input message="tns:GetSaleHttpPostIn" />
+      <wsdl:output message="tns:GetSaleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleWorkstation">
+      <wsdl:input message="tns:GetSaleWorkstationHttpPostIn" />
+      <wsdl:output message="tns:GetSaleWorkstationHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchase">
+      <wsdl:input message="tns:GetPurchaseHttpPostIn" />
+      <wsdl:output message="tns:GetPurchaseHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaseWorkstation">
+      <wsdl:input message="tns:GetPurchaseWorkstationHttpPostIn" />
+      <wsdl:output message="tns:GetPurchaseWorkstationHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteScalar">
+      <wsdl:input message="tns:ExecuteScalarHttpPostIn" />
+      <wsdl:output message="tns:ExecuteScalarHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <wsdl:input message="tns:PingHttpPostIn" />
+      <wsdl:output message="tns:PingHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDataTable">
+      <soap:operation soapAction="http://tempuri.org/GetDataTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSale">
+      <soap:operation soapAction="http://tempuri.org/GetSale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleWorkstation">
+      <soap:operation soapAction="http://tempuri.org/GetSaleWorkstation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleDetail">
+      <soap:operation soapAction="http://tempuri.org/GetSaleDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchase">
+      <soap:operation soapAction="http://tempuri.org/GetPurchase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaseWorkstation">
+      <soap:operation soapAction="http://tempuri.org/GetPurchaseWorkstation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaseDetail">
+      <soap:operation soapAction="http://tempuri.org/GetPurchaseDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteScalar">
+      <soap:operation soapAction="http://tempuri.org/ExecuteScalar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="http://tempuri.org/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDataTable">
+      <soap12:operation soapAction="http://tempuri.org/GetDataTable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSale">
+      <soap12:operation soapAction="http://tempuri.org/GetSale" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleWorkstation">
+      <soap12:operation soapAction="http://tempuri.org/GetSaleWorkstation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleDetail">
+      <soap12:operation soapAction="http://tempuri.org/GetSaleDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchase">
+      <soap12:operation soapAction="http://tempuri.org/GetPurchase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaseWorkstation">
+      <soap12:operation soapAction="http://tempuri.org/GetPurchaseWorkstation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaseDetail">
+      <soap12:operation soapAction="http://tempuri.org/GetPurchaseDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteScalar">
+      <soap12:operation soapAction="http://tempuri.org/ExecuteScalar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <soap12:operation soapAction="http://tempuri.org/Ping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpGet" type="tns:ServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetDataTable">
+      <http:operation location="/GetDataTable" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSale">
+      <http:operation location="/GetSale" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleWorkstation">
+      <http:operation location="/GetSaleWorkstation" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchase">
+      <http:operation location="/GetPurchase" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaseWorkstation">
+      <http:operation location="/GetPurchaseWorkstation" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteScalar">
+      <http:operation location="/ExecuteScalar" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <http:operation location="/Ping" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpPost" type="tns:ServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetDataTable">
+      <http:operation location="/GetDataTable" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSale">
+      <http:operation location="/GetSale" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleWorkstation">
+      <http:operation location="/GetSaleWorkstation" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchase">
+      <http:operation location="/GetPurchase" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaseWorkstation">
+      <http:operation location="/GetPurchaseWorkstation" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteScalar">
+      <http:operation location="/ExecuteScalar" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <http:operation location="/Ping" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://localhost:49239/IFService/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://localhost:49239/IFService/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceHttpGet" binding="tns:ServiceHttpGet">
+      <http:address location="http://localhost:49239/IFService/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceHttpPost" binding="tns:ServiceHttpPost">
+      <http:address location="http://localhost:49239/IFService/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

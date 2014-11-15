@@ -1,0 +1,38 @@
+DECLARE @DbRecoveryModal varchar(50)
+DECLARE @LogName varchar(50)
+DECLARE @DBIsSimple_Shrink varchar(4000)
+DECLARE @SetRecoverySimple varchar(4000)
+DECLARE @ShrinkDBLog varchar(4000)
+DECLARE @ReSetRecovery varchar(4000)
+DECLARE @GetLogName varchar(4000)
+Set @DbRecoveryModal = CAST(DATABASEPROPERTYEX(@DbName, 'Recovery') AS varchar(40))
+set @GetLogName =('USE ' + @DbName + ' select name from sys.database_files where type = 1')
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[DBResultSet]') AND type in (N'U'))
+DROP TABLE [dbo].[DBResultSet]
+CREATE TABLE DBResultSet (SetLogName VarChar(400))
+INSERT INTO DBResultSet EXEC(@GetLogName)
+SET @LogName = (select SetLogName from DBResultSet)
+Drop Table DBResultSet
+IF @DbRecoveryModal = 'Simple'
+BEGIN
+set @DBIsSimple_Shrink ='USE ' + @DbName + ' DBCC SHRINKFILE (' + @LogName + ', 50)'
+EXEC(@DBIsSimple_Shrink)
+END
+ELSE IF @DbRecoveryModal = 'BULK_LOGGED'
+BEGIN
+set @SetRecoverySimple = 'ALTER DATABASE ' + @DbName + ' SET RECOVERY SIMPLE'
+EXEC (@SetRecoverySimple)
+set @ShrinkDBLog ='USE ' + @DbName + ' DBCC SHRINKFILE (' + @LogName + ', 50)';
+EXEC(@ShrinkDBLog)
+set @ReSetRecovery = 'ALTER DATABASE ' + @DbName + ' SET RECOVERY BULK_LOGGED';
+EXEC (@ReSetRecovery)
+END
+ElSE
+BEGIN
+set @SetRecoverySimple = 'ALTER DATABASE ' + @DbName + ' SET RECOVERY SIMPLE'
+EXEC (@SetRecoverySimple)
+set @ShrinkDBLog ='USE ' + @DbName + ' DBCC SHRINKFILE (' + @LogName + ', 50)'
+EXEC(@ShrinkDBLog) 
+set @ReSetRecovery = 'ALTER DATABASE ' + @DbName + ' SET RECOVERY FULL'
+EXEC (@ReSetRecovery)
+END

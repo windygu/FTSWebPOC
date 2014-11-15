@@ -1,0 +1,1605 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <GenerateResourceNeverLockTypeAssemblies>true</GenerateResourceNeverLockTypeAssemblies>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A6CC5E27-DAEA-4C6E-9FDF-E11E89495804}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>FTS.BaseUI</AssemblyName>
+    <AssemblyOriginatorKeyFile>ftsdev.snk</AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>FTS.BaseUI</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <WebReference_EnableProperties>true</WebReference_EnableProperties>
+    <WebReference_EnableSQLTypes>false</WebReference_EnableSQLTypes>
+    <WebReference_EnableLegacyEventingModel>true</WebReference_EnableLegacyEventingModel>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SignAssembly>true</SignAssembly>
+    <TargetFrameworkProfile />
+    <PublishUrl>http://localhost/ESoft.Base/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <BaseAddress>285212672</BaseAddress>
+    <FileAlignment>4096</FileAlignment>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <BaseAddress>285212672</BaseAddress>
+    <Optimize>true</Optimize>
+    <FileAlignment>4096</FileAlignment>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=763a7cc8ed76ade7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevExpress.Data.v10.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Design.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=763a7cc8ed76ade7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevExpress.Design.v10.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=763a7cc8ed76ade7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevExpress.Utils.v10.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=763a7cc8ed76ade7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevExpress.XtraBars.v10.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v10.2.Design, Version=10.2.3.0, Culture=neutral, PublicKeyToken=763a7cc8ed76ade7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevExpress.XtraBars.v10.2.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=763a7cc8ed76ade7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevExpress.XtraEditors.v10.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v10.2.Design, Version=10.2.3.0, Culture=neutral, PublicKeyToken=763a7cc8ed76ade7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevExpress.XtraEditors.v10.2.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=763a7cc8ed76ade7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevExpress.XtraGrid.v10.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v10.2.Design, Version=10.2.3.0, Culture=neutral, PublicKeyToken=763a7cc8ed76ade7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevExpress.XtraGrid.v10.2.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=763a7cc8ed76ade7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevExpress.XtraNavBar.v10.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v10.2.Design, Version=10.2.3.0, Culture=neutral, PublicKeyToken=763a7cc8ed76ade7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevExpress.XtraNavBar.v10.2.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=763a7cc8ed76ade7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevExpress.XtraPrinting.v10.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v10.2.Design, Version=10.2.3.0, Culture=neutral, PublicKeyToken=763a7cc8ed76ade7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevExpress.XtraPrinting.v10.2.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=763a7cc8ed76ade7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevExpress.XtraReports.v10.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v10.2.Design, Version=10.2.3.0, Culture=neutral, PublicKeyToken=763a7cc8ed76ade7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevExpress.XtraReports.v10.2.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v10.2.Extensions, Version=10.2.3.0, Culture=neutral, PublicKeyToken=763a7cc8ed76ade7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevExpress.XtraReports.v10.2.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=763a7cc8ed76ade7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevExpress.XtraTreeList.v10.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v10.2.Design, Version=10.2.3.0, Culture=neutral, PublicKeyToken=763a7cc8ed76ade7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevExpress.XtraTreeList.v10.2.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="FTS.Tools, Version=1.1.2.0, Culture=neutral, PublicKeyToken=7430ef022b63bb52, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\FTS.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7430ef022b63bb52, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7430ef022b63bb52, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Global">
+      <HintPath>..\DLL\Microsoft.Practices.EnterpriseLibrary.Global.dll</HintPath>
+    </Reference>
+    <Reference Include="Softgroup.NetButton">
+      <HintPath>..\DLL\Softgroup.NetButton.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Design">
+      <Name>System.Design</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap">
+      <Name>System.Runtime.Serialization.Formatters.Soap</Name>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Name>System.Web.Services</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Business\FrmDm_Organization_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmDm_Organization_List.Designer.cs">
+      <DependentUpon>FrmDm_Organization_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\FrmDm_Organization_TreeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmDm_Organization_TreeList.Designer.cs">
+      <DependentUpon>FrmDm_Organization_TreeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\FrmLock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmSys_Report_EditList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmSys_Report_EditList.Designer.cs">
+      <DependentUpon>FrmSys_Report_EditList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\FrmSys_Report_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmSys_Report_List.Designer.cs">
+      <DependentUpon>FrmSys_Report_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AnalogClock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AnalogClock.Designer.cs">
+      <DependentUpon>AnalogClock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BitmapRegion.cs" />
+    <Compile Include="Controls\CurrentCellInfo.cs" />
+    <Compile Include="Controls\FTSCheckListCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSCheckListCom.Designer.cs">
+      <DependentUpon>FTSCheckListCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSStatus.Designer.cs">
+      <DependentUpon>FTSStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\KeyboardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\KeyboardControl.Designer.cs">
+      <DependentUpon>KeyboardControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NumlockControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NumlockControl.Designer.cs">
+      <DependentUpon>NumlockControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PopupCheckedListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\PopupCheckedListBox.Designer.cs">
+      <DependentUpon>PopupCheckedListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmCheck_Data_Log.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCheck_Data_Log.Designer.cs">
+      <DependentUpon>FrmCheck_Data_Log.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmDm_Workstation_EditDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDm_Workstation_EditDetail.Designer.cs">
+      <DependentUpon>FrmDm_Workstation_EditDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmDm_Workstation_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDm_Workstation_List.Designer.cs">
+      <DependentUpon>FrmDm_Workstation_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmGetCustomPeriod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmGetCustomPeriod.Designer.cs">
+      <DependentUpon>FrmGetCustomPeriod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmGetPeriod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmGetPeriod.Designer.cs">
+      <DependentUpon>FrmGetPeriod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmKeyboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmKeyboard.Designer.cs">
+      <DependentUpon>FrmKeyboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmNumlock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmNumlock.Designer.cs">
+      <DependentUpon>FrmNumlock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmTouchscreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmTouchscreen.Designer.cs">
+      <DependentUpon>FrmTouchscreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmTranPrintDirect.cs" />
+    <Compile Include="Forms\GetList.cs" />
+    <Compile Include="ImportData\FrmDm_Template.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportData\FrmDm_Template.designer.cs">
+      <DependentUpon>FrmDm_Template.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportData\FrmImportExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportData\FrmImportExcel.designer.cs">
+      <DependentUpon>FrmImportExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\AnchorTypes.cs" />
+    <Compile Include="Layout\AppStateSerializer.cs" />
+    <Compile Include="Layout\AutoLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\AutoLabelAndControl.cs" />
+    <Compile Include="Layout\AutoLabelPosition.cs" />
+    <Compile Include="Layout\BorderLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\BorderPosition.cs" />
+    <Compile Include="Layout\ByteStreamTypeConverter.cs" />
+    <Compile Include="Layout\CardLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\CardLayoutDesigner.cs" />
+    <Compile Include="Layout\CardLayoutMode.cs" />
+    <Compile Include="Layout\ControlBounds.cs" />
+    <Compile Include="Layout\CustomSerializationBinder.cs" />
+    <Compile Include="Layout\FillType.cs" />
+    <Compile Include="Layout\FlowAlignment.cs" />
+    <Compile Include="Layout\FlowLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\FlowLayoutConstraints.cs" />
+    <Compile Include="Layout\FlowLayoutConstraintsConverter.cs" />
+    <Compile Include="Layout\FlowLayoutMode.cs" />
+    <Compile Include="Layout\GridBagConstraints.cs" />
+    <Compile Include="Layout\GridBagConstraintsConverter.cs" />
+    <Compile Include="Layout\GridBagLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\GridBagLayoutInfo.cs" />
+    <Compile Include="Layout\GridLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\HorzFlowAlign.cs" />
+    <Compile Include="Layout\IAllowMakeDirty.cs" />
+    <Compile Include="Layout\ILayoutManager.cs" />
+    <Compile Include="Layout\Insets.cs" />
+    <Compile Include="Layout\InsetsConverter.cs" />
+    <Compile Include="Layout\IProvideLayoutInformation.cs" />
+    <Compile Include="Layout\LayoutInformationType.cs" />
+    <Compile Include="Layout\LayoutItemBase.cs" />
+    <Compile Include="Layout\LayoutItemPlaceHolderControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\LayoutManager.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\LMDesigner.cs" />
+    <Compile Include="Layout\PropertyChangedEventArgs.cs" />
+    <Compile Include="Layout\PropertyChangeEffect.cs" />
+    <Compile Include="Layout\ProvideLayoutInformationEventArgs.cs" />
+    <Compile Include="Layout\RTLMatrix.cs" />
+    <Compile Include="Layout\SelectedCardConverter.cs" />
+    <Compile Include="Layout\SerializeMode.cs" />
+    <Compile Include="Layout\SyncfusionPropertyChangedEventArgs.cs" />
+    <Compile Include="Layout\VertFlowAlign.cs" />
+    <Compile Include="Security\FrmSys_Menu_Mapping_EditList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Security\FrmSys_Menu_Mapping_EditList.Designer.cs">
+      <DependentUpon>FrmSys_Menu_Mapping_EditList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\ExceptionManager.cs" />
+    <Compile Include="Utilities\FTSMessageBox.cs" />
+    <Compile Include="Utilities\UIFunctions.cs" />
+    <Compile Include="Web References\OOService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Content Include="App.ico" />
+    <Content Include="Layout\AutoLabel.bmp" />
+    <Content Include="Layout\BorderLayout.bmp" />
+    <Content Include="Layout\CardLayout.bmp" />
+    <Content Include="Layout\FlowLayout.bmp" />
+    <Content Include="Layout\GridBagLayout.bmp" />
+    <Content Include="Layout\GridLayout.bmp" />
+    <None Include="Resources\arrow_up_blue.png" />
+    <None Include="Resources\arrow_right_blue.png" />
+    <None Include="Resources\arrow_down_blue.png" />
+    <None Include="Resources\arrow_left_blue.png" />
+    <None Include="Resources\numlock_header.png" />
+    <None Include="Resources\numlock_footer.png" />
+    <None Include="Resources\keyboard_footer.png" />
+    <None Include="Resources\keyboard_header.png" />
+    <None Include="Resources\Logo.bmp" />
+    <None Include="Resources\Detail.bmp" />
+    <None Include="Resources\laos_32.png" />
+    <EmbeddedResource Include="Business\FrmSys_Report_EditList.resx">
+      <DependentUpon>FrmSys_Report_EditList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Business\FrmSys_Report_List.resx">
+      <DependentUpon>FrmSys_Report_List.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\AnalogClock.resx">
+      <DependentUpon>AnalogClock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSCheckListCom.resx">
+      <DependentUpon>FTSCheckListCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\KeyboardControl.resx">
+      <DependentUpon>KeyboardControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\NumlockControl.resx">
+      <DependentUpon>NumlockControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmCheck_Data_Log.resx">
+      <DependentUpon>FrmCheck_Data_Log.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDm_Workstation_EditDetail.resx">
+      <DependentUpon>FrmDm_Workstation_EditDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDm_Workstation_List.resx">
+      <DependentUpon>FrmDm_Workstation_List.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmGetCustomPeriod.resx">
+      <DependentUpon>FrmGetCustomPeriod.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmGetPeriod.resx">
+      <DependentUpon>FrmGetPeriod.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmKeyboard.resx">
+      <DependentUpon>FrmKeyboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmNumlock.resx">
+      <DependentUpon>FrmNumlock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmTouchscreen.resx">
+      <DependentUpon>FrmTouchscreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportData\FrmDm_Template.resx">
+      <DependentUpon>FrmDm_Template.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportData\FrmImportExcel.resx">
+      <DependentUpon>FrmImportExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layout\AutoLabel.resx">
+      <DependentUpon>AutoLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layout\LayoutManager.resx">
+      <DependentUpon>LayoutManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Web References\OOService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\OOService\Service.disco" />
+    <None Include="app.config" />
+    <None Include="Resources\backgroundHotel.jpg" />
+    <None Include="Resources\backgroundERP.jpg" />
+    <None Include="ftsdev.snk" />
+    <None Include="Resources\1342604849_hourglass-select-remain.png" />
+    <None Include="Resources\column.png" />
+    <None Include="Resources\node-tree.png" />
+    <None Include="Resources\1341997876_node-tree.png" />
+    <None Include="Resources\text_tree.png" />
+    <None Include="Resources\1341997615_node-tree.png" />
+    <None Include="Resources\flag_south_korea.png" />
+    <None Include="Resources\user-blue-edit.png" />
+    <None Include="Resources\user1-delete.png" />
+    <None Include="Resources\user_manage.png" />
+    <None Include="Resources\group_go.png" />
+    <None Include="Resources\delete_group.png" />
+    <None Include="Resources\add_user.png" />
+    <None Include="Resources\add_group.png" />
+    <None Include="Resources\message.png" />
+    <None Include="Resources\alarmclock.png" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\backgroundErp.jpg" />
+    <None Include="Resources\flag_vietnam.png" />
+    <None Include="Resources\flag_japan.png" />
+    <None Include="Resources\flag_great_britain.png" />
+    <None Include="Resources\backgroundSME.jpg" />
+    <None Include="Resources\backgroundPro.jpg" />
+    <None Include="Resources\backgroundStd.jpg" />
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\FrmDm_Organization_EditDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmDm_Organization_EditDetail.Designer.cs">
+      <DependentUpon>FrmDm_Organization_EditDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\FrmDm_Organization_EditList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmDm_Organization_EditList.Designer.cs">
+      <DependentUpon>FrmDm_Organization_EditList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\FrmSys_Menu_EditDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmSys_Menu_EditDetail.Designer.cs">
+      <DependentUpon>FrmSys_Menu_EditDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\FrmSys_Menu_EditList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmSys_Menu_EditList.Designer.cs">
+      <DependentUpon>FrmSys_Menu_EditList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\FrmSys_Menu_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmSys_Menu_List.Designer.cs">
+      <DependentUpon>FrmSys_Menu_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\FrmSys_Resource_EditDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmSys_Resource_EditDetail.Designer.cs">
+      <DependentUpon>FrmSys_Resource_EditDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\FrmSys_Resource_EditList.Designer.cs">
+      <DependentUpon>FrmSys_Resource_EditList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\FrmSys_Resource_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmSys_Resource_List.Designer.cs">
+      <DependentUpon>FrmSys_Resource_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AutoHeightHelper.cs" />
+    <Compile Include="Controls\FTSColorCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSColorCom.Designer.cs">
+      <DependentUpon>FTSColorCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSDataGridAdvance.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSDockPanelControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSDockPanelControl.Designer.cs">
+      <DependentUpon>FTSDockPanelControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSGroupTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSHourMinuteCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSHourMinuteCom.Designer.cs">
+      <DependentUpon>FTSHourMinuteCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSMemoCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSMemoCom.Designer.cs">
+      <DependentUpon>FTSMemoCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSMRUEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSMRUEdit.Designer.cs">
+      <DependentUpon>FTSMRUEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSMRUEditCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSMRUEditCom.Designer.cs">
+      <DependentUpon>FTSMRUEditCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSNavBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSNavBar.Designer.cs">
+      <DependentUpon>FTSNavBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSNumericCom2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSNumericCom2.Designer.cs">
+      <DependentUpon>FTSNumericCom2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSButton.Designer.cs">
+      <DependentUpon>FTSButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSButtonEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSButtonEdit.Designer.cs">
+      <DependentUpon>FTSButtonEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSDateEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSDateEdit.Designer.cs">
+      <DependentUpon>FTSDateEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSLabel.Designer.cs">
+      <DependentUpon>FTSLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSLookupEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSLookupEdit.Designer.cs">
+      <DependentUpon>FTSLookupEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSPictureCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSPictureCom.Designer.cs">
+      <DependentUpon>FTSPictureCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSPictureEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSPictureEdit.Designer.cs">
+      <DependentUpon>FTSPictureEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSRadioButton.Designer.cs">
+      <DependentUpon>FTSRadioButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSCollapsablePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ComboChangedEventArgs.cs" />
+    <Compile Include="Controls\ComboChangedEventHandler.cs" />
+    <Compile Include="Controls\ComboComType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSAccountDoubleCom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSAccountDoubleCom.Designer.cs">
+      <DependentUpon>FTSAccountDoubleCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSCalculatorCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSCalculatorCom.Designer.cs">
+      <DependentUpon>FTSCalculatorCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSCheckCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSCheckCom.Designer.cs">
+      <DependentUpon>FTSCheckCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSComboCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSComboCom.Designer.cs">
+      <DependentUpon>FTSComboCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSControlPaint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSDataGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSDataGrid.Designer.cs">
+      <DependentUpon>FTSDataGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSDateCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSDateCom.Designer.cs">
+      <DependentUpon>FTSDateCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSEditButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSEditButton.Designer.cs">
+      <DependentUpon>FTSEditButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSFreeComboCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSFreeComboCom.Designer.cs">
+      <DependentUpon>FTSFreeComboCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSGridColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSGroupBox.Designer.cs">
+      <DependentUpon>FTSGroupBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSGroupTree.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSListBox.Designer.cs">
+      <DependentUpon>FTSListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSListView.Designer.cs">
+      <DependentUpon>FTSListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSNameIDCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSNameIDCom.Designer.cs">
+      <DependentUpon>FTSNameIDCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSNumericCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSNumericCom.Designer.cs">
+      <DependentUpon>FTSNumericCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSNumericTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSNumericTextBox.Designer.cs">
+      <DependentUpon>FTSNumericTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSObjectSingleCom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSObjectSingleCom.Designer.cs">
+      <DependentUpon>FTSObjectSingleCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSReadOnlyNumericCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSReadOnlyNumericCom.Designer.cs">
+      <DependentUpon>FTSReadOnlyNumericCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSShadowPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSShadowPanel.Designer.cs">
+      <DependentUpon>FTSShadowPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSShadowPanel2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSSingleComboCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSSingleComboCom.Designer.cs">
+      <DependentUpon>FTSSingleComboCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSSpinEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSSpinEdit.Designer.cs">
+      <DependentUpon>FTSSpinEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSTabbedMDIManager.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSTabbedMDIManager.Designer.cs">
+      <DependentUpon>FTSTabbedMDIManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSTabControl.Designer.cs">
+      <DependentUpon>FTSTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSTextBox.Designer.cs">
+      <DependentUpon>FTSTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSTextCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSTextCom.Designer.cs">
+      <DependentUpon>FTSTextCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSTreeList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSTreeNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSUnderlineLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSUnderlineLabel.Designer.cs">
+      <DependentUpon>FTSUnderlineLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSUpDownCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSUpDownCom.Designer.cs">
+      <DependentUpon>FTSUpDownCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSTranNumCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSTranNumCom.Designer.cs">
+      <DependentUpon>FTSTranNumCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSPage.designer.cs">
+      <DependentUpon>FTSPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GridCheckHeaderColumn.cs" />
+    <Compile Include="Controls\IHelpField.cs" />
+    <Compile Include="Controls\FTSPercentCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSPercentCom.Designer.cs">
+      <DependentUpon>FTSPercentCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FTSVatCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FTSVatCom.Designer.cs">
+      <DependentUpon>FTSVatCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SkinCustomNavigation.cs" />
+    <Compile Include="Controls\TaskbarNotifier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\VistaButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Business\FrmSys_Tran_Calculation_EditList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmSys_Tran_Calculation_EditList.Designer.cs">
+      <DependentUpon>FrmSys_Tran_Calculation_EditList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\FrmSys_Tran_No_EditList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmSys_Tran_No_EditList.Designer.cs">
+      <DependentUpon>FrmSys_Tran_No_EditList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmDataTreeEditList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDataTreeEditList.Designer.cs">
+      <DependentUpon>FrmDataTreeEditList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmDataTreeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDataTreeList.Designer.cs">
+      <DependentUpon>FrmDataTreeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmData_Log_EditList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmData_Log_EditList.Designer.cs">
+      <DependentUpon>FrmData_Log_EditList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmDm_Communicate_Config_EditList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDm_Communicate_Config_EditList.Designer.cs">
+      <DependentUpon>FrmDm_Communicate_Config_EditList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmGetString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmShow_Log_Value.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmShow_Log_Value.Designer.cs">
+      <DependentUpon>FrmShow_Log_Value.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FTSEditFormToolbar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\FTSEditFormToolbar.Designer.cs">
+      <DependentUpon>FTSEditFormToolbar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FTSLanguageToolbar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\FTSLanguageToolbar.designer.cs">
+      <DependentUpon>FTSLanguageToolbar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FTSTranPrintToolbar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\FTSTranPrintToolbar.designer.cs">
+      <DependentUpon>FTSTranPrintToolbar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FTSUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\FTSUserControl.Designer.cs">
+      <DependentUpon>FTSUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FTSUserControlGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\FTSUserControlGrid.Designer.cs">
+      <DependentUpon>FTSUserControlGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DefaultValuesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DefaultValuesForm.Designer.cs">
+      <DependentUpon>DefaultValuesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FTSEditForm2Toolbar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\FTSEditForm2Toolbar.designer.cs">
+      <DependentUpon>FTSEditForm2Toolbar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FTSSelectItemToolbar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\FTSSelectItemToolbar.designer.cs">
+      <DependentUpon>FTSSelectItemToolbar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FTSReportToolbar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\FTSReportToolbar.Designer.cs">
+      <DependentUpon>FTSReportToolbar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmBase2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmBase2.Designer.cs">
+      <DependentUpon>FrmBase2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmCopyTran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCopyTran.Designer.cs">
+      <DependentUpon>FrmCopyTran.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmDataEditDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDataEditDetail.Designer.cs">
+      <DependentUpon>FrmDataEditDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmDataEditListDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDataEditListDetail.Designer.cs">
+      <DependentUpon>FrmDataEditListDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\FrmSys_Field_EditList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmSys_Field_EditList.Designer.cs">
+      <DependentUpon>FrmSys_Field_EditList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\FrmSys_Systemvar_EditList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmSys_Systemvar_EditList.Designer.cs">
+      <DependentUpon>FrmSys_Systemvar_EditList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\FrmSys_Table_EditList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmSys_Resource_EditList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmSys_Tran_Config_EditList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\FrmSys_Tran_Config_EditList.Designer.cs">
+      <DependentUpon>FrmSys_Tran_Config_EditList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmGetDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmSelectRow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmSelectRow.Designer.cs">
+      <DependentUpon>FrmSelectRow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmSelectTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmShowData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmShowData.Designer.cs">
+      <DependentUpon>FrmShowData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmTranManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmTranManager.Designer.cs">
+      <DependentUpon>FrmTranManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GoItemToolbarEventArgs.cs" />
+    <Compile Include="Controls\GoItemToolbarEventHandler.cs" />
+    <Compile Include="Controls\IRequire.cs" />
+    <Compile Include="Controls\ItemClickEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\ItemClickEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\IValid.cs" />
+    <Compile Include="Controls\Win32Enum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\Win32Msgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\Win32Struct.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomizationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomizationForm.Designer.cs">
+      <DependentUpon>CustomizationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FTSForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FTSForm.Designer.cs">
+      <DependentUpon>FTSForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FTSMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FTSMainForm.Designer.cs">
+      <DependentUpon>FTSMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmBase2Listing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmBase2Listing.Designer.cs">
+      <DependentUpon>FrmBase2Listing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmBase2MultiListing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmBaseFormGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmBaseFormGrid.Designer.cs">
+      <DependentUpon>FrmBaseFormGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmBaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmBaseForm.Designer.cs">
+      <DependentUpon>FrmBaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmDataEditList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDataEditList.Designer.cs">
+      <DependentUpon>FrmDataEditList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmDataList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDataList.Designer.cs">
+      <DependentUpon>FrmDataList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmGetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmGetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmGetPassword.Designer.cs">
+      <DependentUpon>FrmGetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmProgressBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmProgressBar.Designer.cs">
+      <DependentUpon>FrmProgressBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmTranPrintOutput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmTranPrintOutput.Designer.cs">
+      <DependentUpon>FrmTranPrintOutput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmTranPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmTranPrint.Designer.cs">
+      <DependentUpon>FrmTranPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\IdConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\IdConfigForm.Designer.cs">
+      <DependentUpon>IdConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TransactionOutput.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Graphic\ColorType.cs" />
+    <Compile Include="Graphic\FTSColors.cs" />
+    <Compile Include="Graphic\FTSControlPaint.cs" />
+    <Compile Include="Graphic\Win32.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Security\FrmAdminUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Security\FrmDm_User_Group_EditDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Security\FrmiPermission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Security\FrmiPermission.Designer.cs">
+      <DependentUpon>FrmiPermission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\FrmLogging_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Security\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Security\FrmServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="Business\FrmDm_Organization_EditDetail.resx">
+      <DependentUpon>FrmDm_Organization_EditDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Business\FrmLock.resx">
+      <DependentUpon>FrmLock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Business\FrmSys_Menu_EditDetail.resx">
+      <DependentUpon>FrmSys_Menu_EditDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Business\FrmSys_Resource_EditDetail.resx">
+      <DependentUpon>FrmSys_Resource_EditDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSColorCom.resx">
+      <DependentUpon>FTSColorCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSDataGridAdvance.resx">
+      <DependentUpon>FTSDataGridAdvance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSGroupTreeView.resx">
+      <DependentUpon>FTSGroupTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSHourMinuteCom.resx">
+      <DependentUpon>FTSHourMinuteCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSMemoCom.resx">
+      <DependentUpon>FTSMemoCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSMRUEditCom.resx">
+      <DependentUpon>FTSMRUEditCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSNumericCom2.resx">
+      <DependentUpon>FTSNumericCom2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSAccountDoubleCom.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FTSAccountDoubleCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSButtonEdit.resx">
+      <DependentUpon>FTSButtonEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSCalculatorCom.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FTSCalculatorCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSCheckCom.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FTSCheckCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSComboCom.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FTSComboCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSDateCom.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FTSDateCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSDateEdit.resx">
+      <DependentUpon>FTSDateEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSFreeComboCom.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FTSFreeComboCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSNameIDCom.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FTSNameIDCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSNumericCom.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FTSNumericCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSObjectSingleCom.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FTSObjectSingleCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSPictureCom.resx">
+      <DependentUpon>FTSPictureCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSShadowPanel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FTSShadowPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSSingleComboCom.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FTSSingleComboCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSStatus.resx">
+      <DependentUpon>FTSStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSTextBox.resx">
+      <DependentUpon>FTSTextBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSTextCom.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FTSTextCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSTreeList.resx">
+      <DependentUpon>FTSTreeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSTreeView.resx">
+      <DependentUpon>FTSTreeView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSUpDownCom.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FTSUpDownCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSTranNumCom.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FTSTranNumCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSPercentCom.resx">
+      <DependentUpon>FTSPercentCom.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSVatCom.resx">
+      <DependentUpon>FTSVatCom.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FTSCollapsablePanel.resx">
+      <DependentUpon>FTSCollapsablePanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\VistaButton.resx">
+      <DependentUpon>VistaButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDataTreeEditList.resx">
+      <DependentUpon>FrmDataTreeEditList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDataTreeList.resx">
+      <DependentUpon>FrmDataTreeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmGetString.resx">
+      <DependentUpon>FrmGetString.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmShow_Log_Value.resx">
+      <DependentUpon>FrmShow_Log_Value.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FTSEditFormToolbar.resx">
+      <DependentUpon>FTSEditFormToolbar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FTSEditForm2Toolbar.resx">
+      <DependentUpon>FTSEditForm2Toolbar.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FTSLanguageToolbar.resx">
+      <DependentUpon>FTSLanguageToolbar.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FTSReportToolbar.resx">
+      <DependentUpon>FTSReportToolbar.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FTSSelectItemToolbar.resx">
+      <DependentUpon>FTSSelectItemToolbar.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FTSTranPrintToolbar.resx">
+      <DependentUpon>FTSTranPrintToolbar.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FTSUserControl.resx">
+      <DependentUpon>FTSUserControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FTSUserControlGrid.resx">
+      <DependentUpon>FTSUserControlGrid.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DefaultValuesForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DefaultValuesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmBase2.resx">
+      <DependentUpon>FrmBase2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmCopyTran.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmCopyTran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDataEditDetail.resx">
+      <DependentUpon>FrmDataEditDetail.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDataEditListDetail.resx">
+      <DependentUpon>FrmDataEditListDetail.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Business\FrmSys_Table_EditList.resx">
+      <DependentUpon>FrmSys_Table_EditList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Business\FrmSys_Resource_EditList.resx">
+      <DependentUpon>FrmSys_Resource_EditList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmGetDate.resx">
+      <DependentUpon>FrmGetDate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmSelectTransaction.resx">
+      <DependentUpon>FrmSelectTransaction.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmShowData.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmShowData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmTranManager.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmTranManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomizationForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CustomizationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FTSForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FTSForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FTSMainForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FTSMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmBase2Listing.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmBase2Listing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmBase2MultiListing.resx">
+      <DependentUpon>FrmBase2MultiListing.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmBaseFormGrid.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmBaseFormGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmBaseForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDataEditList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmDataEditList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDataList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmDataList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmGetList.resx">
+      <DependentUpon>FrmGetList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmGetPassword.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmGetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmProgressBar.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmProgressBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmTranPrintOutput.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmTranPrintOutput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmTranPrint.resx">
+      <DependentUpon>FrmTranPrint.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\IdConfigForm.resx">
+      <DependentUpon>IdConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TransactionOutput.resx">
+      <DependentUpon>TransactionOutput.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Security\FrmAdminUser.resx">
+      <DependentUpon>FrmAdminUser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Security\FrmDm_User_Group_EditDetail.resx">
+      <DependentUpon>FrmDm_User_Group_EditDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Security\FrmiPermission.resx">
+      <DependentUpon>FrmiPermission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Security\FrmLogging_List.resx">
+      <DependentUpon>FrmLogging_List.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Security\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Security\FrmServer.resx">
+      <DependentUpon>FrmServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Web References\OOService\Service.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BaseBusiness\BaseBusiness.csproj">
+      <Project>{0857A83D-5A90-475F-A991-97C90A7EF809}</Project>
+      <Name>BaseBusiness</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Global\Global.csproj">
+      <Project>{8BDD5E67-A523-44B4-A58A-482AEFAF6D2E}</Project>
+      <Name>Global</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:49231/OOService/Service.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\OOService\</RelPath>
+      <UpdateFromURL>http://localhost:49231/OOService/Service.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>FTS_Base_OOService1_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

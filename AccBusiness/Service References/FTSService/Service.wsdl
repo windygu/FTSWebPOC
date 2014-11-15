@@ -1,0 +1,1103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Ready">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReadyResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CredentialSoapHeader" type="tns:CredentialSoapHeader" />
+      <s:complexType name="CredentialSoapHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:decimal" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="GetCompanyInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompanyInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompanyInfoResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoExecuteNonQuery">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="databasename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrcommand" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoExecuteNonQueryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DoExecuteNonQueryResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoExecuteScalar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="databasename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrcommand" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoExecuteScalarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoExecuteScalarResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoExecuteReader">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="databasename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrcommand" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoExecuteReaderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoExecuteReaderResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoLoadDataTable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="databasename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrcommand" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="tablename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoLoadDataTableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoLoadDataTableResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoLoadDataSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="databasename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrcommand" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="tableNames" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DoLoadDataSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoLoadDataSetResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BeginTransaction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="databasename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BeginTransactionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RollbackTransaction">
+        <s:complexType />
+      </s:element>
+      <s:element name="RollbackTransactionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CommitTransaction">
+        <s:complexType />
+      </s:element>
+      <s:element name="CommitTransactionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DoUpdateDataTable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="databasename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updatebehavior" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrtable" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrinsert" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrupdate" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrdelete" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoUpdateDataTableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DoUpdateDataTableResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoUpdateDataSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="databasename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updatebehavior" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrdataset" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="tablename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrinsert" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrupdate" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrdelete" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoUpdateDataSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DoUpdateDataSetResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VoucherUpdateData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="databasename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrdataset" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="pr_key" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="autotranno" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="tranid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="trannofield" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dfemptytranno" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fixedlength" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="trannolength" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isnew" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VoucherUpdateDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VoucherUpdateDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JournalUpdateData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="databasename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrdataset" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="pr_key" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="autotranno" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="tranid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="trannofield" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dfemptytranno" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fixedlength" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="trannolength" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isnew" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JournalUpdateDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JournalUpdateDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurchaseUpdateData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="databasename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrdataset" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="pr_key" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="autotranno" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="tranid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="trannofield" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dfemptytranno" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fixedlength" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="trannolength" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isnew" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurchaseUpdateDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PurchaseUpdateDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaleUpdateData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="databasename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrdataset" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="pr_key" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="autotranno" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="tranid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="trannofield" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dfemptytranno" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fixedlength" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="trannolength" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isnew" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaleUpdateDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaleUpdateDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AssetUpdateData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="databasename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrdataset" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="pr_key" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="autotranno" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="tranid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="trannofield" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dfemptytranno" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fixedlength" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="trannolength" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AssetUpdateDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AssetUpdateDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AssetDepUpdateData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="databasename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrdataset" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="tranid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="trandate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AssetDepUpdateDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AdjustmentUpdateData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="databasename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrdataset" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="tranid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="trandate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdjustmentUpdateDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CAExpenseUpdateData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="databasename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrdataset" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CAExpenseUpdateDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ToolAllocationDetailUpdateData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="databasename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrdataset" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="tranid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="trandate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ToolAllocationDetailUpdateDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ClosingEntryUpdateData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="databasename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrdataset" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="tranid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tranno" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="trandate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClosingEntryUpdateDataResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ReadySoapIn">
+    <wsdl:part name="parameters" element="tns:Ready" />
+  </wsdl:message>
+  <wsdl:message name="ReadySoapOut">
+    <wsdl:part name="parameters" element="tns:ReadyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadyCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompanyInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompanyInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyInfoCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="DoExecuteNonQuerySoapIn">
+    <wsdl:part name="parameters" element="tns:DoExecuteNonQuery" />
+  </wsdl:message>
+  <wsdl:message name="DoExecuteNonQuerySoapOut">
+    <wsdl:part name="parameters" element="tns:DoExecuteNonQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoExecuteNonQueryCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="DoExecuteScalarSoapIn">
+    <wsdl:part name="parameters" element="tns:DoExecuteScalar" />
+  </wsdl:message>
+  <wsdl:message name="DoExecuteScalarSoapOut">
+    <wsdl:part name="parameters" element="tns:DoExecuteScalarResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoExecuteScalarCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="DoExecuteReaderSoapIn">
+    <wsdl:part name="parameters" element="tns:DoExecuteReader" />
+  </wsdl:message>
+  <wsdl:message name="DoExecuteReaderSoapOut">
+    <wsdl:part name="parameters" element="tns:DoExecuteReaderResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoExecuteReaderCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="DoLoadDataTableSoapIn">
+    <wsdl:part name="parameters" element="tns:DoLoadDataTable" />
+  </wsdl:message>
+  <wsdl:message name="DoLoadDataTableSoapOut">
+    <wsdl:part name="parameters" element="tns:DoLoadDataTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoLoadDataTableCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="DoLoadDataSetSoapIn">
+    <wsdl:part name="parameters" element="tns:DoLoadDataSet" />
+  </wsdl:message>
+  <wsdl:message name="DoLoadDataSetSoapOut">
+    <wsdl:part name="parameters" element="tns:DoLoadDataSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoLoadDataSetCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="BeginTransactionSoapIn">
+    <wsdl:part name="parameters" element="tns:BeginTransaction" />
+  </wsdl:message>
+  <wsdl:message name="BeginTransactionSoapOut">
+    <wsdl:part name="parameters" element="tns:BeginTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="BeginTransactionCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="RollbackTransactionSoapIn">
+    <wsdl:part name="parameters" element="tns:RollbackTransaction" />
+  </wsdl:message>
+  <wsdl:message name="RollbackTransactionSoapOut">
+    <wsdl:part name="parameters" element="tns:RollbackTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="RollbackTransactionCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="CommitTransactionSoapIn">
+    <wsdl:part name="parameters" element="tns:CommitTransaction" />
+  </wsdl:message>
+  <wsdl:message name="CommitTransactionSoapOut">
+    <wsdl:part name="parameters" element="tns:CommitTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CommitTransactionCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="DoUpdateDataTableSoapIn">
+    <wsdl:part name="parameters" element="tns:DoUpdateDataTable" />
+  </wsdl:message>
+  <wsdl:message name="DoUpdateDataTableSoapOut">
+    <wsdl:part name="parameters" element="tns:DoUpdateDataTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoUpdateDataTableCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="DoUpdateDataSetSoapIn">
+    <wsdl:part name="parameters" element="tns:DoUpdateDataSet" />
+  </wsdl:message>
+  <wsdl:message name="DoUpdateDataSetSoapOut">
+    <wsdl:part name="parameters" element="tns:DoUpdateDataSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoUpdateDataSetCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="VoucherUpdateDataSoapIn">
+    <wsdl:part name="parameters" element="tns:VoucherUpdateData" />
+  </wsdl:message>
+  <wsdl:message name="VoucherUpdateDataSoapOut">
+    <wsdl:part name="parameters" element="tns:VoucherUpdateDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="VoucherUpdateDataCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="JournalUpdateDataSoapIn">
+    <wsdl:part name="parameters" element="tns:JournalUpdateData" />
+  </wsdl:message>
+  <wsdl:message name="JournalUpdateDataSoapOut">
+    <wsdl:part name="parameters" element="tns:JournalUpdateDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="JournalUpdateDataCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseUpdateDataSoapIn">
+    <wsdl:part name="parameters" element="tns:PurchaseUpdateData" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseUpdateDataSoapOut">
+    <wsdl:part name="parameters" element="tns:PurchaseUpdateDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseUpdateDataCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="SaleUpdateDataSoapIn">
+    <wsdl:part name="parameters" element="tns:SaleUpdateData" />
+  </wsdl:message>
+  <wsdl:message name="SaleUpdateDataSoapOut">
+    <wsdl:part name="parameters" element="tns:SaleUpdateDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaleUpdateDataCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="AssetUpdateDataSoapIn">
+    <wsdl:part name="parameters" element="tns:AssetUpdateData" />
+  </wsdl:message>
+  <wsdl:message name="AssetUpdateDataSoapOut">
+    <wsdl:part name="parameters" element="tns:AssetUpdateDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="AssetUpdateDataCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="AssetDepUpdateDataSoapIn">
+    <wsdl:part name="parameters" element="tns:AssetDepUpdateData" />
+  </wsdl:message>
+  <wsdl:message name="AssetDepUpdateDataSoapOut">
+    <wsdl:part name="parameters" element="tns:AssetDepUpdateDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="AssetDepUpdateDataCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="AdjustmentUpdateDataSoapIn">
+    <wsdl:part name="parameters" element="tns:AdjustmentUpdateData" />
+  </wsdl:message>
+  <wsdl:message name="AdjustmentUpdateDataSoapOut">
+    <wsdl:part name="parameters" element="tns:AdjustmentUpdateDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdjustmentUpdateDataCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="CAExpenseUpdateDataSoapIn">
+    <wsdl:part name="parameters" element="tns:CAExpenseUpdateData" />
+  </wsdl:message>
+  <wsdl:message name="CAExpenseUpdateDataSoapOut">
+    <wsdl:part name="parameters" element="tns:CAExpenseUpdateDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="CAExpenseUpdateDataCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="ToolAllocationDetailUpdateDataSoapIn">
+    <wsdl:part name="parameters" element="tns:ToolAllocationDetailUpdateData" />
+  </wsdl:message>
+  <wsdl:message name="ToolAllocationDetailUpdateDataSoapOut">
+    <wsdl:part name="parameters" element="tns:ToolAllocationDetailUpdateDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ToolAllocationDetailUpdateDataCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="ClosingEntryUpdateDataSoapIn">
+    <wsdl:part name="parameters" element="tns:ClosingEntryUpdateData" />
+  </wsdl:message>
+  <wsdl:message name="ClosingEntryUpdateDataSoapOut">
+    <wsdl:part name="parameters" element="tns:ClosingEntryUpdateDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClosingEntryUpdateDataCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="Ready">
+      <wsdl:input message="tns:ReadySoapIn" />
+      <wsdl:output message="tns:ReadySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyInfo">
+      <wsdl:input message="tns:GetCompanyInfoSoapIn" />
+      <wsdl:output message="tns:GetCompanyInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoExecuteNonQuery">
+      <wsdl:input message="tns:DoExecuteNonQuerySoapIn" />
+      <wsdl:output message="tns:DoExecuteNonQuerySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoExecuteScalar">
+      <wsdl:input message="tns:DoExecuteScalarSoapIn" />
+      <wsdl:output message="tns:DoExecuteScalarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoExecuteReader">
+      <wsdl:input message="tns:DoExecuteReaderSoapIn" />
+      <wsdl:output message="tns:DoExecuteReaderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoLoadDataTable">
+      <wsdl:input message="tns:DoLoadDataTableSoapIn" />
+      <wsdl:output message="tns:DoLoadDataTableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoLoadDataSet">
+      <wsdl:input message="tns:DoLoadDataSetSoapIn" />
+      <wsdl:output message="tns:DoLoadDataSetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BeginTransaction">
+      <wsdl:input message="tns:BeginTransactionSoapIn" />
+      <wsdl:output message="tns:BeginTransactionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RollbackTransaction">
+      <wsdl:input message="tns:RollbackTransactionSoapIn" />
+      <wsdl:output message="tns:RollbackTransactionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CommitTransaction">
+      <wsdl:input message="tns:CommitTransactionSoapIn" />
+      <wsdl:output message="tns:CommitTransactionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoUpdateDataTable">
+      <wsdl:input message="tns:DoUpdateDataTableSoapIn" />
+      <wsdl:output message="tns:DoUpdateDataTableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoUpdateDataSet">
+      <wsdl:input message="tns:DoUpdateDataSetSoapIn" />
+      <wsdl:output message="tns:DoUpdateDataSetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VoucherUpdateData">
+      <wsdl:input message="tns:VoucherUpdateDataSoapIn" />
+      <wsdl:output message="tns:VoucherUpdateDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="JournalUpdateData">
+      <wsdl:input message="tns:JournalUpdateDataSoapIn" />
+      <wsdl:output message="tns:JournalUpdateDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseUpdateData">
+      <wsdl:input message="tns:PurchaseUpdateDataSoapIn" />
+      <wsdl:output message="tns:PurchaseUpdateDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaleUpdateData">
+      <wsdl:input message="tns:SaleUpdateDataSoapIn" />
+      <wsdl:output message="tns:SaleUpdateDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AssetUpdateData">
+      <wsdl:input message="tns:AssetUpdateDataSoapIn" />
+      <wsdl:output message="tns:AssetUpdateDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AssetDepUpdateData">
+      <wsdl:input message="tns:AssetDepUpdateDataSoapIn" />
+      <wsdl:output message="tns:AssetDepUpdateDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdjustmentUpdateData">
+      <wsdl:input message="tns:AdjustmentUpdateDataSoapIn" />
+      <wsdl:output message="tns:AdjustmentUpdateDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CAExpenseUpdateData">
+      <wsdl:input message="tns:CAExpenseUpdateDataSoapIn" />
+      <wsdl:output message="tns:CAExpenseUpdateDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ToolAllocationDetailUpdateData">
+      <wsdl:input message="tns:ToolAllocationDetailUpdateDataSoapIn" />
+      <wsdl:output message="tns:ToolAllocationDetailUpdateDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClosingEntryUpdateData">
+      <wsdl:input message="tns:ClosingEntryUpdateDataSoapIn" />
+      <wsdl:output message="tns:ClosingEntryUpdateDataSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ready">
+      <soap:operation soapAction="http://tempuri.org/Ready" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ReadyCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyInfo">
+      <soap:operation soapAction="http://tempuri.org/GetCompanyInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCompanyInfoCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoExecuteNonQuery">
+      <soap:operation soapAction="http://tempuri.org/DoExecuteNonQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DoExecuteNonQueryCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoExecuteScalar">
+      <soap:operation soapAction="http://tempuri.org/DoExecuteScalar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DoExecuteScalarCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoExecuteReader">
+      <soap:operation soapAction="http://tempuri.org/DoExecuteReader" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DoExecuteReaderCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoLoadDataTable">
+      <soap:operation soapAction="http://tempuri.org/DoLoadDataTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DoLoadDataTableCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoLoadDataSet">
+      <soap:operation soapAction="http://tempuri.org/DoLoadDataSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DoLoadDataSetCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BeginTransaction">
+      <soap:operation soapAction="http://tempuri.org/BeginTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:BeginTransactionCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RollbackTransaction">
+      <soap:operation soapAction="http://tempuri.org/RollbackTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RollbackTransactionCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommitTransaction">
+      <soap:operation soapAction="http://tempuri.org/CommitTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CommitTransactionCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoUpdateDataTable">
+      <soap:operation soapAction="http://tempuri.org/DoUpdateDataTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DoUpdateDataTableCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoUpdateDataSet">
+      <soap:operation soapAction="http://tempuri.org/DoUpdateDataSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DoUpdateDataSetCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VoucherUpdateData">
+      <soap:operation soapAction="http://tempuri.org/VoucherUpdateData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:VoucherUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JournalUpdateData">
+      <soap:operation soapAction="http://tempuri.org/JournalUpdateData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:JournalUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseUpdateData">
+      <soap:operation soapAction="http://tempuri.org/PurchaseUpdateData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:PurchaseUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaleUpdateData">
+      <soap:operation soapAction="http://tempuri.org/SaleUpdateData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SaleUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssetUpdateData">
+      <soap:operation soapAction="http://tempuri.org/AssetUpdateData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AssetUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssetDepUpdateData">
+      <soap:operation soapAction="http://tempuri.org/AssetDepUpdateData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AssetDepUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdjustmentUpdateData">
+      <soap:operation soapAction="http://tempuri.org/AdjustmentUpdateData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AdjustmentUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CAExpenseUpdateData">
+      <soap:operation soapAction="http://tempuri.org/CAExpenseUpdateData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CAExpenseUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ToolAllocationDetailUpdateData">
+      <soap:operation soapAction="http://tempuri.org/ToolAllocationDetailUpdateData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ToolAllocationDetailUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClosingEntryUpdateData">
+      <soap:operation soapAction="http://tempuri.org/ClosingEntryUpdateData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ClosingEntryUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ready">
+      <soap12:operation soapAction="http://tempuri.org/Ready" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ReadyCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetCompanyInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCompanyInfoCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoExecuteNonQuery">
+      <soap12:operation soapAction="http://tempuri.org/DoExecuteNonQuery" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DoExecuteNonQueryCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoExecuteScalar">
+      <soap12:operation soapAction="http://tempuri.org/DoExecuteScalar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DoExecuteScalarCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoExecuteReader">
+      <soap12:operation soapAction="http://tempuri.org/DoExecuteReader" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DoExecuteReaderCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoLoadDataTable">
+      <soap12:operation soapAction="http://tempuri.org/DoLoadDataTable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DoLoadDataTableCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoLoadDataSet">
+      <soap12:operation soapAction="http://tempuri.org/DoLoadDataSet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DoLoadDataSetCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BeginTransaction">
+      <soap12:operation soapAction="http://tempuri.org/BeginTransaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:BeginTransactionCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RollbackTransaction">
+      <soap12:operation soapAction="http://tempuri.org/RollbackTransaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RollbackTransactionCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommitTransaction">
+      <soap12:operation soapAction="http://tempuri.org/CommitTransaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CommitTransactionCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoUpdateDataTable">
+      <soap12:operation soapAction="http://tempuri.org/DoUpdateDataTable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DoUpdateDataTableCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoUpdateDataSet">
+      <soap12:operation soapAction="http://tempuri.org/DoUpdateDataSet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DoUpdateDataSetCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VoucherUpdateData">
+      <soap12:operation soapAction="http://tempuri.org/VoucherUpdateData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:VoucherUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JournalUpdateData">
+      <soap12:operation soapAction="http://tempuri.org/JournalUpdateData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:JournalUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseUpdateData">
+      <soap12:operation soapAction="http://tempuri.org/PurchaseUpdateData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:PurchaseUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaleUpdateData">
+      <soap12:operation soapAction="http://tempuri.org/SaleUpdateData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SaleUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssetUpdateData">
+      <soap12:operation soapAction="http://tempuri.org/AssetUpdateData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AssetUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssetDepUpdateData">
+      <soap12:operation soapAction="http://tempuri.org/AssetDepUpdateData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AssetDepUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdjustmentUpdateData">
+      <soap12:operation soapAction="http://tempuri.org/AdjustmentUpdateData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AdjustmentUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CAExpenseUpdateData">
+      <soap12:operation soapAction="http://tempuri.org/CAExpenseUpdateData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CAExpenseUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ToolAllocationDetailUpdateData">
+      <soap12:operation soapAction="http://tempuri.org/ToolAllocationDetailUpdateData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ToolAllocationDetailUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClosingEntryUpdateData">
+      <soap12:operation soapAction="http://tempuri.org/ClosingEntryUpdateData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ClosingEntryUpdateDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://localhost:2298/AccService/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://localhost:2298/AccService/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AngularJS</title>
+
+    <link href="../content/shared/styles/examples-offline.css" rel="stylesheet">
+    <link href="../../content/web/kendo.common.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.rtl.min.css" rel="stylesheet">
+    <link href="../../content/web/kendo.default.min.css" rel="stylesheet">
+
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/angular.min.js"></script>
+    <script src="../../scripts/kendo.all.min.js"></script>
+    <script src="../content/shared/js/console.js"></script>
+    <script>
+        
+    </script>
+    
+    
+</head>
+<body>
+    
+        <a class="offline-button" href="../index.html">Back</a>
+    
+    <div id="example" ng-app="KendoDemos">
+    <div ng-controller="MyCtrl">
+  <div class="demo-section k-content">
+    <div kendo-mobile-nav-bar>
+      <button kendo-mobile-button data-align="left">Index</button>
+      <span data-role="view-title">NavBar title</span>
+      <button kendo-mobile-button data-align="right">Save</button>
+    </div>
+  </div>
+
+  <style scoped>
+        .demo-section {
+            width: 400px;
+            height: 200px;
+            margin-top: 50px;
+            padding: 0;
+            text-align: center;
+        }
+  </style>
+</div>
+</div>
+
+<script>
+  angular.module("KendoDemos", [ "kendo.directives" ]);
+  function MyCtrl($scope){
+  }
+</script>
+
+
+    
+</body>
+</html>

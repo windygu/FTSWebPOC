@@ -1,0 +1,7 @@
+C:\Users\Lam\Desktop\APHU\FTSWebPOC\ShareBusiness\obj\Debug\ShareBusiness.csprojResolveAssemblyReference.cache
+C:\Users\Lam\Desktop\APHU\FTSWebPOC\ShareBusiness\obj\Debug\FTS.ShareBusiness.dll
+C:\Users\Lam\Desktop\APHU\FTSWebPOC\ShareBusiness\obj\Debug\FTS.ShareBusiness.pdb
+C:\Users\Lam\Desktop\APHU\FTSWebPOC\ShareBusiness\FTS.ShareBusiness.dll
+C:\Users\Lam\Desktop\APHU\FTSWebPOC\ShareBusiness\FTS.ShareBusiness.pdb
+C:\Users\Lam\Desktop\APHU\FTSWebPOC\ShareBusiness\FTS.BaseBusiness.dll
+C:\Users\Lam\Desktop\APHU\FTSWebPOC\ShareBusiness\FTS.BaseBusiness.pdb

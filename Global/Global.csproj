@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8BDD5E67-A523-44B4-A58A-482AEFAF6D2E}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>FTS.Global</AssemblyName>
+    <AssemblyOriginatorKeyFile>ftsdev.snk</AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>FTS.Global</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <SignAssembly>true</SignAssembly>
+    <TargetFrameworkProfile />
+    <PublishUrl>http://localhost/Bes.Global/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <BaseAddress>285212672</BaseAddress>
+    <FileAlignment>4096</FileAlignment>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <BaseAddress>285212672</BaseAddress>
+    <Optimize>true</Optimize>
+    <FileAlignment>4096</FileAlignment>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.84.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Runtime.Remoting">
+      <Name>System.Runtime.Remoting</Name>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap">
+      <Name>System.Runtime.Serialization.Formatters.Soap</Name>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Name>System.Web.Services</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\AccBusiness\Asset\Adjustment_Asset.cs" />
+    <Compile Include="Business\AccBusiness\Asset\Asset.cs" />
+    <Compile Include="Business\AccBusiness\Asset\Asset_Dep.cs" />
+    <Compile Include="Business\AccBusiness\Asset\Asset_Detail.cs" />
+    <Compile Include="Business\AccBusiness\Asset\Asset_Location.cs" />
+    <Compile Include="Business\AccBusiness\Contract\Contract.cs" />
+    <Compile Include="Business\AccBusiness\Contract\Contract_Addendum.cs" />
+    <Compile Include="Business\AccBusiness\Contract\Contract_Due.cs" />
+    <Compile Include="Business\AccBusiness\Contract\Contract_Implementation.cs" />
+    <Compile Include="Business\AccBusiness\Contract\Contract_Item.cs" />
+    <Compile Include="Business\AccBusiness\Contract\Contract_Job.cs" />
+    <Compile Include="Business\AccBusiness\Contract\Contract_Mortgage.cs" />
+    <Compile Include="Business\AccBusiness\Contract\Contract_Payment.cs" />
+    <Compile Include="Business\AccBusiness\Contract\Contract_Rate.cs" />
+    <Compile Include="Business\AccBusiness\Cost\Ca_Account_Config.cs" />
+    <Compile Include="Business\AccBusiness\Cost\Ca_Beginning_Amount.cs" />
+    <Compile Include="Business\AccBusiness\Cost\Ca_Beginning_Quantity.cs" />
+    <Compile Include="Business\AccBusiness\Cost\Ca_Bom.cs" />
+    <Compile Include="Business\AccBusiness\Cost\Ca_Budget.cs" />
+    <Compile Include="Business\AccBusiness\Cost\Ca_Expense.cs" />
+    <Compile Include="Business\AccBusiness\Cost\Ca_Expense_Decrease.cs" />
+    <Compile Include="Business\AccBusiness\Cost\Ca_Expense_Result.cs" />
+    <Compile Include="Business\AccBusiness\Cost\Ca_Finished_Quantity.cs" />
+    <Compile Include="Business\AccBusiness\Cost\Ca_Previous_Product_Cost.cs" />
+    <Compile Include="Business\AccBusiness\Cost\Ca_Previous_Product_Quantity.cs" />
+    <Compile Include="Business\AccBusiness\Cost\Ca_Product_Cost.cs" />
+    <Compile Include="Business\AccBusiness\Cost\Ca_Ratio.cs" />
+    <Compile Include="Business\AccBusiness\Cost\Cost_Application.cs" />
+    <Compile Include="Business\AccBusiness\Cost\Dm_Job_Item.cs" />
+    <Compile Include="Business\AccBusiness\Cost\Tool_Allocation.cs" />
+    <Compile Include="Business\AccBusiness\Cost\Tool_Allocation_Detail.cs" />
+    <Compile Include="Business\AccBusiness\Journal\Journal.cs" />
+    <Compile Include="Business\AccBusiness\Journal\Journal_Detail.cs" />
+    <Compile Include="Business\AccBusiness\Ledger\Balance.cs" />
+    <Compile Include="Business\AccBusiness\Ledger\Balance_Detail.cs" />
+    <Compile Include="Business\AccBusiness\Ledger\Budget.cs" />
+    <Compile Include="Business\AccBusiness\Ledger\Closing_Entry.cs" />
+    <Compile Include="Business\AccBusiness\Ledger\Dm_Auto_Posting.cs" />
+    <Compile Include="Business\AccBusiness\Ledger\Dm_Auto_Posting_Detail.cs" />
+    <Compile Include="Business\AccBusiness\Ledger\Dm_Posting.cs" />
+    <Compile Include="Business\AccBusiness\Ledger\Dm_Posting_Detail.cs" />
+    <Compile Include="Business\AccBusiness\Ledger\Ledger.cs" />
+    <Compile Include="Business\AccBusiness\Ledger\Transaction_Register.cs" />
+    <Compile Include="Business\AccBusiness\Purchase\PO.cs" />
+    <Compile Include="Business\AccBusiness\Purchase\PO_Detail.cs" />
+    <Compile Include="Business\AccBusiness\Purchase\Purchase.cs" />
+    <Compile Include="Business\AccBusiness\Purchase\Purchase_Detail.cs" />
+    <Compile Include="Business\AccBusiness\Purchase\Purchase_Forecast.cs" />
+    <Compile Include="Business\AccBusiness\Purchase\Purchase_Payment.cs" />
+    <Compile Include="Business\AccBusiness\Purchase\Purchase_Price.cs" />
+    <Compile Include="Business\AccBusiness\Sale\Dm_Item_VB.cs" />
+    <Compile Include="Business\AccBusiness\Sale\Electric_Index.cs" />
+    <Compile Include="Business\AccBusiness\Sale\Electric_Index_Detail.cs" />
+    <Compile Include="Business\AccBusiness\Sale\Interest.cs" />
+    <Compile Include="Business\AccBusiness\Sale\Interest_Detail.cs" />
+    <Compile Include="Business\AccBusiness\Sale\Pos_Sale_Payment.cs" />
+    <Compile Include="Business\AccBusiness\Sale\Sale.cs" />
+    <Compile Include="Business\AccBusiness\Sale\Sale_Base_Price.cs" />
+    <Compile Include="Business\AccBusiness\Sale\Sale_Base_Price_Detail.cs" />
+    <Compile Include="Business\AccBusiness\Sale\Sale_Cog.cs" />
+    <Compile Include="Business\AccBusiness\Sale\Sale_Detail.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\AccBusiness\Sale\Sale_Discount.cs" />
+    <Compile Include="Business\AccBusiness\Sale\Sale_Discount_Detail.cs" />
+    <Compile Include="Business\AccBusiness\Sale\Sale_Invoice.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\AccBusiness\Sale\Sale_Payment.cs" />
+    <Compile Include="Business\AccBusiness\Sale\SBO.cs" />
+    <Compile Include="Business\AccBusiness\Sale\SBO_Detail.cs" />
+    <Compile Include="Business\AccBusiness\Sale\SBO_Rate.cs" />
+    <Compile Include="Business\AccBusiness\Sale\SO.cs" />
+    <Compile Include="Business\AccBusiness\Sale\SO_Detail.cs" />
+    <Compile Include="Business\AccBusiness\Sale\WaterMeter_Index.cs" />
+    <Compile Include="Business\AccBusiness\Sale\WaterMeter_Index_Detail.cs" />
+    <Compile Include="Business\AccBusiness\Security\Securities.cs" />
+    <Compile Include="Business\AccBusiness\Security\Securities_Dividend.cs" />
+    <Compile Include="Business\AccBusiness\Security\Securities_Rate.cs" />
+    <Compile Include="Business\AccBusiness\Security\Security_Balance.cs" />
+    <Compile Include="Business\AccBusiness\Security\Security_Issue.cs" />
+    <Compile Include="Business\AccBusiness\Security\Security_Issue_Detail.cs" />
+    <Compile Include="Business\AccBusiness\Security\Security_Receipt.cs" />
+    <Compile Include="Business\AccBusiness\Security\Security_Receipt_Detail.cs" />
+    <Compile Include="Business\AccBusiness\VAT\Vat_Transaction.cs" />
+    <Compile Include="Business\AccBusiness\Voucher\Voucher.cs" />
+    <Compile Include="Business\AccBusiness\Voucher\Voucher_Detail.cs" />
+    <Compile Include="Business\AccBusiness\Voucher\Voucher_Payment.cs" />
+    <Compile Include="Business\AccBusiness\Warehouse\Adjustment.cs" />
+    <Compile Include="Business\AccBusiness\Warehouse\Warehouse.cs" />
+    <Compile Include="Business\AccBusiness\Warehouse\Warehouse_Balance.cs" />
+    <Compile Include="Business\AccBusiness\Warehouse\Warehouse_Balance_Actual.cs" />
+    <Compile Include="Business\Base\Dm_Idchange.cs" />
+    <Compile Include="Business\Base\Dm_Organization.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Base\Dm_Organization_Mapping.cs" />
+    <Compile Include="Business\Base\Logging.cs" />
+    <Compile Include="Business\Base\Sec_Permission.cs" />
+    <Compile Include="Business\Base\Sec_User.cs" />
+    <Compile Include="Business\Base\Sec_User_Group.cs" />
+    <Compile Include="Business\Base\Sys_Id_Default.cs" />
+    <Compile Include="Business\Base\Sys_Id_Filter.cs" />
+    <Compile Include="Business\Base\Sys_Id_Struct.cs" />
+    <Compile Include="Business\Base\Sys_Lock.cs" />
+    <Compile Include="Business\Base\Sys_Table.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Booking.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Booking_Detail.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Cdr.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Charges_Check_In_Before.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Charges_Check_Out_After.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\HT_Commision.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Deposit.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Discount.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Folio.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Folio_Billing.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Folio_Guest.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Folio_Payment.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Folio_Price.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Laundary.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Laundary_Detail.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Message.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Minibar_Default.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Payment.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Payment_Detail.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\HT_Rate.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Room_Out_Of_Order.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Room_Status.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Shift.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Shift_Employee.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Shift_Room.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Trace.cs" />
+    <Compile Include="Business\HotelBusiness\Hotel\Ht_Wakeup.cs" />
+    <Compile Include="Business\PosBusiness\Pos_Item_Price_For_Delivery.cs" />
+    <Compile Include="Business\PosBusiness\Pos_Purchase.cs" />
+    <Compile Include="Business\PosBusiness\Pos_Purchase_Detail.cs" />
+    <Compile Include="Business\PosBusiness\Pos_Sale.cs" />
+    <Compile Include="Business\PosBusiness\Pos_Sale_Detail.cs" />
+    <Compile Include="Business\PosBusiness\Pos_Sale_Invoice.cs" />
+    <Compile Include="Business\PosBusiness\Pos_Shift.cs" />
+    <Compile Include="Business\PosBusiness\Pos_Shift_Employee.cs" />
+    <Compile Include="Business\PosBusiness\Pos_Shift_Item.cs" />
+    <Compile Include="Business\PosBusiness\Pos_So.cs" />
+    <Compile Include="Business\PosBusiness\Pos_So_Detail.cs" />
+    <Compile Include="Business\PosBusiness\Prints.cs" />
+    <Compile Include="Business\PosBusiness\Prints_Issue.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\PosBusiness\Prints_Issue_Detail.cs" />
+    <Compile Include="Business\PosBusiness\Prints_Receipt.cs" />
+    <Compile Include="Business\PosBusiness\Prints_Receipt_Detail.cs" />
+    <Compile Include="Business\PosBusiness\Prints_Warehouse_Balance.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Account.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Bank.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Budget.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Budget_Type.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Chapter.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Contract_Class.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Country.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Currency.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Dealer_Class.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Exchange_Rate.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Exchange_Rate_Extra.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Expense.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Expense_Class.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\ShareBusiness\Acc\Dm_FA_Class.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_FA_Operation.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_FA_Source.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_FA_Status.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Industry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Insurance_Source.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Item.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Item_Class.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Item_Class1.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Item_Combo.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Item_Op.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Item_Source.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Item_Status.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Item_Warehouse_Limit.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Job.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Job_Class.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Market.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Payment_Account.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Payment_Method.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Payment_Term.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Period.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_PO_Class.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Price_Level.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Prints_Serie.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Pr_Detail.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Pr_Detail_Class.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Pr_Detail_Credit_Limit.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Region.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Reinsurance_Source.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Security.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Security_Class.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Shipping_Address.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Shipping_Method.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_SO_Class.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Unit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Unit_Conversion.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Vat_Purchase.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Vat_Tax.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Warehouse.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Dm_Warehouse_Class.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Organization_Mapping.cs" />
+    <Compile Include="Business\ShareBusiness\Acc\Warehouse_Mapping.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Airline.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Airport.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Amenities.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Area_Code.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Building.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Extra_Charge.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Floor.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Guest.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Guest_Class.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Mapinfo.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Nationality.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Pbx_Type.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Rate_Type.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Religion.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Room.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Room_Amenities.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Room_Class.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Season.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Service.cs" />
+    <Compile Include="Business\ShareBusiness\Hotel\Dm_Zone.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Age.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Cabinet.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Certification.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Communes.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Contract_Type.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Districts.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Education.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Employee_Level.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Employee_Status.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Ethnics.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Foreign_Language.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Hospital.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Hr_Holiday.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Hr_Holiday_Info.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Hr_Leave_Reason.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Hr_Organization.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Hr_Work_Place.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Hr_Zodiac.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Marital_Status.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Production_Step.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Provinces.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Pr_Reason.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Pr_Relationship.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Salary_Type.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Skill.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Dm_Specialized.cs" />
+    <Compile Include="Business\ShareBusiness\HR\Hr_Employee_Info.cs" />
+    <Compile Include="Business\ShareBusiness\POS\Dm_Membership.cs" />
+    <Compile Include="Business\ShareBusiness\POS\Dm_Membership_Class.cs" />
+    <Compile Include="Business\ShareBusiness\POS\Dm_Prints.cs" />
+    <Compile Include="Business\ShareBusiness\POS\Dm_Prints_Batch.cs" />
+    <Compile Include="Business\ShareBusiness\POS\Dm_Pump.cs" />
+    <Compile Include="Business\ShareBusiness\POS\Dm_Shift.cs" />
+    <Compile Include="Business\ShareBusiness\POS\Membership_Log.cs" />
+    <Compile Include="Business\ShareBusiness\POS\Pos_Payment.cs" />
+    <Compile Include="Business\ShareBusiness\TP\Dm_Vehicle.cs" />
+    <Compile Include="Business\ShareBusiness\TP\Dm_Vehicle_Driver.cs" />
+    <Compile Include="Business\ShareBusiness\TP\Dm_Vehicle_Extra.cs" />
+    <Compile Include="Business\ShareBusiness\TP\Dm_Vehicle_Oil_Rate.cs" />
+    <Compile Include="Business\ShareBusiness\TP\Dm_Vehicle_Quality.cs" />
+    <Compile Include="Business\ShareBusiness\TP\Dm_Vehicle_Type.cs" />
+    <Compile Include="Business\ShareBusiness\TP\Route\Dm_Bridge.cs" />
+    <Compile Include="Business\ShareBusiness\TP\Route\Dm_Bridge_Route.cs" />
+    <Compile Include="Business\ShareBusiness\TP\Route\Dm_Route.cs" />
+    <Compile Include="Business\ShareBusiness\TP\Route\Dm_Route_Class.cs" />
+    <Compile Include="Business\ShareBusiness\TP\Route\Dm_Route_Distance.cs" />
+    <Compile Include="Business\ShareBusiness\TP\Route\Dm_Route_Group.cs" />
+    <Compile Include="Business\ShareBusiness\TP\Route\Dm_Route_Point.cs" />
+    <Compile Include="Business\ShareBusiness\TP\Route\Dm_Route_Point_Class.cs" />
+    <Compile Include="Business\ShareBusiness\TP\Route\Dm_Route_Point_Group.cs" />
+    <Compile Include="Business\ShareBusiness\TP\Tp_Order.cs" />
+    <Compile Include="Business\ShareBusiness\TP\Tp_Order_Detail.cs" />
+    <Compile Include="Business\TransportBusiness\Cost\Tp_Bridge_Ticket_Price.cs" />
+    <Compile Include="Business\TransportBusiness\Cost\Tp_Consumption_Pump.cs" />
+    <Compile Include="Business\TransportBusiness\Cost\Tp_Cost.cs" />
+    <Compile Include="Business\TransportBusiness\Cost\Tp_Fuel_Balance.cs" />
+    <Compile Include="Business\TransportBusiness\Cost\Tp_Fuel_Consumption.cs" />
+    <Compile Include="Business\TransportBusiness\Cost\Tp_Loading_Cost.cs" />
+    <Compile Include="Business\TransportBusiness\Cost\Tp_Monthly_Ticket.cs" />
+    <Compile Include="Business\TransportBusiness\Cost\Tp_Price_Ranges.cs" />
+    <Compile Include="Classes\ClassInfo.cs" />
+    <Compile Include="Classes\DataInfo.cs" />
+    <Compile Include="Classes\DataLog.cs" />
+    <Compile Include="Classes\DataState.cs" />
+    <Compile Include="Classes\Registrator.cs" />
+    <Compile Include="Classes\WSExceptionManager.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="Common\CompressionHelper.cs" />
+    <Compile Include="DataReader.cs" />
+    <Compile Include="DataSurrogate\DataColumnSurrogate.cs" />
+    <Compile Include="DataSurrogate\DataTableSurrogate.cs" />
+    <Compile Include="Interface\IHead.cs" />
+    <Compile Include="Parameter.cs" />
+    <Compile Include="ExceptionManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utilities\Functions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ftsdev.snk" />
+    <None Include="ftsfinal.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

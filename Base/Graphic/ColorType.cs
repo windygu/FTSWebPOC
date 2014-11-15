@@ -1,0 +1,35 @@
+namespace FTS.BaseUI.Graphic {
+    public enum ColorType {
+        // Fields
+        COLOR_3DDKSHADOW = 0x15,
+        COLOR_3DLIGHT = 0x16,
+        COLOR_ACTIVEBORDER = 10,
+        COLOR_ACTIVECAPTION = 2,
+        COLOR_APPWORKSPACE = 12,
+        COLOR_BACKGROUND = 1,
+        COLOR_BTNFACE = 15,
+        COLOR_BTNHIGHLIGHT = 20,
+        COLOR_BTNSHADOW = 0x10,
+        COLOR_BTNTEXT = 0x12,
+        COLOR_CAPTIONTEXT = 9,
+        COLOR_GRADIENTACTIVECAPTION = 0x1b,
+        COLOR_GRADIENTINACTIVECAPTION = 0x1c,
+        COLOR_GRAYTEXT = 0x11,
+        COLOR_HIGHLIGHT = 13,
+        COLOR_HIGHLIGHTTEXT = 14,
+        COLOR_HOTLIGHT = 0x1a,
+        COLOR_INACTIVEBORDER = 11,
+        COLOR_INACTIVECAPTION = 3,
+        COLOR_INACTIVECAPTIONTEXT = 0x13,
+        COLOR_INFOBK = 0x18,
+        COLOR_INFOTEXT = 0x17,
+        COLOR_MENU = 4,
+        COLOR_MENUBAR = 30,
+        COLOR_MENUHILIGHT = 0x1d,
+        COLOR_MENUTEXT = 7,
+        COLOR_SCROLLBAR = 0,
+        COLOR_WINDOW = 5,
+        COLOR_WINDOWFRAME = 6,
+        COLOR_WINDOWTEXT = 8
+    }
+}

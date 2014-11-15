@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://tempuri.org/AbstractTypes" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Ready">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReadyResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CredentialSoapHeader" type="tns:CredentialSoapHeader" />
+      <s:complexType name="CredentialSoapHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:decimal" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="GetReports">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="arrFtsMain" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrFtsReport" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReportsResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateManagerBase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="arrFtsMain" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrManagerBase" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateManagerBaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateManagerBaseResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="base64Binary" nillable="true" type="s:base64Binary" />
+    </s:schema>
+    <s:schema targetNamespace="http://tempuri.org/AbstractTypes">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ReadySoapIn">
+    <wsdl:part name="parameters" element="tns:Ready" />
+  </wsdl:message>
+  <wsdl:message name="ReadySoapOut">
+    <wsdl:part name="parameters" element="tns:ReadyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadyCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetReportsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReports" />
+  </wsdl:message>
+  <wsdl:message name="GetReportsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReportsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReportsCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="UpdateManagerBaseSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateManagerBase" />
+  </wsdl:message>
+  <wsdl:message name="UpdateManagerBaseSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateManagerBaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateManagerBaseCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="ReadyHttpGetIn" />
+  <wsdl:message name="ReadyHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetReportsHttpGetIn">
+    <wsdl:part name="arrFtsMain" type="s1:StringArray" />
+    <wsdl:part name="arrFtsReport" type="s1:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="GetReportsHttpGetOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="UpdateManagerBaseHttpGetIn">
+    <wsdl:part name="arrFtsMain" type="s1:StringArray" />
+    <wsdl:part name="arrManagerBase" type="s1:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="UpdateManagerBaseHttpGetOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="ReadyHttpPostIn" />
+  <wsdl:message name="ReadyHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetReportsHttpPostIn">
+    <wsdl:part name="arrFtsMain" type="s1:StringArray" />
+    <wsdl:part name="arrFtsReport" type="s1:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="GetReportsHttpPostOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="UpdateManagerBaseHttpPostIn">
+    <wsdl:part name="arrFtsMain" type="s1:StringArray" />
+    <wsdl:part name="arrManagerBase" type="s1:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="UpdateManagerBaseHttpPostOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="Ready">
+      <wsdl:input message="tns:ReadySoapIn" />
+      <wsdl:output message="tns:ReadySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReports">
+      <wsdl:input message="tns:GetReportsSoapIn" />
+      <wsdl:output message="tns:GetReportsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateManagerBase">
+      <wsdl:input message="tns:UpdateManagerBaseSoapIn" />
+      <wsdl:output message="tns:UpdateManagerBaseSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpGet">
+    <wsdl:operation name="Ready">
+      <wsdl:input message="tns:ReadyHttpGetIn" />
+      <wsdl:output message="tns:ReadyHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReports">
+      <wsdl:input message="tns:GetReportsHttpGetIn" />
+      <wsdl:output message="tns:GetReportsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateManagerBase">
+      <wsdl:input message="tns:UpdateManagerBaseHttpGetIn" />
+      <wsdl:output message="tns:UpdateManagerBaseHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpPost">
+    <wsdl:operation name="Ready">
+      <wsdl:input message="tns:ReadyHttpPostIn" />
+      <wsdl:output message="tns:ReadyHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReports">
+      <wsdl:input message="tns:GetReportsHttpPostIn" />
+      <wsdl:output message="tns:GetReportsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateManagerBase">
+      <wsdl:input message="tns:UpdateManagerBaseHttpPostIn" />
+      <wsdl:output message="tns:UpdateManagerBaseHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ready">
+      <soap:operation soapAction="http://tempuri.org/Ready" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ReadyCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReports">
+      <soap:operation soapAction="http://tempuri.org/GetReports" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetReportsCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateManagerBase">
+      <soap:operation soapAction="http://tempuri.org/UpdateManagerBase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateManagerBaseCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ready">
+      <soap12:operation soapAction="http://tempuri.org/Ready" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ReadyCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReports">
+      <soap12:operation soapAction="http://tempuri.org/GetReports" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetReportsCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateManagerBase">
+      <soap12:operation soapAction="http://tempuri.org/UpdateManagerBase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateManagerBaseCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpGet" type="tns:ServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Ready">
+      <http:operation location="/Ready" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReports">
+      <http:operation location="/GetReports" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateManagerBase">
+      <http:operation location="/UpdateManagerBase" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpPost" type="tns:ServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Ready">
+      <http:operation location="/Ready" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReports">
+      <http:operation location="/GetReports" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateManagerBase">
+      <http:operation location="/UpdateManagerBase" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://localhost:6205/PFSService/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://localhost:6205/PFSService/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceHttpGet" binding="tns:ServiceHttpGet">
+      <http:address location="http://localhost:6205/PFSService/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceHttpPost" binding="tns:ServiceHttpPost">
+      <http:address location="http://localhost:6205/PFSService/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

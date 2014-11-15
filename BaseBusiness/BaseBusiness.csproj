@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0857A83D-5A90-475F-A991-97C90A7EF809}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FTS.BaseBusiness</RootNamespace>
+    <AssemblyName>FTS.BaseBusiness</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>ftsdev.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FTS.Tools">
+      <HintPath>..\DLL\FTS.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\DLL\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\DLL\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Global">
+      <HintPath>..\DLL\Microsoft.Practices.EnterpriseLibrary.Global.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder">
+      <HintPath>..\DLL\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VistaDB.NET20">
+      <HintPath>..\DLL\VistaDB.NET20.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Business\Data_Log.cs" />
+    <Compile Include="Business\Dm_Communicate_Config.cs" />
+    <Compile Include="Business\Dm_Organization.cs" />
+    <Compile Include="Business\Dm_Workstation.cs" />
+    <Compile Include="Business\ExcRateManager.cs" />
+    <Compile Include="Business\OrganizationType.cs" />
+    <Compile Include="Business\Sys_Field.cs" />
+    <Compile Include="Business\Sys_Id_Default.cs" />
+    <Compile Include="Business\Sys_Id_Filter.cs" />
+    <Compile Include="Business\Sys_Id_Struct.cs" />
+    <Compile Include="Business\Sys_Lock.cs" />
+    <Compile Include="Business\Sys_Menu.cs" />
+    <Compile Include="Business\Sys_Report.cs" />
+    <Compile Include="Business\Sys_Resource.cs" />
+    <Compile Include="Business\Sys_SystemVar.cs" />
+    <Compile Include="Business\Sys_Table.cs" />
+    <Compile Include="Business\Sys_Tran.cs" />
+    <Compile Include="Business\Sys_Tran_Calculation.cs" />
+    <Compile Include="Business\Sys_Tran_Config.cs" />
+    <Compile Include="Business\Sys_Tran_Default.cs" />
+    <Compile Include="Business\Sys_Tran_No.cs" />
+    <Compile Include="Classes\DataAction.cs" />
+    <Compile Include="Classes\DataMode.cs" />
+    <Compile Include="Classes\FindMode.cs" />
+    <Compile Include="Classes\FTSCollection.cs" />
+    <Compile Include="Classes\ListMode.cs" />
+    <Compile Include="Classes\ManagerBase.cs" />
+    <Compile Include="Classes\ObjectBase.cs" />
+    <Compile Include="Classes\ObjectInfo.cs" />
+    <Compile Include="ImportData\Dm_Template.cs" />
+    <Compile Include="ImportData\Dm_TemplateManager.cs" />
+    <Compile Include="ImportData\Dm_Template_Detail.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ActionType.cs" />
+    <Compile Include="Security\Dm_Role.cs" />
+    <Compile Include="Security\Dm_User.cs" />
+    <Compile Include="Security\Dm_User_Group.cs" />
+    <Compile Include="Security\FTSFunction.cs" />
+    <Compile Include="Security\FTSFunctionCollection.cs" />
+    <Compile Include="Security\iPermission.cs" />
+    <Compile Include="Security\Logging.cs" />
+    <Compile Include="Security\ModuleList.cs" />
+    <Compile Include="Security\ProjectList.cs" />
+    <Compile Include="Systems\FTSMain.cs" />
+    <Compile Include="Systems\Pfs.cs" />
+    <Compile Include="Systems\PoleDisplay.cs" />
+    <Compile Include="Systems\ReportPeriod.cs" />
+    <Compile Include="Systems\SecurityManager.cs" />
+    <Compile Include="Systems\StartProcedures.cs" />
+    <Compile Include="Systems\TranOutputField.cs" />
+    <Compile Include="Systems\TranOutputFieldCollection.cs" />
+    <Compile Include="Security\Sys_Menu_Mapping.cs" />
+    <Compile Include="Utilities\DataSetHelper.cs" />
+    <Compile Include="Utilities\FTSReadNumber.cs" />
+    <Compile Include="Utilities\FTSReadNumberVN.cs" />
+    <Compile Include="Utilities\FTSZip.cs" />
+    <Compile Include="Utilities\Functions.cs" />
+    <Compile Include="Utilities\MD5.cs" />
+    <Compile Include="Web References\PFSService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Global\Global.csproj">
+      <Project>{8BDD5E67-A523-44B4-A58A-482AEFAF6D2E}</Project>
+      <Name>Global</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ftsdev.snk" />
+    <None Include="ftsfinal.snk" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\PFSService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\PFSService\Service.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:6205/PFSService/Service.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\PFSService\</RelPath>
+      <UpdateFromURL>http://localhost:6205/PFSService/Service.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>FTS_BaseBusiness_PFSService_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\PFSService\Service.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

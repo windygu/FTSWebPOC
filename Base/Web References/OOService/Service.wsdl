@@ -1,0 +1,1104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://tempuri.org/AbstractTypes" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Ping">
+        <s:complexType />
+      </s:element>
+      <s:element name="PingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PingResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CredentialSoapHeader" type="tns:CredentialSoapHeader" />
+      <s:complexType name="CredentialSoapHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:decimal" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="IsExists">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="workstationid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="hardwareinfo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsExistsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsExistsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServerTime">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetServerTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetServerTimeResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpLoadData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="arrData" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="workstationid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="hardwareinfo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpLoadDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Commit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="workstationid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="hardwareinfo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CommitResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownLoadData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="workstationid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="numberrecordtransport" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="hardwareinfo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownLoadDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownLoadDataResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogExceptions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogExceptionsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DoLoadDataTable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tablename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoLoadDataTableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoLoadDataTableResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCacheVersion">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCacheVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCacheVersionResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNameCacheVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cachename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNameCacheVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetNameCacheVersionResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteNonQuery">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteNonQueryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExecuteNonQueryResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReRegister">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="workstationid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="workstationname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oldhardwareinfo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newhardwareinfo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReRegisterResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Register">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="workstationid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="workstationname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="hardwareinfo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="dateTime" type="s:dateTime" />
+      <s:element name="base64Binary" nillable="true" type="s:base64Binary" />
+      <s:element name="int" type="s:int" />
+    </s:schema>
+    <s:schema targetNamespace="http://tempuri.org/AbstractTypes">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="PingSoapIn">
+    <wsdl:part name="parameters" element="tns:Ping" />
+  </wsdl:message>
+  <wsdl:message name="PingSoapOut">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
+  </wsdl:message>
+  <wsdl:message name="PingCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="IsExistsSoapIn">
+    <wsdl:part name="parameters" element="tns:IsExists" />
+  </wsdl:message>
+  <wsdl:message name="IsExistsSoapOut">
+    <wsdl:part name="parameters" element="tns:IsExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServerTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServerTime" />
+  </wsdl:message>
+  <wsdl:message name="GetServerTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServerTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpLoadDataSoapIn">
+    <wsdl:part name="parameters" element="tns:UpLoadData" />
+  </wsdl:message>
+  <wsdl:message name="UpLoadDataSoapOut">
+    <wsdl:part name="parameters" element="tns:UpLoadDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpLoadDataCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="CommitSoapIn">
+    <wsdl:part name="parameters" element="tns:Commit" />
+  </wsdl:message>
+  <wsdl:message name="CommitSoapOut">
+    <wsdl:part name="parameters" element="tns:CommitResponse" />
+  </wsdl:message>
+  <wsdl:message name="CommitCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="DownLoadDataSoapIn">
+    <wsdl:part name="parameters" element="tns:DownLoadData" />
+  </wsdl:message>
+  <wsdl:message name="DownLoadDataSoapOut">
+    <wsdl:part name="parameters" element="tns:DownLoadDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownLoadDataCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="LogExceptionsSoapIn">
+    <wsdl:part name="parameters" element="tns:LogExceptions" />
+  </wsdl:message>
+  <wsdl:message name="LogExceptionsSoapOut">
+    <wsdl:part name="parameters" element="tns:LogExceptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogExceptionsCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="DoLoadDataTableSoapIn">
+    <wsdl:part name="parameters" element="tns:DoLoadDataTable" />
+  </wsdl:message>
+  <wsdl:message name="DoLoadDataTableSoapOut">
+    <wsdl:part name="parameters" element="tns:DoLoadDataTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoLoadDataTableCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCacheVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCacheVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetCacheVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCacheVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCacheVersionCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetNameCacheVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNameCacheVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetNameCacheVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNameCacheVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNameCacheVersionCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteNonQuerySoapIn">
+    <wsdl:part name="parameters" element="tns:ExecuteNonQuery" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteNonQuerySoapOut">
+    <wsdl:part name="parameters" element="tns:ExecuteNonQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteNonQueryCredentialSoapHeader">
+    <wsdl:part name="CredentialSoapHeader" element="tns:CredentialSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="ReRegisterSoapIn">
+    <wsdl:part name="parameters" element="tns:ReRegister" />
+  </wsdl:message>
+  <wsdl:message name="ReRegisterSoapOut">
+    <wsdl:part name="parameters" element="tns:ReRegisterResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterSoapIn">
+    <wsdl:part name="parameters" element="tns:Register" />
+  </wsdl:message>
+  <wsdl:message name="RegisterSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterResponse" />
+  </wsdl:message>
+  <wsdl:message name="PingHttpGetIn" />
+  <wsdl:message name="PingHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="IsExistsHttpGetIn">
+    <wsdl:part name="workstationid" type="s:string" />
+    <wsdl:part name="hardwareinfo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsExistsHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetServerTimeHttpGetIn" />
+  <wsdl:message name="GetServerTimeHttpGetOut">
+    <wsdl:part name="Body" element="tns:dateTime" />
+  </wsdl:message>
+  <wsdl:message name="UpLoadDataHttpGetIn">
+    <wsdl:part name="arrData" type="s1:StringArray" />
+    <wsdl:part name="workstationid" type="s:string" />
+    <wsdl:part name="hardwareinfo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpLoadDataHttpGetOut" />
+  <wsdl:message name="CommitHttpGetIn">
+    <wsdl:part name="sql" type="s:string" />
+    <wsdl:part name="workstationid" type="s:string" />
+    <wsdl:part name="hardwareinfo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CommitHttpGetOut" />
+  <wsdl:message name="DownLoadDataHttpGetIn">
+    <wsdl:part name="workstationid" type="s:string" />
+    <wsdl:part name="numberrecordtransport" type="s:string" />
+    <wsdl:part name="hardwareinfo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DownLoadDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="LogExceptionsHttpGetIn">
+    <wsdl:part name="message" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LogExceptionsHttpGetOut" />
+  <wsdl:message name="DoLoadDataTableHttpGetIn">
+    <wsdl:part name="sql" type="s:string" />
+    <wsdl:part name="tablename" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DoLoadDataTableHttpGetOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="GetCacheVersionHttpGetIn" />
+  <wsdl:message name="GetCacheVersionHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="GetNameCacheVersionHttpGetIn">
+    <wsdl:part name="cachename" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNameCacheVersionHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteNonQueryHttpGetIn">
+    <wsdl:part name="sql" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteNonQueryHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="ReRegisterHttpGetIn">
+    <wsdl:part name="workstationid" type="s:string" />
+    <wsdl:part name="workstationname" type="s:string" />
+    <wsdl:part name="oldhardwareinfo" type="s:string" />
+    <wsdl:part name="newhardwareinfo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReRegisterHttpGetOut" />
+  <wsdl:message name="RegisterHttpGetIn">
+    <wsdl:part name="workstationid" type="s:string" />
+    <wsdl:part name="workstationname" type="s:string" />
+    <wsdl:part name="hardwareinfo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RegisterHttpGetOut" />
+  <wsdl:message name="PingHttpPostIn" />
+  <wsdl:message name="PingHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="IsExistsHttpPostIn">
+    <wsdl:part name="workstationid" type="s:string" />
+    <wsdl:part name="hardwareinfo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsExistsHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetServerTimeHttpPostIn" />
+  <wsdl:message name="GetServerTimeHttpPostOut">
+    <wsdl:part name="Body" element="tns:dateTime" />
+  </wsdl:message>
+  <wsdl:message name="UpLoadDataHttpPostIn">
+    <wsdl:part name="arrData" type="s1:StringArray" />
+    <wsdl:part name="workstationid" type="s:string" />
+    <wsdl:part name="hardwareinfo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpLoadDataHttpPostOut" />
+  <wsdl:message name="CommitHttpPostIn">
+    <wsdl:part name="sql" type="s:string" />
+    <wsdl:part name="workstationid" type="s:string" />
+    <wsdl:part name="hardwareinfo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CommitHttpPostOut" />
+  <wsdl:message name="DownLoadDataHttpPostIn">
+    <wsdl:part name="workstationid" type="s:string" />
+    <wsdl:part name="numberrecordtransport" type="s:string" />
+    <wsdl:part name="hardwareinfo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DownLoadDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="LogExceptionsHttpPostIn">
+    <wsdl:part name="message" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LogExceptionsHttpPostOut" />
+  <wsdl:message name="DoLoadDataTableHttpPostIn">
+    <wsdl:part name="sql" type="s:string" />
+    <wsdl:part name="tablename" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DoLoadDataTableHttpPostOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="GetCacheVersionHttpPostIn" />
+  <wsdl:message name="GetCacheVersionHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="GetNameCacheVersionHttpPostIn">
+    <wsdl:part name="cachename" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNameCacheVersionHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteNonQueryHttpPostIn">
+    <wsdl:part name="sql" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteNonQueryHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="ReRegisterHttpPostIn">
+    <wsdl:part name="workstationid" type="s:string" />
+    <wsdl:part name="workstationname" type="s:string" />
+    <wsdl:part name="oldhardwareinfo" type="s:string" />
+    <wsdl:part name="newhardwareinfo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReRegisterHttpPostOut" />
+  <wsdl:message name="RegisterHttpPostIn">
+    <wsdl:part name="workstationid" type="s:string" />
+    <wsdl:part name="workstationname" type="s:string" />
+    <wsdl:part name="hardwareinfo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RegisterHttpPostOut" />
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="Ping">
+      <wsdl:input message="tns:PingSoapIn" />
+      <wsdl:output message="tns:PingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsExists">
+      <wsdl:input message="tns:IsExistsSoapIn" />
+      <wsdl:output message="tns:IsExistsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerTime">
+      <wsdl:input message="tns:GetServerTimeSoapIn" />
+      <wsdl:output message="tns:GetServerTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpLoadData">
+      <wsdl:input message="tns:UpLoadDataSoapIn" />
+      <wsdl:output message="tns:UpLoadDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Commit">
+      <wsdl:input message="tns:CommitSoapIn" />
+      <wsdl:output message="tns:CommitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownLoadData">
+      <wsdl:input message="tns:DownLoadDataSoapIn" />
+      <wsdl:output message="tns:DownLoadDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogExceptions">
+      <wsdl:input message="tns:LogExceptionsSoapIn" />
+      <wsdl:output message="tns:LogExceptionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoLoadDataTable">
+      <wsdl:input message="tns:DoLoadDataTableSoapIn" />
+      <wsdl:output message="tns:DoLoadDataTableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCacheVersion">
+      <wsdl:input message="tns:GetCacheVersionSoapIn" />
+      <wsdl:output message="tns:GetCacheVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNameCacheVersion">
+      <wsdl:input message="tns:GetNameCacheVersionSoapIn" />
+      <wsdl:output message="tns:GetNameCacheVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteNonQuery">
+      <wsdl:input message="tns:ExecuteNonQuerySoapIn" />
+      <wsdl:output message="tns:ExecuteNonQuerySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReRegister">
+      <wsdl:input message="tns:ReRegisterSoapIn" />
+      <wsdl:output message="tns:ReRegisterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <wsdl:input message="tns:RegisterSoapIn" />
+      <wsdl:output message="tns:RegisterSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpGet">
+    <wsdl:operation name="Ping">
+      <wsdl:input message="tns:PingHttpGetIn" />
+      <wsdl:output message="tns:PingHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsExists">
+      <wsdl:input message="tns:IsExistsHttpGetIn" />
+      <wsdl:output message="tns:IsExistsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerTime">
+      <wsdl:input message="tns:GetServerTimeHttpGetIn" />
+      <wsdl:output message="tns:GetServerTimeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpLoadData">
+      <wsdl:input message="tns:UpLoadDataHttpGetIn" />
+      <wsdl:output message="tns:UpLoadDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Commit">
+      <wsdl:input message="tns:CommitHttpGetIn" />
+      <wsdl:output message="tns:CommitHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownLoadData">
+      <wsdl:input message="tns:DownLoadDataHttpGetIn" />
+      <wsdl:output message="tns:DownLoadDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogExceptions">
+      <wsdl:input message="tns:LogExceptionsHttpGetIn" />
+      <wsdl:output message="tns:LogExceptionsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoLoadDataTable">
+      <wsdl:input message="tns:DoLoadDataTableHttpGetIn" />
+      <wsdl:output message="tns:DoLoadDataTableHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCacheVersion">
+      <wsdl:input message="tns:GetCacheVersionHttpGetIn" />
+      <wsdl:output message="tns:GetCacheVersionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNameCacheVersion">
+      <wsdl:input message="tns:GetNameCacheVersionHttpGetIn" />
+      <wsdl:output message="tns:GetNameCacheVersionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteNonQuery">
+      <wsdl:input message="tns:ExecuteNonQueryHttpGetIn" />
+      <wsdl:output message="tns:ExecuteNonQueryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReRegister">
+      <wsdl:input message="tns:ReRegisterHttpGetIn" />
+      <wsdl:output message="tns:ReRegisterHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <wsdl:input message="tns:RegisterHttpGetIn" />
+      <wsdl:output message="tns:RegisterHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpPost">
+    <wsdl:operation name="Ping">
+      <wsdl:input message="tns:PingHttpPostIn" />
+      <wsdl:output message="tns:PingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsExists">
+      <wsdl:input message="tns:IsExistsHttpPostIn" />
+      <wsdl:output message="tns:IsExistsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerTime">
+      <wsdl:input message="tns:GetServerTimeHttpPostIn" />
+      <wsdl:output message="tns:GetServerTimeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpLoadData">
+      <wsdl:input message="tns:UpLoadDataHttpPostIn" />
+      <wsdl:output message="tns:UpLoadDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Commit">
+      <wsdl:input message="tns:CommitHttpPostIn" />
+      <wsdl:output message="tns:CommitHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownLoadData">
+      <wsdl:input message="tns:DownLoadDataHttpPostIn" />
+      <wsdl:output message="tns:DownLoadDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogExceptions">
+      <wsdl:input message="tns:LogExceptionsHttpPostIn" />
+      <wsdl:output message="tns:LogExceptionsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoLoadDataTable">
+      <wsdl:input message="tns:DoLoadDataTableHttpPostIn" />
+      <wsdl:output message="tns:DoLoadDataTableHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCacheVersion">
+      <wsdl:input message="tns:GetCacheVersionHttpPostIn" />
+      <wsdl:output message="tns:GetCacheVersionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNameCacheVersion">
+      <wsdl:input message="tns:GetNameCacheVersionHttpPostIn" />
+      <wsdl:output message="tns:GetNameCacheVersionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteNonQuery">
+      <wsdl:input message="tns:ExecuteNonQueryHttpPostIn" />
+      <wsdl:output message="tns:ExecuteNonQueryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReRegister">
+      <wsdl:input message="tns:ReRegisterHttpPostIn" />
+      <wsdl:output message="tns:ReRegisterHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <wsdl:input message="tns:RegisterHttpPostIn" />
+      <wsdl:output message="tns:RegisterHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="http://tempuri.org/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:PingCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExists">
+      <soap:operation soapAction="http://tempuri.org/IsExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerTime">
+      <soap:operation soapAction="http://tempuri.org/GetServerTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpLoadData">
+      <soap:operation soapAction="http://tempuri.org/UpLoadData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpLoadDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Commit">
+      <soap:operation soapAction="http://tempuri.org/Commit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CommitCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownLoadData">
+      <soap:operation soapAction="http://tempuri.org/DownLoadData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownLoadDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogExceptions">
+      <soap:operation soapAction="http://tempuri.org/LogExceptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:LogExceptionsCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoLoadDataTable">
+      <soap:operation soapAction="http://tempuri.org/DoLoadDataTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DoLoadDataTableCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCacheVersion">
+      <soap:operation soapAction="http://tempuri.org/GetCacheVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCacheVersionCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNameCacheVersion">
+      <soap:operation soapAction="http://tempuri.org/GetNameCacheVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetNameCacheVersionCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteNonQuery">
+      <soap:operation soapAction="http://tempuri.org/ExecuteNonQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ExecuteNonQueryCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReRegister">
+      <soap:operation soapAction="http://tempuri.org/ReRegister" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <soap:operation soapAction="http://tempuri.org/Register" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ping">
+      <soap12:operation soapAction="http://tempuri.org/Ping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:PingCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExists">
+      <soap12:operation soapAction="http://tempuri.org/IsExists" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerTime">
+      <soap12:operation soapAction="http://tempuri.org/GetServerTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpLoadData">
+      <soap12:operation soapAction="http://tempuri.org/UpLoadData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpLoadDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Commit">
+      <soap12:operation soapAction="http://tempuri.org/Commit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CommitCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownLoadData">
+      <soap12:operation soapAction="http://tempuri.org/DownLoadData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownLoadDataCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogExceptions">
+      <soap12:operation soapAction="http://tempuri.org/LogExceptions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:LogExceptionsCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoLoadDataTable">
+      <soap12:operation soapAction="http://tempuri.org/DoLoadDataTable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DoLoadDataTableCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCacheVersion">
+      <soap12:operation soapAction="http://tempuri.org/GetCacheVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCacheVersionCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNameCacheVersion">
+      <soap12:operation soapAction="http://tempuri.org/GetNameCacheVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetNameCacheVersionCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteNonQuery">
+      <soap12:operation soapAction="http://tempuri.org/ExecuteNonQuery" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ExecuteNonQueryCredentialSoapHeader" part="CredentialSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReRegister">
+      <soap12:operation soapAction="http://tempuri.org/ReRegister" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <soap12:operation soapAction="http://tempuri.org/Register" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpGet" type="tns:ServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Ping">
+      <http:operation location="/Ping" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExists">
+      <http:operation location="/IsExists" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerTime">
+      <http:operation location="/GetServerTime" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpLoadData">
+      <http:operation location="/UpLoadData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="Commit">
+      <http:operation location="/Commit" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="DownLoadData">
+      <http:operation location="/DownLoadData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogExceptions">
+      <http:operation location="/LogExceptions" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="DoLoadDataTable">
+      <http:operation location="/DoLoadDataTable" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCacheVersion">
+      <http:operation location="/GetCacheVersion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNameCacheVersion">
+      <http:operation location="/GetNameCacheVersion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteNonQuery">
+      <http:operation location="/ExecuteNonQuery" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReRegister">
+      <http:operation location="/ReRegister" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <http:operation location="/Register" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpPost" type="tns:ServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Ping">
+      <http:operation location="/Ping" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExists">
+      <http:operation location="/IsExists" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerTime">
+      <http:operation location="/GetServerTime" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpLoadData">
+      <http:operation location="/UpLoadData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="Commit">
+      <http:operation location="/Commit" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="DownLoadData">
+      <http:operation location="/DownLoadData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogExceptions">
+      <http:operation location="/LogExceptions" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="DoLoadDataTable">
+      <http:operation location="/DoLoadDataTable" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCacheVersion">
+      <http:operation location="/GetCacheVersion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNameCacheVersion">
+      <http:operation location="/GetNameCacheVersion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteNonQuery">
+      <http:operation location="/ExecuteNonQuery" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReRegister">
+      <http:operation location="/ReRegister" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <http:operation location="/Register" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://localhost:49231/OOService/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://localhost:49231/OOService/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceHttpGet" binding="tns:ServiceHttpGet">
+      <http:address location="http://localhost:49231/OOService/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceHttpPost" binding="tns:ServiceHttpPost">
+      <http:address location="http://localhost:49231/OOService/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,934 @@
+﻿
+@model System.Data.DataTable
+@{
+    ViewBag.Title = "Quản Lý Chứng Từ ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style scoped>
+    .customer-section label {
+        display: inline-block;
+        width: 200px;
+        line-height: 30px;
+        height: 30px;
+    }
+
+    .customer-section li {
+        padding-bottom: 5px;
+        list-style: none;
+    }
+
+    .customer-section button {
+        float: right;
+        
+    }
+</style>
+
+<h2>Quản Lý Chứng Từ</h2>
+<br />
+
+<div id="serverValidationMessage">
+</div>
+
+<div id="progressBar"></div>
+<br />
+
+<script type="text/kendo-template" id="validation_template">       
+        <div id="#=field#_validationMessage" class="k-widget k-tooltip k-tooltip-validation k-invalid-msg field-validation-error" style="margin: 0.5em; display: block;" data-for="#=field#" data-valmsg-for="#=field#" role="alert"><span class="k-icon k-warning"></span>Có lỗi ở #=field# : #=message#<div class="k-callout k-callout-n"></div></div>
+</script>
+
+<script type="text/x-kendo-template" id="grid_toolbar">
+        <button class="k-button" id="grid_toolbar_addButton">Thêm Mới</button>
+</script>
+
+<script type="text/kendo-template" id="application_layout_template">       
+        <div >
+            <section id="mainView"> </section>    
+        </div>
+</script>
+
+<script type="text/kendo-template" id="invoiceListView_Template">     
+        <div>
+         <div class="k-header customer-section">
+           <ul>
+            <li>
+                <label>Kỳ Số Liệu</label>
+    
+                 <input data-role="combobox"
+                   data-placeholder="Chọn một kỳ số liệu..."
+                   data-value-primitive="true"
+                   data-text-field="QNAME"
+                   data-value-field="QNAME"
+                   data-bind="value: selectedQuarter,
+                              source: quarters,                              
+                              events: {
+                                change: change                              
+                              }"
+                   style="width: 300px"
+               />
+              </li>
+            <li>
+                <label>Từ Ngày</label>
+                 <input    id="FROM_DATE"
+                          data-role="datepicker"
+                          data-bind="value: fromDate, events: { change: onChange }"
+                          style="width: 180px"
+                /></li>
+            <li>
+                <label >Đến Ngày</label>
+                <input    id="THRU_DATE"
+                          data-role="datepicker"
+                          data-bind="value: thruDate, events: { change: onChange }"
+                          style="width: 180px"
+                 />
+                    &nbsp;&nbsp;&nbsp; <button data-bind="click: fillInvoice" class="k-button" style="float: none; width:100px"> &nbsp;&nbsp;Lọc &nbsp;&nbsp;</button>
+                    &nbsp;&nbsp;&nbsp; <button data-bind="click: addInvoice" class="k-button" style="float: none"> Nhập Chứng Từ </button>
+                </li>
+            </ul>
+         </div>   
+        <div id="invoiceListGrid"
+            data-role="grid"
+            data-sortable="true"
+            data-pagable="true"
+            data-filterable= '{
+                                messages: {
+                                    and: "Và",
+                                    or: "Hoặc",
+                                    filter: "Lọc",
+                                    clear: "Bỏ qua",
+                                    info: "Đang lọc"
+                                },
+                                extra: true, //do not show extra filters
+                                operators: { // redefine the string operators
+                                    string: {
+                                        contains: "Có chứa",
+                                        doesnotcontain: "Không chứa",
+                                        startswith: "Bắt đầu bằng",
+                                        endswith: "Kết thúc bằng"
+                                    },
+                                    number: {
+                                        eq: "Bằng",
+                                        neq: "Không bằng",
+                                        gte: "Lớn hơn hoặc bằng",
+                                        lte: "Nhỏ hơn hoặc bằng",
+                                        gt: "Lớn hơn",
+                                        lt: "Nhỏ hơn"
+                                    },
+                                    
+                                    date: {
+                                        eq: "Trong ngày",
+                                        neq: "Khác ngày",
+                                        gte: "Từ ngày",
+                                        lte: "Đến ngày",
+                                        gt: "Sau ngày",
+                                        lt: "Trước ngày"
+                                    }                                    
+                                }
+                            }'
+            data-groupable="true"
+            data-editable="false"
+            data-columns='[
+                { field: "TRAN_NO", title: "Số", type: "number" },
+                { field: "TRAN_DATE", title: "Ngày", type: "date", format: "{0:MM/dd/yyyy}" },
+                { field: "PR_DETAIL_ID", title: "Khách Hàng", type: "string" },
+                { field: "PR_DETAIL_NAME", title: "Tên Khách Hàng", type: "string" },
+                { field: "ITEM_ID", title: "Mã Sản Phẩm", type: "string" },
+                { field: "QUANTITY", title: "Số Lượng", type: "number" },
+                { field: "UNIT_PRICE", title: "Đơn Giá", type: "number" },
+                { field: "TOTAL_AMOUNT", title: "Tổng Tiền", type: "number" },
+                { command: [{ name: "select", text: "Chọn", click: selectInvoice }], title: "&nbsp;", width: "100px" }    
+            ]'
+            data-bind="source:items"></div>
+    
+        </div>
+</script>
+
+<script type="text/kendo-template" id="invoiceDetailView_Template">       
+   <div id="form-container">    
+     <div class="k-header customer-section">
+        <ul>
+            <li>
+                <label>Số Chứng Từ:</label>
+
+                <span class="k-textbox k-button k-space-right">
+                    <input type="text" class="k-textbox" id="TRAN_NO" data-bind="events: { change: change }" />
+                    <a class="k-icon k-insertFile" data-bind="events: { click: showInvoiceSelector }"></a>
+                </span>
+                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                 <label> Ngày Chứng Từ: </label>
+                 <input   id="TRAN_DATE"
+                          data-role="datepicker"
+                          data-bind="value: selectedSale.TRAN_DATE, events: { change: change}"
+                          style="width: 180px"
+                />
+            </li>               
+        </ul>
+    </div>
+
+    <div class="k-header customer-section" data-bind="visible: saleBinded">
+        <ul>
+            <li>
+                <label>Khách Hàng</label>
+                <span class="k-textbox k-button k-space-right">
+                    <input type="text" class="k-textbox" id="PR_DETAIL_ID" data-bind="events: { change: change }" />
+                    <a class="k-icon k-insertFile" data-bind="events: { click: showCustomerSelector }"></a>
+                </span>
+                &nbsp;
+            <label data-bind="text: selectedCustomer.PR_DETAIL_NAME"></label>
+                <li>
+                    <label>Người Giao Dịch</label>
+                    <input type="text" class="k-textbox" id="PHONE" data-bind="value: selectedSale.ADDRESS, events: { change: change }" /></li>
+            <li>
+                <label>Địa Chỉ</label>
+                <input type="text" class="k-textbox" id="ADDRESS" data-bind="value: selectedSale.ADDRESS, events: { change: change }" /></li>
+            <li>
+                <label>Mã Số Thuế</label>
+                <input type="text" class="k-textbox" id="TAX_FILE_NUMBER" data-bind="value: selectedSale.TAX_FILE_NUMBER, events: { change: change }" /></li>
+            <li>
+                <label>Ghi Chú</label>
+                <input type="text" class="k-textbox" id="COMMENTS" data-bind="value: selectedSale.COMMENTS, events: { change: change }" />
+                 <button data-bind="click: cancelChange, enabled: hasChanges" class="k-button">Bỏ qua</button>
+                &nbsp;
+                <button data-bind="click: createNew" class="k-button">Thêm bản ghi mới</button>
+                &nbsp;
+                <button data-bind="click: save, enabled: hasChanges" class="k-button">Lưu Bản Ghi</button>
+                &nbsp;
+                <button data-bind="click: remove, enabled: saleBinded" class="k-button">Xóa Bản Ghi</button>
+            </li>
+        </ul>
+    </div>
+
+    <div id="saleDetailGrid"
+         data-role="grid"
+         data-pageable="true"
+         data-height="350"
+         data-toolbar='[{ name: "create", text: "Thêm Mới" }]'
+         data-columns='[
+                { field: "ITEM_ID", title: "Mã Khóa", editor: productEditor, width: "170px" },
+                { field: "ITEM_NAME", title: "Tên Sản Phẩm", width: "200px" },                
+                { field: "UNIT_PRICE", title: "Đơn Giá" },
+                { field: "QUANTITY", title: "Số Lượng" },
+                { field: "AMOUNT", title: "Thành Tiền" },
+                { field: "VAT_TAX_RATE", title: "Thuế Suất VAT" },
+                { field: "VAT_TAX_AMOUNT", title: "Thuế VAT" },
+                { field: "TOTAL_AMOUNT", title: "Tổng Tiền" },
+                {
+                    command: [{
+                        name: "Delete",
+                        imageClass: "k-icon k-i-close",
+                        click: deleteSaleDetail
+                    }],
+                    title: "&nbsp;",
+                    width: "100px"
+                }]'
+            data-editable="true"
+            data-selectable="cell"
+            data-navigatable="true"
+            data-sortable="true"
+            data-save=editSaleDetail
+        ></div>
+     
+    <div id="invoiceWindow">
+        <div id="invoiceSelectGrid"></div>
+    </div>
+
+    <div id="customerWindow">
+        <div id="customerSelectGrid"></div>
+    </div>
+
+    <div id="productWindow">
+        <div id="productSelectGrid"></div>
+    </div>
+</div>
+</script>
+
+<div id="application"></div>
+
+<script src="@Url.Content("~/Scripts/datasource/invoiceSource.js")"></script>
+<script src="@Url.Content("~/Scripts/datasource/customerSource.js")"></script>
+<script src="@Url.Content("~/Scripts/datasource/saleSource.js")"></script>
+<script src="@Url.Content("~/Scripts/datasource/invoiceSearchSource.js")"></script>
+<script src="@Url.Content("~/Scripts/datasource/productSource.js")"></script>
+<script src="@Url.Content("~/Scripts/datasource/salePriceSource.js")"></script>
+<script src="@Url.Content("~/Scripts/widget/ftsTemplatedWidget.js")"></script>
+<script src="@Url.Content("~/Scripts/datasource/clone.js")"></script>
+<script src="@Url.Content("~/Scripts/datasource/progressbar.js")"></script>
+<script>
+
+    function editSaleDetail(e) {
+        if (e.values.QUANTITY) {
+            e.model.QUANTITY = e.values.QUANTITY;
+            populateSaleDetail(e.model, e.model);
+        }
+    }
+
+    function deleteSaleDetail(e) {
+        e.preventDefault();
+        var dataItem = this.dataItem($(e.target).closest("tr"));
+        if (confirm("Bạn muốn xóa bản ghi này?")) {
+            var dataSource = $("#saleDetailGrid").data("kendoGrid").dataSource;
+            invoiceSource.remove(dataItem);
+            bindSaleDetailGrid();
+            viewModel.set("hasChanges", true);
+        }
+    }
+
+    var validationMessageTmpl = kendo.template($("#validation_template").html());
+
+    function handleError(args) {
+        if (args.errors) {
+            var keys = Object.keys(args.errors);
+            var fieldName = keys[0];//select only first error field. 
+            showMessage($("#form-container"), fieldName, args.errors[fieldName].errors[0]);//show only first error. 
+        }
+    }
+
+    function showMessage(container, fieldName, error) {
+        //add the validation message to the form
+        container.find("#serverValidationMessage")
+            .replaceWith(validationMessageTmpl({ field: fieldName, message: error }));
+    }
+
+    //initilize view model
+    var viewModel = kendo.observable({
+        //customer data source
+        thisCustomerSource: customerSource,//just use temporally for filtering
+        //sale detail/invoice datasource
+        thisSaleDetailSource: invoiceSource,
+        selectedSaleDetails: null,//use for operation on sale detail grid, will need to merge to saleDetailSource before save
+        //sale data source
+        thisSaleSource: saleSource,
+        selectedSale: null,
+        selectedCustomer: null,
+        hasChanges: false,
+        isAddingNew: false,
+       
+        
+        cancelChange: function () {
+            this.thisSaleSource.cancelChanges();
+            this.thisSaleDetailSource.cancelChanges();
+            var tranNo = $("#TRAN_NO").val();
+            if (tranNo) {
+                var sales = saleSource.data();
+                for (var j = 0; j < sales.length; j++) {
+                    if (sales[j].TRAN_NO === tranNo) {
+                        bindSale(sales[j].PR_KEY);
+
+                        this.set("hasChanges", false);
+                        break;
+                    }
+                }
+
+            }
+        },
+
+        createNew: function () {
+            var newSale = {
+                PR_KEY: null,
+                ORGANIZATION_ID: "0000",
+                TRAN_ID: "TRAN_ID", //todo
+                TRAN_DATE: new Date(),
+                TRAN_NO: "TRAN_NO", //todo
+                PR_DETAIL_ID: "PR_DETAIL_ID",
+                ADDRESS: "ADDRESS",
+                TAX_FILE_NUMBER: "TAX_FILE_NUMBER",
+                COMMENTS: "COMMENTS",
+                STATUS: "POSTED",
+            };
+            this.thisSaleSource.insert(0, newSale);
+            this.set("selectedSale", newSale);
+            this.set("selectedCustomer", null);
+            bindSaleDetailGrid();
+            var newSaleDetail = {
+                PR_KEY: null,
+                FR_KEY: null,
+
+                LIST_ORDER: null,
+                ITEM_ID: 0,
+                ITEM_NAME: "",
+                QUANTITY: 0,
+                UNIT_PRICE: 0,
+                AMOUNT: 0,
+                VAT_TAX_RATE: 0,
+                VAT_TAX_AMOUNT: 0,
+                TOTAL_AMOUNT: 0
+            };
+            this.selectedSaleDetails.insert(0, newSaleDetail);
+
+            $("#TRAN_NO").val("").focus();
+            $("#PR_DETAIL_ID").val("");
+
+            this.set("hasChanges", false);
+            this.set("isAddingNew", true);
+
+        },
+
+        save: function () {
+            //merge sale details to datasource
+            this.thisSaleDetailSource.data(this.get("selectedSaleDetails").data());
+            //merge sale to data sources
+            var sales = viewModel.thisSaleSource.data();
+            var selectedSale = this.get("selectedSale");
+            if (selectedSale) {
+                for (var i = 0; i < sales.length; i++) {
+                    if (sales[i].PR_KEY === selectedSale.PR_KEY) {
+                        sales[i].set("ADDRESS", selectedSale.ADDRESS);
+                        sales[i].set("PR_DETAIL_ID", selectedSale.PR_DETAIL_ID);
+                        sales[i].set("TAX_FILE_NUMBER", selectedSale.TAX_FILE_NUMBER);
+                        sales[i].set("TRAN_NO", selectedSale.TRAN_NO);
+                        sales[i].set("TRAN_ID", selectedSale.TRAN_ID);
+                        break;
+                    }
+                }
+            }
+
+
+            if (this.get("isAddingNew")) { //adding new
+
+                this.thisSaleSource.sync();
+
+                invoiceRouter.navigate("/SaleDetail/SaleDetailList");
+
+            } else {//updating
+
+                if (this.thisSaleSource.hasChanges()) {//normally, if there is no change in SaleSource, SaleSource will not be post back to server
+
+                    this.thisSaleSource.sync();
+
+                } else {
+
+                    this.thisSaleDetailSource.sync();//if there is no change to sale Source, so sync only the Sale Details
+
+                }
+            }
+
+            this.set("hasChanges", false);
+            this.set("isAddingNew", false);
+        },
+
+        remove: function () {
+            if (confirm("Xóa đơn hàng và chứng từ này?")) {
+
+                //search for deleting sale in sale source
+                var sales = this.thisSaleSource.data();
+                var selectedSale = this.get("selectedSale");
+                for (var i = 0; i < sales.length ; i++) {
+                    if (sales[i].PR_KEY === selectedSale.PR_KEY) {
+                        this.thisSaleSource.remove(sales[i]);
+                        break;
+                    }
+                }
+
+                this.thisSaleSource.sync();
+
+                ///reset form's state
+                this.set("selectedSale", null);
+                this.set("selectedSaleDetails", null);
+                this.set("selectedCustomer", null);
+                this.set("hasChanges", false);
+                this.set("isAddingNew", false);
+
+                ///reset non-binded fields
+                $("#TRAN_NO").val("");
+                $("#PR_DETAIL_ID").val("");
+
+                invoiceRouter.navigate("/SaleDetail/SaleDetailList");
+            }
+        },
+
+        saleBinded: function () {
+            if (this.get("selectedSale")) {
+                return true;
+            }
+            return false;
+        },
+
+        change: function (e) {
+            if (e.target) {
+                if (e.target.id === "PR_DETAIL_ID") {
+                    var customers = customerSource.data();
+                    var foundCustomer = false;
+                    for (var i = 0; i < customers.length; i++) {
+                        if (customers[i].PR_DETAIL_ID === e.target.value) {
+                            bindForm(customers[i], true);
+                            foundCustomer = true;
+                            this.set("hasChanges", true);
+                            break;
+                        }
+                    }
+                    if (!foundCustomer) {
+                        this.showCustomerSelector();
+                    }
+                } else if (e.target.id === "TRAN_NO") {
+
+
+                    var sales = saleSource.data();
+                    var foundSale = false;
+                    for (var j = 0; j < sales.length; j++) {
+                        if (sales[j].TRAN_NO === e.target.value) {
+                            bindSale(sales[j].PR_KEY);
+                            this.set("isAddingNew", false);
+                            foundSale = true;
+                            break;
+                        }
+                    }
+
+                    if (!foundSale) {
+                        if (!this.get("isAddingNew")) {
+                            this.showInvoiceSelector();
+                        } else { //creating new 
+                            var selectedSale = this.get("selectedSale");
+                            selectedSale.set("TRAN_NO", e.target.value);
+                            selectedSale.set("TRAN_ID", e.target.value);
+                        }
+                    }
+                } else {
+                    this.set("hasChanges", true);
+                }
+            } else {
+                this.set("hasChanges", true);
+            }
+        },
+
+        showInvoiceSelector: function () {
+            var win = $("#invoiceWindow").data("kendoWindow");
+
+            if (!win) {
+                //initialize invoice search windows
+                win = $("#invoiceWindow").kendoWindow({
+
+                    title: "Tìm Kiếm Mã Chứng Từ",
+                    visible: false
+
+                }).data("kendoWindow");
+
+
+                $("#invoiceSelectGrid").kendoGrid({
+                    dataSource: invoiceSearchSource,
+                    pageable: true,
+                    height: 450,
+                    columns: [
+                        { field: "TRAN_NO", title: "Số" },
+                        { field: "TRAN_DATE", title: "Ngày" },
+                        { field: "PR_DETAIL_ID", title: "Khách Hàng" },
+                        { field: "PR_DETAIL_NAME", title: "Tên Khách Hàng" },
+                        { field: "ITEM_ID", title: "Mã Sản Phẩm" },
+                        { field: "QUANTITY", title: "Số Lượng" },
+                        { field: "UNIT_PRICE", title: "Đơn Giá" },
+                        { field: "TOTAL_AMOUNT", title: "Tổng Tiền" },
+                        { command: [{ name: "select", text: "Chọn", click: selectInvoice }], title: "&nbsp;", width: "100px" }],
+                    editable: false,
+                    filterable: true,
+                    sortable: true
+                });
+            }
+            win.center();
+            win.open();
+        },
+
+        showCustomerSelector: function () {
+            var win = $("#customerWindow").data("kendoWindow");
+            if (!win) {
+                win = $("#customerWindow").kendoWindow({
+
+                    title: "Tìm Kiếm Khách Hàng",
+                    visible: false
+
+                }).data("kendoWindow");
+
+            }
+
+            win.center();
+            win.open();
+        }
+
+    });
+
+    viewModel.thisSaleSource.bind("error", handleError);
+    viewModel.thisSaleDetailSource.bind("error", handleError);
+
+    viewModel.thisSaleSource.bind("requestEnd", function (e) {
+        if (e.type === "create" || e.type === "update") {
+            viewModel.thisSaleDetailSource.sync();//sync changed data
+        }
+
+        if (e.type === "create") {//created, re-read to sync changes
+            viewModel.thisSaleSource.read();
+        }
+
+
+
+        if (e.type === "destroy") {
+            viewModel.thisSaleDetailSource.read();//sync deleted data by server. 
+            invoiceSearchSource.read(); //when deleting a sale, invoice search results should be updated accrodingly
+            clearForm();
+        }
+
+        if (e.type === "read") {//freshing the list so clear the screen. 
+            clearForm();
+        }
+
+    });
+
+    viewModel.thisSaleDetailSource.bind("requestEnd", function (e) {
+        if (e.type === "create" || e.type === "update" || e.type === "destroy") {
+            invoiceSearchSource.read();
+            viewModel.thisSaleDetailSource.read();
+
+        }
+        if (e.type === "update" || e.type === "destroy") {
+            bindSaleDetailGrid();
+        }
+
+    });
+
+    function clearForm() {
+        var grid = $('#saleDetailGrid').data('kendoGrid');
+        if (grid) {
+            viewModel.set("selectedSale", null);
+            grid.dataSource.data([]);
+            grid.refresh();
+            $("#TRAN_NO").val("");
+        }
+    }
+
+    function bindSaleDetailGrid() {
+        var grid = $('#saleDetailGrid').data('kendoGrid');
+
+        var selectedSale = viewModel.get("selectedSale");
+
+        if (selectedSale) {
+            var saleDetails = viewModel.thisSaleDetailSource.data();
+            var currentSaleDetails = [];
+            for (var i = 0; i < saleDetails.length; i++) {
+                var saleDetail = saleDetails[i];
+                if (saleDetail.FR_KEY === selectedSale.PR_KEY) {
+                    currentSaleDetails.push(saleDetail);
+                }
+            }
+
+            var saleDetailSource = new kendo.data.DataSource();
+            saleDetailSource.data(currentSaleDetails);
+
+            viewModel.set("selectedSaleDetails", saleDetailSource);
+            //bind selected sale details to grid
+            grid.setDataSource(viewModel.get("selectedSaleDetails"));
+
+            saleDetailSource.bind("change", function (e) {
+                viewModel.set("hasChanges", true);
+            });
+        } else {
+            //there is no selected sale, this grid should be empty
+            grid.dataSource.data([]);
+        }
+        grid.refresh();
+    }
+
+    function selectInvoice(e) {
+        var saleSearchRecord = this.dataItem($(e.currentTarget).closest("tr"));
+        invoiceRouter.navigate("/SaleDetail/SaleDetailList/edit");
+        bindSale(saleSearchRecord.PR_KEY);
+        //close the windows if there is one
+        if ($('#invoiceWindow').data().kendoWindow)
+            $('#invoiceWindow').data().kendoWindow.close();
+    }
+
+    function bindSale(saleKey) {
+        //set selected sale
+        var sales = viewModel.thisSaleSource.data();
+        for (var i = 0; i < sales.length; i++) {
+            if (sales[i].PR_KEY === saleKey) {
+                viewModel.set("selectedSale", sales[i]);
+                break;
+            }
+        }
+
+        //set selected customer
+        var customers = viewModel.thisCustomerSource.data();
+        var customerId = viewModel.get("selectedSale").PR_DETAIL_ID;
+        for (var j = 0; j < customers.length; j++) {
+            if (customerId === customers[j].PR_DETAIL_ID) {
+                bindForm(customers[j], false);
+                break;
+            }
+        }
+
+        //reset input box--> just in case user select by browsing. 
+        $("#TRAN_NO").val(viewModel.selectedSale.TRAN_NO);
+
+        //bind sale detail grid
+        bindSaleDetailGrid();
+    }
+
+    function bindForm(customer, updateCustomerInfo) {
+        viewModel.set("selectedCustomer", customer);
+        var selectedSale = viewModel.get("selectedSale");
+
+        if (selectedSale && updateCustomerInfo) {
+            //copy customer info to sale record
+            selectedSale.set("ADDRESS", customer.ADDRESS);
+            selectedSale.set("PR_DETAIL_ID", customer.PR_DETAIL_ID);
+            selectedSale.set("TAX_FILE_NUMBER", customer.TAX_FILE_NUMBER);
+        }
+
+        //rebind the panel to the view model
+        //kendo.bind($("#form-container"), viewModel);
+        $('#PR_DETAIL_ID').val(viewModel.selectedCustomer.PR_DETAIL_ID);
+
+    }
+
+    function selectCustomer(e) {
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+
+        bindForm(dataItem, true);
+
+        viewModel.set("hasChanges", true);
+
+        //close the customer windows
+        $('#customerWindow').data().kendoWindow.close();
+    }
+
+    function getUnit(itemId) {
+        if (itemId) {
+            var products = productSource.data();
+            for (var j = 0; j < products.length; j++) {
+                if (products[j].ITEM_ID === itemId) {
+                    return products[j].UNIT_ID;
+                }
+            }
+            return itemId;
+        }
+        return "";
+    }
+
+    function selectProduct(e) {
+        var selectedProduct = this.dataItem($(e.currentTarget).closest("tr"));
+
+        var saleDetailGrid = $('#saleDetailGrid').data("kendoGrid");
+        // Get selected cell
+        var selectSaleDetailCell = saleDetailGrid.select();
+
+        // Get the row that the cell belongs to.
+        var selectedSaleDetailRow = selectSaleDetailCell.closest("tr");
+        // Get the data item corresponding to this cell
+        var selectedSaleDetail = saleDetailGrid.dataItem(selectedSaleDetailRow) || lastEditedSaleItem;
+
+        selectedSaleDetail.set("ITEM_ID", selectedProduct.ITEM_ID);
+        selectedSaleDetail.set("ITEM_NAME", selectedProduct.ITEM_NAME);
+
+        //get Unit Price
+        var salePrices = salePriceSource.data();
+        for (var j = 0; j < salePrices.length; j++) {
+            if (salePrices[j].ITEM_ID === selectedProduct.ITEM_ID) {
+                selectedSaleDetail.set("UNIT_PRICE", salePrices[j].UNIT_PRICE);
+                break;
+            }
+        }
+
+        populateSaleDetail(selectedSaleDetail, selectedSaleDetail);
+
+        $('#productWindow').data().kendoWindow.close();
+
+        viewModel.set("hasChanges", true);
+    }
+
+    var lastEditedSaleItem;
+
+    function showProductSelector(e) {
+        var win = $("#productWindow").data("kendoWindow");
+        if (!win) {
+            win = $("#productWindow").kendoWindow({
+
+                title: "Tìm Kiếm Sản Phẩm",
+                visible: false
+
+            }).data("kendoWindow");
+
+            $("#productSelectGrid").kendoGrid({
+                dataSource: productSource,
+                pageable: true,
+                height: 450,
+                columns: [
+                    { field: "ITEM_ID", title: "Mã Sản Phẩm" },
+                    { field: "ITEM_NAME", title: "Tên Sản Phẩm" },
+                    { command: [{ name: "select", text: "Chọn", click: selectProduct }], title: "&nbsp;", width: "100px" }],
+                editable: false,
+            });
+        }
+
+        lastEditedSaleItem = $("#saleDetailGrid").data("kendoGrid").dataItem($(e.currentTarget).closest("tr"));
+
+        win.center();
+        win.open();
+    };
+
+    function productEditor(container, options) {
+        var arr = [];
+
+        if (!options.model.ITEM_ID) {
+            options.model.PR_KEY = "";
+            options.model.FR_KEY = viewModel.selectedSale.PR_KEY;
+            options.model.LIST_ORDER = 0;
+            options.model.ITEM_ID = "0";
+            options.model.ITEM_NAME = "";
+            options.model.QUANTITY = 0;
+            options.model.UNIT_PRICE = 0;
+            options.model.AMOUNT = 0;
+            options.model.VAT_TAX_RATE = 0;
+            options.model.VAT_TAX_AMOUNT = 0;
+            options.model.TOTAL_AMOUNT = 0;
+        }
+
+        arr.push(options.model);
+
+        $('<div/>').appendTo(container)
+            .kendoftsTemplatedWidget({
+                autoBind: true,
+                dataSource: arr,
+                template: '<span class="k-textbox k-button k-space-right"><input type="text" class="k-textbox" id="item#=ITEM_ID#" /><a id="widgetSelector#=ITEM_ID#"class="k-icon k-insertFile"></a></span>'
+            });
+
+        var aquery = "#widgetSelector" + options.model.ITEM_ID;
+        $(aquery).on("click", showProductSelector);
+
+        var inputquery = "#item" + options.model.ITEM_ID;
+        $(inputquery).val(options.model.ITEM_ID);
+
+        $(inputquery).on("change", function (e) {
+            var products = productSource.data();
+            var foundProduct = false;
+            for (var i = 0; i < products.length; i++) {
+                if (products[i].ITEM_ID === e.target.value) {
+                    foundProduct = true;
+                    var grid = $("#saleDetailGrid").data("kendoGrid");
+                    var currentEditingSaleDetail = grid.dataItem($(e.currentTarget).closest("tr"));
+                    lastEditedSaleItem = currentEditingSaleDetail;
+                    currentEditingSaleDetail.set("ITEM_ID", products[i].ITEM_ID);
+                    currentEditingSaleDetail.set("ITEM_NAME", products[i].ITEM_NAME);
+
+                    //get Unit Price (client calculation)
+                    var salePrices = salePriceSource.data();
+                    for (var j = 0; j < salePrices.length; j++) {
+                        if (salePrices[j].ITEM_ID === products[i].ITEM_ID) {
+                            currentEditingSaleDetail.set("UNIT_PRICE", salePrices[j].UNIT_PRICE);
+                            break;
+                        }
+                    }
+
+                    populateSaleDetail(currentEditingSaleDetail, lastEditedSaleItem);
+
+
+                    grid.refresh();
+                    viewModel.set("hasChanges", true);
+                    break;
+                }
+            }
+            if (!foundProduct) {
+                showProductSelector(e);
+            }
+        });
+
+    }
+
+    //get amount & tax (server calculation)
+    function populateSaleDetail(input, output) {
+        $.ajax({
+            dataType: "json",
+            url: "/SaleDetail/Populate",
+            data: kendo.stringify(input),
+            success: function (result) {
+                output.set("AMOUNT", result[0].AMOUNT);
+                output.set("VAT_TAX_RATE", result[0].VAT_TAX_RATE);
+                output.set("VAT_TAX_AMOUNT", result[0].VAT_TAX_AMOUNT);
+                output.set("TOTAL_AMOUNT", result[0].TOTAL_AMOUNT);
+            }
+        });
+    }
+
+    var invoiceListModel = new kendo.observable({
+        items: invoiceSearchSource,
+        selectedQuarter: null,
+        fromDate: null,
+        thruDate: null,
+        quarters: new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: "/SaleDetail/GetQuarterList",
+                    dataType: "jsonp"
+                }
+            }
+        }),
+        change: function(e) {
+            var quarterData = this.get("quarters").data();
+            for (var i = 0; i < quarterData.length; i++) {
+                if (quarterData[i].QNAME === this.get("selectedQuarter")) {
+                    this.set("fromDate", quarterData[i].FROM_DATE);
+                    this.set("thruDate", quarterData[i].THRU_DATE);
+                    break;
+                }
+            }
+        },
+        
+        fillInvoice: function () {
+            invoiceSearchSource.filter({
+                "logic": "and",
+                "filters": [
+                    { field: "TRAN_DATE", operator: "lte", value: kendo.parseDate(this.get("thruDate")) },
+                    { field: "TRAN_DATE", operator: "gte", value: kendo.parseDate(this.get("fromDate")) }
+                ]
+            });
+
+        },
+        
+        addInvoice: function () {
+            invoiceRouter.navigate("/SaleDetail/SaleDetailList/edit");
+            viewModel.createNew();
+        }
+        
+        
+    });
+
+    //layouting the form 
+    var layoutView = new kendo.Layout("application_layout_template");
+
+    //invoice list view
+    var invoiceListView = new kendo.View("invoiceListView_Template", { model: invoiceListModel });
+
+    //invoice detal view 
+    var invoiceDetailView = new kendo.View("invoiceDetailView_Template", { model: viewModel });
+
+    //layout
+    var invoiceRouter = new kendo.Router({
+        init: function () {
+            layoutView.render("#application");
+        }
+    });
+
+    invoiceRouter.route("/SaleDetail/SaleDetailList", function () {
+        layoutView.showIn("#mainView", invoiceListView);
+    });
+
+    invoiceRouter.route("/SaleDetail/SaleDetailList/edit", function () {
+        layoutView.showIn("#mainView", invoiceDetailView);
+    });
+
+    //fisrt binding of the form
+    //kendo.bind($("#form-container"), viewModel);
+
+    $(document).ready(function () {
+        //clear sale selector
+        $("#TRAN_NO").val("");
+
+        //load data from server
+        viewModel.thisSaleSource.read();
+        customerSource.read();
+        viewModel.thisSaleDetailSource.read();
+        invoiceSearchSource.read();
+        salePriceSource.read();
+
+        //start routing to invoice list screen
+        invoiceRouter.start();
+        invoiceRouter.navigate("/SaleDetail/SaleDetailList");
+    });
+
+</script>

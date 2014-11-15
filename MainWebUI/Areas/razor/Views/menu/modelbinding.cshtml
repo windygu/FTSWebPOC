@@ -1,0 +1,19 @@
+@model IEnumerable<FTS.MainWebUI.Models.Category>
+
+@(Html.Kendo().Menu()
+      .Name("Menu")
+      .BindTo(Model, mappings => 
+      {
+            mappings.For<FTS.MainWebUI.Models.Category>(binding => binding
+                    .ItemDataBound((item, category) =>
+                    {
+                        item.Text = category.CategoryName;
+                    })
+                    .Children(category => category.Products));
+            mappings.For<FTS.MainWebUI.Models.Product>(binding => binding
+                    .ItemDataBound((item, product) =>
+                    {
+                        item.Text = product.ProductName;
+                    }));
+      })
+)

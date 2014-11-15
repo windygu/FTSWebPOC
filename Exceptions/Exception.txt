@@ -1,0 +1,44 @@
+
+12:00:00 SA 01 tháng chín 2006
+Invalid column name 'COGS_AMOUNT'.
+Invalid column name 'COGS_AMOUNT'.
+Invalid column name 'COGS_AMOUNT'.
+Invalid column name 'COGS_AMOUNT'.
+Microsoft OLE DB Provider for SQL Server
+   at System.Data.OleDb.OleDbDataReader.ProcessResults(Int32 hr)
+   at System.Data.OleDb.OleDbDataReader.NextResult()
+   at System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   at System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.OleDb.OleDbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillFromCommand(Object data, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.DoLoadDataSet(DBCommandWrapper command, DataSet dataSet, String[] tableNames) in C:\Documents and Settings\Phunv\Desktop\Phunv\ESoftPOS\ApplicationBlock\Data\Database.cs:line 1213
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.LoadDataSet(DBCommandWrapper command, DataSet dataSet, String[] tableNames) in C:\Documents and Settings\Phunv\Desktop\Phunv\ESoftPOS\ApplicationBlock\Data\Database.cs:line 320
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.LoadDataSet(DBCommandWrapper command, DataSet dataSet, String tableName) in C:\Documents and Settings\Phunv\Desktop\Phunv\ESoftPOS\ApplicationBlock\Data\Database.cs:line 270
+   at ESoft.POSReport.POS.Rpt_Nxt.CalculateReport() in C:\Documents and Settings\Phunv\Desktop\Phunv\ESoftPOS\POSReport\POS\Rpt_Nxt.cs:line 45
+   at ESoft.ReportBase.ReportManager.RunReport() in C:\Documents and Settings\Phunv\Desktop\Phunv\ESoftPOS\ReportBase\ReportManager.cs:line 43
+
+12:00:00 SA 02 tháng chín 2006
+Phải nhập vào mục khách hàng cho các hóa đơn ghi nợ!
+
+12:00:00 AM Saturday, September 02, 2006
+
+
+12:00:00 SA 02 tháng chín 2006
+Chứng từ không có chi tiết!
+
+12:00:00 SA 02 tháng chín 2006
+Số liệu không được rỗng!
+
+12:00:00 SA 02 tháng chín 2006
+Số liệu không được rỗng!
+
+12:00:00 SA 02 tháng chín 2006
+Không thể thêm! Chưa có chi tiết quan hệ!
+Microsoft OLE DB Provider for SQL Server
+   at System.Data.Common.DbDataAdapter.Update(DataRow[] dataRows, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.Update(DataTable dataTable)
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.DoUpdateDataSet(UpdateBehavior behavior, IDbConnection connection, DataSet dataSet, String tableName, DBCommandWrapper insertCommand, DBCommandWrapper updateCommand, DBCommandWrapper deleteCommand) in C:\Documents and Settings\Phunv\Desktop\Phunv\ESoftPOS\ApplicationBlock\Data\Database.cs:line 1170
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.UpdateDataSet(DataSet dataSet, String tableName, DBCommandWrapper insertCommand, DBCommandWrapper updateCommand, DBCommandWrapper deleteCommand, UpdateBehavior updateBehavior) in C:\Documents and Settings\Phunv\Desktop\Phunv\ESoftPOS\ApplicationBlock\Data\Database.cs:line 1012
+   at ESoft.Base.Classes.ObjectBase.UpdateData() in C:\Documents and Settings\Phunv\Desktop\Phunv\ESoftPOS\Base\Classes\ObjectBase.cs:line 381

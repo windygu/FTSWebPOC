@@ -1,0 +1,215 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SYS_SYSTEMVAR" msdata:CaseSensitive="False" msdata:Locale="en-US">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="VAR_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="VAR_VALUE" type="xs:string" minOccurs="0" />
+              <xs:element name="DESCRIPTION" type="xs:string" minOccurs="0" />
+              <xs:element name="VAR_TYPE" type="xs:string" minOccurs="0" />
+              <xs:element name="VAR_GROUP" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_TABLE" msdata:CaseSensitive="False" msdata:Locale="en-US">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TABLE_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="ID_FIELD" type="xs:string" minOccurs="0" />
+              <xs:element name="NAME_FIELD" type="xs:string" minOccurs="0" />
+              <xs:element name="TABLE_TYPE" type="xs:string" minOccurs="0" />
+              <xs:element name="BACKUPS" type="xs:short" minOccurs="0" />
+              <xs:element name="NUM_ORDER" type="xs:int" minOccurs="0" />
+              <xs:element name="RES_ORDER" type="xs:int" minOccurs="0" />
+              <xs:element name="CAN_GROUP" type="xs:short" minOccurs="0" />
+              <xs:element name="ID_AUTO" type="xs:short" minOccurs="0" />
+              <xs:element name="ID_MASK" type="xs:string" minOccurs="0" />
+              <xs:element name="ID_LENGTH" type="xs:int" minOccurs="0" />
+              <xs:element name="ID_PARTS" type="xs:int" minOccurs="0" />
+              <xs:element name="ID_SPLIT" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_TRAN_NO" msdata:CaseSensitive="False" msdata:Locale="en-US">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TRAN_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="LAST_TRAN_NO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PRE_FIX" type="xs:string" minOccurs="0" />
+              <xs:element name="POST_FIX" type="xs:string" minOccurs="0" />
+              <xs:element name="ORGANIZATION_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="PR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TRAN_YEAR" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_TRAN_DEFAULT" msdata:CaseSensitive="False" msdata:Locale="en-US">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TABLE_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="TRAN_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="FIELD_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="DEFAULT_VALUE" type="xs:string" minOccurs="0" />
+              <xs:element name="ORGANIZATION_ID" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_TRAN_CONFIG" msdata:CaseSensitive="False" msdata:Locale="en-US">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TRAN_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="CONFIG_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="CONFIG_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="CONFIG_TYPE" type="xs:string" minOccurs="0" />
+              <xs:element name="CONFIG_VALUE" type="xs:string" minOccurs="0" />
+              <xs:element name="ACTIVE" type="xs:short" minOccurs="0" />
+              <xs:element name="USER_ID" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_TRAN_CLASS" msdata:CaseSensitive="False" msdata:Locale="en-US">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TRAN_CLASS" type="xs:string" minOccurs="0" />
+              <xs:element name="TRAN_CLASS_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="ACTIVE" type="xs:short" minOccurs="0" />
+              <xs:element name="USER_ID" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_TRAN_CALCULATION" msdata:CaseSensitive="False" msdata:Locale="en-US">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TRAN_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="FIELD_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="FORMULA" type="xs:string" minOccurs="0" />
+              <xs:element name="ACTIVE" type="xs:short" minOccurs="0" />
+              <xs:element name="USER_ID" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_TRAN" msdata:CaseSensitive="False" msdata:Locale="en-US">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TRAN_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="TRAN_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="TRAN_CLASS" type="xs:string" minOccurs="0" />
+              <xs:element name="TRAN_SUB_CLASS" type="xs:string" minOccurs="0" />
+              <xs:element name="LIST_ORDER" type="xs:int" minOccurs="0" />
+              <xs:element name="OUTPUT_FORM" type="xs:string" minOccurs="0" />
+              <xs:element name="POSTED" type="xs:short" minOccurs="0" />
+              <xs:element name="MODULE_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="PROJECT_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="USER_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="ACTIVE" type="xs:short" minOccurs="0" />
+              <xs:element name="SHOW_IN_MENU" type="xs:short" minOccurs="0" />
+              <xs:element name="IS_SALE" type="xs:short" minOccurs="0" />
+              <xs:element name="IS_LISTING" type="xs:short" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_RESOURCE" msdata:CaseSensitive="False" msdata:Locale="en-US">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RES_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="RES_VALUE" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_RESOURCE_LAOS" msdata:CaseSensitive="False" msdata:Locale="en-US">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RES_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="RES_VALUE" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_GRIDINFO" msdata:CaseSensitive="False" msdata:Locale="en-US">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FORM_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="GRID_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="COLUMN_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="WIDTH" type="xs:int" minOccurs="0" />
+              <xs:element name="ENABLED" type="xs:short" minOccurs="0" />
+              <xs:element name="VISIBLE" type="xs:short" minOccurs="0" />
+              <xs:element name="VISIBLEINDEX" type="xs:int" minOccurs="0" />
+              <xs:element name="REQUIRE" type="xs:short" minOccurs="0" />
+              <xs:element name="FILTERED" type="xs:short" minOccurs="0" />
+              <xs:element name="FIXCOLUMN" type="xs:short" minOccurs="0" />
+              <xs:element name="IS_SUM" type="xs:short" minOccurs="0" />
+              <xs:element name="SUMTYPE" type="xs:string" minOccurs="0" />
+              <xs:element name="FORMATSUM" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_FORMINFO" msdata:CaseSensitive="False" msdata:Locale="en-US">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FORM_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="OBJECT_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="PROPERTY_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="PROPERTY_TYPE" type="xs:string" minOccurs="0" />
+              <xs:element name="PROPERTY_VALUE" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_FORM" msdata:CaseSensitive="False" msdata:Locale="en-US">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FORM_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="DISPLAY_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="PARENT_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="ORDER_NUM" type="xs:int" minOccurs="0" />
+              <xs:element name="ACTIVE" type="xs:short" minOccurs="0" />
+              <xs:element name="USER_ID" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_FIELD" msdata:CaseSensitive="False" msdata:Locale="en-US">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TABLE_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="FIELD_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="FIELD_LENGTH" type="xs:int" minOccurs="0" />
+              <xs:element name="REQUIRED" type="xs:short" minOccurs="0" />
+              <xs:element name="ALLOWDBNULL" type="xs:short" minOccurs="0" />
+              <xs:element name="BOUND" type="xs:short" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_REPORT_GROUP" msdata:CaseSensitive="False" msdata:Locale="en-US">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="REPORT_GROUP_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="REPORT_GROUP_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="MODULE_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="ACTIVE" type="xs:short" minOccurs="0" />
+              <xs:element name="PROJECT_ID" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS_MENU_MAPPING" msdata:CaseSensitive="False" msdata:Locale="en-US">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PR_KEY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FUNCTION_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="MENU_ID" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,174 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "Danh Mục Khách Hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh Mục Khách Hàng</h2>
+<br />
+
+<div id="example">
+    <div id="grid"></div>
+    <script id="popup_editor" type="text/x-kendo-template">
+	<div id="serverValidationMessage"> 
+    </div>
+    <div class="k-edit-label">
+        <label for="PR_DETAIL_ID">Mã</label>
+    </div>
+    <div class="k-edit-field" data-container-for="PR_DETAIL_ID">
+        <input class="k-input k-textbox" type="text" name="PR_DETAIL_ID" required="required" data-bind="value: PR_DETAIL_ID"   data-val-required="Mã khách hàng là trường bắt buộc" >
+    </div>
+    <div class="k-edit-label">
+        <label for="PR_DETAIL_NAME">Tên Khách Hàng</label>
+    </div>
+    <div class="k-edit-field" data-container-for="PR_DETAIL_NAME">
+        <input class="k-input k-textbox" type="text" name="PR_DETAIL_NAME"  data-bind="value: PR_DETAIL_NAME"  >
+    </div>
+    <div class="k-edit-label">
+        <label for="ADDRESS">Địa Chỉ</label>
+    </div>
+    <div class="k-edit-field" data-container-for="ADDRESS">
+        <input class="k-input k-textbox" type="text" name="ADDRESS"  data-bind="value: ADDRESS">
+    </div>    
+    <div class="k-edit-label">
+        <label for="TAX_FILE_NUMBER">Mã Số Thuế</label>
+    </div>
+    <div class="k-edit-field" data-container-for="TAX_FILE_NUMBER">
+        <input class="k-input k-textbox" type="text" name="TAX_FILE_NUMBER"  data-bind="value: TAX_FILE_NUMBER">
+    </div> 
+  
+    <div class="k-edit-label">
+        <label for="PHONE">Điện Thoại</label>
+    </div>
+    <div class="k-edit-field" data-container-for="PHONE">
+        <input class="k-input k-textbox" type="text" name="PHONE"  data-bind="value: PHONE">
+    </div>  
+     <div class="k-edit-label">
+        <label for="ACTIVE">Hiệu Lực</label>
+    </div>
+    <div class="k-edit-field" data-container-for="ACTIVE">
+        <input type="checkbox" name="ACTIVE" data-type="boolean" data-bind="checked: ACTIVE">
+    </div>
+    <div class="k-edit-label">
+        <label for="IS_PUBLIC">Công Khai</label>
+    </div>
+    <div class="k-edit-field" data-container-for="IS_PUBLIC">
+        <input type="checkbox" name="IS_PUBLIC" data-type="boolean" data-bind="checked: IS_PUBLIC">
+    </div>
+    </script>
+    
+    
+
+    <script type="text/kendo-template" id="validation_template">       
+        <div id="#=field#_validationMessage" class="k-widget k-tooltip k-tooltip-validation k-invalid-msg field-validation-error" style="margin: 0.5em; display: block;" data-for="#=field#" data-valmsg-for="#=field#" role="alert"><span class="k-icon k-warning"></span>Có lỗi ở #=field#<div class="k-callout k-callout-n"></div></div>
+    </script>
+    
+    <script>
+        var validationMessageTmpl = kendo.template($("#validation_template").html());
+
+        function handleError(args) {
+            if (args.errors) {
+
+                var grid = $("#grid").data("kendoGrid");
+
+                grid.one("dataBinding", function (e) {
+                    e.preventDefault();   // cancel grid rebind if error occurs                             
+
+                    for (var error in args.errors) {
+                        showMessage(grid.editable.element, error, args.errors[error].errors);
+                    }
+
+                });
+            }
+        }
+
+
+        function showMessage(container, name, errors) {
+            //add the validation message to the form
+            container.find("#serverValidationMessage")
+                .replaceWith(validationMessageTmpl({ field: name, message: errors[0] }));
+        }
+        
+    </script>
+
+    <script>
+        var customerSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: "/Customer/Read",
+                    dataType: "jsonp"
+                },
+                update: {
+                    url: "/Customer/Update",
+                    dataType: "jsonp"
+                },
+                destroy: {
+                    url: "/Customer/Destroy",
+                    dataType: "jsonp"
+                },
+                create: {
+                    url: "/Customer/Create",
+                    dataType: "jsonp"
+                },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return { models: kendo.stringify(options.models) };
+                    }
+                }
+            },
+            batch: true,
+            pageSize: 10,
+            schema: {
+                errors: "Errors",
+                model: {
+                    id: "PR_DETAIL_ID",
+                    fields: {
+                        PR_DETAIL_ID: { editable: true, nullable: false, validation: { required: true } },
+                        PR_DETAIL_NAME: { validation: { required: true } },
+                        ADDRESS: { validation: { required: false } },
+                        TAX_FILE_NUMBER: { validation: { required: true } },
+                        PHONE: { validation: { required: true } },
+                        ACTIVE: { type: "boolean", validation: { required: false } },
+                        IS_PUBLIC: { type: "boolean", validation: { required: false } }
+                    }
+                }
+            },
+            error: handleError,
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#grid").kendoGrid({
+                dataSource: customerSource,
+                pageable: true,
+                height: 350,
+                toolbar: ["create"],
+                columns: [
+                    { field: "PR_DETAIL_ID", title: "Mã" },
+                    { field: "PR_DETAIL_NAME", title: "Tên Đối Tượng" },
+                    { field: "ADDRESS", title: "Địa Chỉ" },
+                    { field: "TAX_FILE_NUMBER", title: "Mã Số Thuế" },
+                    { field: "PHONE", title: "Điện Thoại" },
+                    { field: "ACTIVE", title: "Hiệu Lực", width: 120 },
+                    { field: "IS_PUBLIC", title: "Công Khai", width: 120 },
+                    { command: ["edit", "destroy"], title: "&nbsp;", width: "200px" }],
+                editable: {
+                    mode: "popup",
+                    template: kendo.template($("#popup_editor").html())
+
+                },
+            });
+
+        });
+        
+
+
+    </script>
+
+
+
+</div>
+
+

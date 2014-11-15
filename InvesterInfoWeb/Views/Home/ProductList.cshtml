@@ -1,0 +1,176 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "Danh Mục Sản Phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh Mục Sản Phẩm</h2>
+<br />
+
+<div id="example">
+    <div id="grid"></div>
+    <script id="popup_editor" type="text/x-kendo-template">
+	<div id="serverValidationMessage"> 
+    </div>
+    <div class="k-edit-label">
+        <label for="ITEM_ID">Mã</label>
+    </div>
+    <div class="k-edit-field" data-container-for="ITEM_ID">
+        <input class="k-input k-textbox" type="text" name="ITEM_ID" required="required" data-bind="value: ITEM_ID"  data-val-number="Mã sản phẩm phải là số."  data-val-required="Mã sản phẩm là trường bắt buộc" >
+       
+    </div>
+    <div class="k-edit-label">
+        <label for="ITEM_NAME">Tên Sản Phẩm</label>
+    </div>
+    <div class="k-edit-field" data-container-for="ITEM_NAME">
+        <input class="k-input k-textbox" type="text" name="ITEM_NAME"  data-bind="value: ITEM_NAME">
+       
+    </div>
+    <div class="k-edit-label">
+        <label for="UNIT_ID">Đơn Vị</label>
+    </div>
+    <div class="k-edit-field" data-container-for="UNIT_ID">
+         <input name="UNIT_ID"  
+				data-bind="value: UNIT_ID" 
+				data-value-field="UNIT_ID" 
+				data-text-field="UNIT_NAME" 
+                data-source="unitDataSource"
+				data-role="dropdownlist" data-autobind="true" />
+        
+    </div>
+    <div class="k-edit-label">
+        <label for="ACTIVE">Hiệu Lực</label>
+    </div>
+    <div class="k-edit-field" data-container-for="ACTIVE">
+        <input type="checkbox" name="ACTIVE" data-type="boolean" data-bind="checked: ACTIVE">
+    </div>
+
+    </script>
+    
+    <script type="text/kendo-template" id="validation_template">       
+        <div id="#=field#_validationMessage" class="k-widget k-tooltip k-tooltip-validation k-invalid-msg field-validation-error" style="margin: 0.5em; display: block;" data-for="#=field#" data-valmsg-for="#=field#" role="alert"><span class="k-icon k-warning"></span>Có lỗi ở #=field#<div class="k-callout k-callout-n"></div></div>
+    </script>
+  
+    <script>
+        var unitDataSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: "/Home/ReadUnit",
+                    dataType: "jsonp"
+                },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return { models: kendo.stringify(options.models) };
+                    }
+                }
+            },
+            schema: {
+                model: {
+                    fields: {
+                        UNIT_ID: { type: "string" },
+                        UNIT_NAME: { type: "string" },
+                        ACTIVE: { type: "boolean" }
+                    }
+                }
+            }
+            
+        });
+        
+    
+        var validationMessageTmpl = kendo.template($("#validation_template").html());
+
+        function handleError(args) {
+            if (args.errors) {
+                var grid = $("#grid").data("kendoGrid");
+                
+               
+                grid.one("dataBinding", function (e) {
+                    e.preventDefault();   // cancel grid rebind if error occurs                             
+
+                    for (var error in args.errors) {
+                        showMessage(grid.editable.element, error, args.errors[error].errors);
+                    }
+                    
+                });
+            }
+        }
+
+        function showMessage(container, name, errors) {
+            //add the validation message to the form
+            container.find("#serverValidationMessage")
+                .replaceWith(validationMessageTmpl({ field: name, message: errors[0] }));
+        }
+
+
+        $(document).ready(function () {
+            var dataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: "/Home/Read",
+                        dataType: "jsonp"
+                    },
+                    update: {
+                        url: "/Home/Update",
+                        dataType: "jsonp"
+                    },
+                    destroy: {
+                        url: "/Home/Destroy",
+                        dataType: "jsonp"
+                    },
+                    create: {
+                        url: "/Home/Create",
+                        dataType: "jsonp"
+                    },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models) };
+                        }
+                    }
+                },
+                batch: true,
+                pageSize: 10,
+                schema: {
+                    errors: "Errors",
+                    model: {
+                        id: "ITEM_ID",
+                        fields: {
+                            ITEM_ID: { editable: true, nullable: false, validation: { required: true } },
+                            ITEM_NAME: { validation: { required: false } },
+                            UNIT_ID: { validation: { required: true }, defaultValue: "CAI"},
+                            ACTIVE: { type: "boolean" }
+                        }
+                    }
+                },
+                error: handleError
+                
+            });
+
+            $("#grid").kendoGrid({
+                dataSource: dataSource,
+                pageable: true,
+                height: 350,
+                toolbar: ["create"],
+                columns: [
+                    { field: "ITEM_ID", title: "Mã" },
+                    { field: "ITEM_NAME", title: "Tên Sản Phẩm" },
+                    { field: "UNIT_ID", title: "Đơn Vị" },
+                    { field: "ACTIVE", title: "Hiệu Lực", width: "120px" },
+                    { command: ["edit", "destroy"], title: "&nbsp;", width: "200px" }],
+                editable: {
+                    mode: "popup",
+                    template: kendo.template($("#popup_editor").html())
+
+                },
+                
+            });
+            $("grid").on("focus", function(e) {
+                
+            });
+        });
+    </script>
+    
+    
+
+</div>
+
+

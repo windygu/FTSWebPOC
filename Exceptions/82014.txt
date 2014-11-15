@@ -1,0 +1,53 @@
+
+00:00:00 17 August 2014
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_DM_TRAN_CONFIG_DM_TRAN". The conflict occurred in database "FTSWEBPOC", table "dbo.SYS_TRAN", column 'TRAN_ID'.
+The statement has been terminated.
+.Net SqlClient Data Provider
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   at FTS.BaseBusiness.Classes.ManagerBase.InsertConfigValue(String config_id, String type, Object default_value) in c:\Users\Lam\Desktop\APHU\FTSWebPOC\BaseBusiness\Classes\ManagerBase.cs:line 1287
+   at FTS.AccBusiness.Sale.SaleManager.InsertDefaultConfigs() in c:\Users\Lam\Desktop\APHU\FTSWebPOC\AccBusiness\Sales\SaleManager.cs:line 238
+   at FTS.BaseBusiness.Classes.ManagerBase.LoadConfigValue() in c:\Users\Lam\Desktop\APHU\FTSWebPOC\BaseBusiness\Classes\ManagerBase.cs:line 1221
+   at FTS.BaseBusiness.Classes.ManagerBase..ctor(FTSMain ftsmain, String tranid) in c:\Users\Lam\Desktop\APHU\FTSWebPOC\BaseBusiness\Classes\ManagerBase.cs:line 58
+   at FTS.AccBusiness.Sale.SaleManager..ctor(FTSMain ftsmain, String tran_id) in c:\Users\Lam\Desktop\APHU\FTSWebPOC\AccBusiness\Sales\SaleManager.cs:line 19
+   at FTS.AccUI.Sale.FrmSale.LoadData() in c:\Users\Lam\Desktop\APHU\FTSWebPOC\AccUI\Sale\FrmSale.cs:line 63
+   at FTS.AccUI.Sale.FrmSale..ctor(FTSMain ftsmain, String tran_id, Object pr_key) in c:\Users\Lam\Desktop\APHU\FTSWebPOC\AccUI\Sale\FrmSale.cs:line 49
+   at FTS.AccUI.Sale.FrmSale_Listing.NewTransaction() in c:\Users\Lam\Desktop\APHU\FTSWebPOC\AccUI\Sale\FrmSale_Listing.cs:line 163
+   at FTS.BaseUI.Forms.FrmBase2Listing.toolbar_ItemClick(Object sender, ItemClickEventArgs e) in c:\Users\Lam\Desktop\APHU\FTSWebPOC\Base\Forms\FrmBase2Listing.cs:line 325
+
+00:00:00 18 August 2014
+MSG_INVALID_PR_DETAIL_ID: SALE - PR_DETAIL_ID
+SALE
+PR_DETAIL_ID
+
+00:00:00 23 August 2014
+Invalid object name 'DM_FIELD_RELATION'.
+.Net SqlClient Data Provider
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.DoLoadDataTable(DbCommand command, String tableName)
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.LoadDataTable(DbCommand command, String tableName)
+   at FTS.BaseBusiness.Classes.ObjectBase.ChangeRecord(String oldid, String newid) in c:\Users\Lam\Desktop\APHU\FTSWebPOC\BaseBusiness\Classes\ObjectBase.cs:line 2047
+   at FTS.BaseUI.Forms.FrmDataList.ChangeRecord() in c:\Users\Lam\Desktop\APHU\FTSWebPOC\Base\Forms\FrmDataList.cs:line 925
+   at FTS.BaseUI.Forms.FrmDataList.toolbar_ItemClick(Object sender, ItemClickEventArgs e) in c:\Users\Lam\Desktop\APHU\FTSWebPOC\Base\Forms\FrmDataList.cs:line 756
