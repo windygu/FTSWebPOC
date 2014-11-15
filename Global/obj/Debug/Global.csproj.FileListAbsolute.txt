@@ -1,6 +1,0 @@
-C:\Users\Lam\Desktop\APHU\FTSWebPOC\Global\bin\Debug\FTS.Global.dll
-C:\Users\Lam\Desktop\APHU\FTSWebPOC\Global\bin\Debug\FTS.Global.pdb
-C:\Users\Lam\Desktop\APHU\FTSWebPOC\Global\bin\Debug\ICSharpCode.SharpZipLib.dll
-C:\Users\Lam\Desktop\APHU\FTSWebPOC\Global\obj\Debug\FTS.Global.dll
-C:\Users\Lam\Desktop\APHU\FTSWebPOC\Global\obj\Debug\FTS.Global.pdb
-C:\Users\Lam\Desktop\APHU\FTSWebPOC\Global\obj\Debug\Global.csprojResolveAssemblyReference.cache
