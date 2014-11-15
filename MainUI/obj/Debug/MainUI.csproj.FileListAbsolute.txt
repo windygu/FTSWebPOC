@@ -1,9 +1,0 @@
-C:\Users\Lam\Desktop\APHU\FTSWebPOC\MainUI\obj\Debug\MainUI.csprojResolveAssemblyReference.cache
-C:\Users\Lam\Desktop\APHU\FTSWebPOC\MainUI\obj\Debug\FTS.MainUI.Systems.MainFormERP.resources
-C:\Users\Lam\Desktop\APHU\FTSWebPOC\MainUI\obj\Debug\FTS.MainUI.Properties.Resources.resources
-C:\Users\Lam\Desktop\APHU\FTSWebPOC\MainUI\obj\Debug\MainUI.csproj.GenerateResource.Cache
-C:\Users\Lam\Desktop\APHU\FTSWebPOC\FTS.MainUI.exe.config
-C:\Users\Lam\Desktop\APHU\FTSWebPOC\MainUI\obj\Debug\FTS.MainUI.exe
-C:\Users\Lam\Desktop\APHU\FTSWebPOC\MainUI\obj\Debug\FTS.MainUI.pdb
-C:\Users\Lam\Desktop\APHU\FTSWebPOC\FTS.MainUI.exe
-C:\Users\Lam\Desktop\APHU\FTSWebPOC\FTS.MainUI.pdb
