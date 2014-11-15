@@ -1,5 +1,4 @@
-﻿
-@model System.Data.DataTable
+﻿@model System.Data.DataTable
 @{
     ViewBag.Title = "Quản Lý Chứng Từ ";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -29,10 +28,8 @@
 
 <div id="serverValidationMessage">
 </div>
-
 <div id="progressBar"></div>
 <br />
-
 <script type="text/kendo-template" id="validation_template">       
         <div id="#=field#_validationMessage" class="k-widget k-tooltip k-tooltip-validation k-invalid-msg field-validation-error" style="margin: 0.5em; display: block;" data-for="#=field#" data-valmsg-for="#=field#" role="alert"><span class="k-icon k-warning"></span>Có lỗi ở #=field# : #=message#<div class="k-callout k-callout-n"></div></div>
 </script>
@@ -536,6 +533,16 @@
 
                 }).data("kendoWindow");
 
+                $("#customerSelectGrid").kendoGrid({
+                    dataSource: customerSource,
+                    pageable: true,
+                    height: 450,
+                    columns: [
+                        { field: "PR_DETAIL_ID", title: "Khách Hàng" },
+                        { field: "PR_DETAIL_NAME", title: "Tên Khách Hàng" },
+                        { command: [{ name: "select", text: "Chọn", click: selectCustomer }], title: "&nbsp;", width: "100px" }],
+                    editable: false,
+                });
             }
 
             win.center();
