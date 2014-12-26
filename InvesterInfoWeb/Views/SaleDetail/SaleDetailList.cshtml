@@ -3,9 +3,33 @@
     ViewBag.Title = "Quản Lý Chứng Từ ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script>
+ //Creates a gloabl object called templateLoader with a single method "loadExtTemplate"
+    var templateLoader = (function($,host){
+        //Loads external templates from path and injects in to page DOM
+        return{
+            //Method: loadExtTemplate
+            //Params: (string) path: the relative path to a file that contains template definition(s)
+            loadExtTemplate: function(path){
+                //Use jQuery Ajax to fetch the template file
+                var tmplLoader = $.get(path)
+                    .success(function(result) {
+                        //On success, Add templates to DOM (assumes file only has template definitions)
+                        $("body").append(result);
+                    })
+                    .error(function(result) {
+                        alert("Error Loading Templates -- TODO: Better Error Handling");
+                    });
 
-
-
+                tmplLoader.complete(function(){
+                    //Publish an event that indicates when a template is done loading
+                    $(host).trigger("TEMPLATE_LOADED", [path]);
+                });
+            }
+        };
+    })(jQuery, document);
+    
+</script>
 <h2>Quản Lý Chứng Từ</h2>
 <br />
 <div id="serverValidationMessageContainer">
@@ -32,247 +56,87 @@
         </div>
 </script>
 
-<script type="text/kendo-template" id="invoiceListView_Template">     
-  <style scoped>
-    .customer-section label {
-        display: inline-block;
-        width: 200px;
-        line-height: 30px;
-        height: 30px;
-    }
+<script>
+    //layouting the form 
+    var layoutView = new kendo.Layout("application_layout_template");
 
-    .customer-section li {
-        padding-bottom: 5px;
-        list-style: none;
-    }
+    //layout
+    var invoiceRouter = new kendo.Router({
+        init: function () {
+            layoutView.render("#application");
+        }
+    });
+    
+  
+    
+    $(document).bind("TEMPLATE_LOADED", function (e, path) {
+      
+        if (path.contains("invoiceListView")) {
+            //invoice list view
+            var invoiceListView = new kendo.View("invoiceListView_Template", { model: invoiceListModel });
 
-    .customer-section button {
-        float: right;
-        
-    }
-   </style>   
-        <div>
-         <div class="k-header customer-section">
-           <ul>
-            <li>
-                <label>Kỳ Số Liệu</label>
+            invoiceRouter.route("/SaleDetail/SaleDetailList", function () {
+                layoutView.showIn("#mainView", invoiceListView);
+                var win = $("#dialogViews").data("kendoWindow");
+                if (win) {
+                    win.close();
+                }
+
+                $(".myAdd").off("click").on("click", function () {
+                    invoiceRouter.navigate("/SaleDetail/SaleDetailList/edit");
+                    viewModel.createNew();
+                });
+            });
+
+
+            ////start routing to invoice list screen
+            invoiceRouter.start();
+            invoiceRouter.navigate("/SaleDetail/SaleDetailList");
+
+            $("a[href='#']").attr("href", "#a");//prevent scrolling to top by empty href
+        }
+      
+        if (path.contains("invoiceDetailView")) {
+            //invoice detal view 
+            var invoiceDetailView = new kendo.View("invoiceDetailView_Template", { model: viewModel });
+
+            invoiceRouter.route("/SaleDetail/SaleDetailList/edit", function () {
+
+                var win = $("#dialogViews").data("kendoWindow");
+
+                if (!win) {
+                    //initialize invoice search windows
+                    win = $("#dialogViews").kendoWindow({
+
+                        title: "Chứng từ #",
+                        visible: false,
+                        modal: true,
+                        height: "500px",
+                        width: "900px",
+                        minHeight: 500,
+                        minWidth: 600,
+                        resizable: true,
+
+                    }).data("kendoWindow");
+                }
+
+                win.center();
+                win.open();
+
+                invoiceDetailView.render($("#dialogViews"));
+               
+                win.center();
+                
+                $("a[href='#']").attr("href", "#a");//prevent scrolling to top by empty href
+
+            });
+            $("a[href='#']").attr("href", "#a");//prevent scrolling to top by empty href
+        }
+    });
     
-                 <input data-role="combobox"
-                   data-placeholder="Chọn một kỳ số liệu..."
-                   data-value-primitive="true"
-                   data-text-field="QNAME"
-                   data-value-field="QNAME"
-                   data-bind="value: selectedQuarter,
-                              source: quarters,                              
-                              events: {
-                                change: change                              
-                              }"
-                   style="width: 300px"
-               />
-              </li>
-            <li>
-                <label>Từ Ngày</label>
-                 <input    id="FROM_DATE"
-                          data-role="datepicker"
-                          data-bind="value: fromDate, events: { change: onChange }"
-                          style="width: 180px"
-                /></li>
-            <li>
-                <label >Đến Ngày</label>
-                <input    id="THRU_DATE"
-                          data-role="datepicker"
-                          data-bind="value: thruDate, events: { change: onChange }"
-                          style="width: 180px"
-                 />
-                    &nbsp;&nbsp;&nbsp; <button data-bind="click: fillInvoice" class="k-button" style="float: none; width:100px">  &nbsp;&nbsp; <span class="k-icon k-filter"></span> Lọc  &nbsp;&nbsp;</button>
-             </li>
-            </ul>
-         </div>   
-        <div id="invoiceListGrid"
-            data-role="grid"
-            data-sortable="true"
-            data-pagable="true"
-            data-filterable= '{
-                                messages: {
-                                    and: "Và",
-                                    or: "Hoặc",
-                                    filter: "Lọc",
-                                    clear: "Bỏ qua",
-                                    info: "Đang lọc"
-                                },
-                                extra: true, //do not show extra filters
-                                operators: { // redefine the string operators
-                                    string: {
-                                        contains: "Có chứa",
-                                        doesnotcontain: "Không chứa",
-                                        startswith: "Bắt đầu bằng",
-                                        endswith: "Kết thúc bằng"
-                                    },
-                                    number: {
-                                        eq: "Bằng",
-                                        neq: "Không bằng",
-                                        gte: "Lớn hơn hoặc bằng",
-                                        lte: "Nhỏ hơn hoặc bằng",
-                                        gt: "Lớn hơn",
-                                        lt: "Nhỏ hơn"
-                                    },
-                                    
-                                    date: {
-                                        eq: "Trong ngày",
-                                        neq: "Khác ngày",
-                                        gte: "Từ ngày",
-                                        lte: "Đến ngày",
-                                        gt: "Sau ngày",
-                                        lt: "Trước ngày"
-                                    }                                    
-                                }
-                            }'
-            data-groupable="true"
-            data-editable="false"
-            data-toolbar='[{name: "myAdd",text: "Nhập Chứng Từ", className: "myAdd", imageClass: "k-icon k-add"}]'
-            data-columns='[
-                { field: "TRAN_NO", title: "Số", type: "number" },
-                { field: "TRAN_DATE", title: "Ngày", type: "date", format: "{0:MM/dd/yyyy}" },
-                { field: "PR_DETAIL_ID", title: "Khách Hàng", type: "string" },
-                { field: "PR_DETAIL_NAME", title: "Tên Khách Hàng", type: "string" },
-                { field: "ITEM_ID", title: "Mã Sản Phẩm", type: "string" },
-                { field: "QUANTITY", title: "Số Lượng", type: "number" },
-                { field: "UNIT_PRICE", title: "Đơn Giá", type: "number" },
-                { field: "TOTAL_AMOUNT", title: "Tổng Tiền", type: "number" },
-                { command: [{ name: "select", text: "Chọn", click: selectInvoice, imageClass: "k-icon k-select"}, { name: "mydelete", text: "Xóa", click: removeInvoice, imageClass: "k-icon k-delete"}], title: "&nbsp;", width: "160px" }    
-            ]'
-            data-bind="source:items"></div>
-    
-        </div>
+  
 </script>
 
-<script type="text/kendo-template" id="invoiceDetailView_Template">    
-    <style scoped>
-    .customer-section label {
-        display: inline-block;
-        width: 200px;
-        line-height: 30px;
-        height: 30px;
-    }
-
-    .customer-section li {
-        padding-bottom: 5px;
-        list-style: none;
-    }
-
-    .customer-section button {
-        float: right;
-        
-    }
-    
-    .customer-section a {
-        float: right;
-        
-    }
-   </style>   
-   <div id="form-container">    
-     <div class="k-header customer-section">
-        <ul>
-            <li>
-                <label>Số Chứng Từ:</label>
-
-                <span class="k-textbox k-button k-space-right">
-                    <input type="text" class="k-textbox" id="TRAN_NO" data-bind="events: { change: change }" />
-                    <a class="k-icon k-insertFile" data-bind="events: { click: showInvoiceSelector }"></a>
-                </span>
-                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                 <label> Ngày Chứng Từ: </label>
-                 <input   id="TRAN_DATE"
-                          data-role="datepicker"
-                          data-bind="value: selectedSale.TRAN_DATE, events: { change: change}"
-                          style="width: 180px"
-                />
-            </li>               
-        </ul>
-    </div>
-
-    <div class="k-header customer-section" data-bind="visible: saleBinded">
-        <ul>
-            <li>
-                <label>Khách Hàng</label>
-                <span class="k-textbox k-button k-space-right">
-                    <input type="text" class="k-textbox" id="PR_DETAIL_ID" data-bind="events: { change: change }" />
-                    <a class="k-icon k-insertFile" data-bind="events: { click: showCustomerSelector }"></a>
-                </span>
-                &nbsp;
-            <label data-bind="text: selectedCustomer.PR_DETAIL_NAME"></label>
-                <li>
-                    <label>Người Giao Dịch</label>
-                    <input type="text" class="k-textbox" id="PHONE" data-bind="value: selectedSale.ADDRESS, events: { change: change }" /></li>
-            <li>
-                <label>Địa Chỉ</label>
-                <input type="text" class="k-textbox" id="ADDRESS" data-bind="value: selectedSale.ADDRESS, events: { change: change }" /></li>
-            <li>
-                <label>Mã Số Thuế</label>
-                <input type="text" class="k-textbox" id="TAX_FILE_NUMBER" data-bind="value: selectedSale.TAX_FILE_NUMBER, events: { change: change }" /></li>
-            <li>
-                <label>Ghi Chú</label>
-                <input type="text" class="k-textbox" id="COMMENTS" data-bind="value: selectedSale.COMMENTS, events: { change: change }" />              
-            </li>
-        </ul>
-    </div>
-
-    <div id="saleDetailGrid"
-         data-role="grid"
-         data-pageable="true"
-         data-height="250"
-         data-toolbar='[{ name: "create", text: "Thêm Mới" }]'
-         data-columns='[
-                { field: "ITEM_ID", title: "Mã Khóa", editor: productEditor, width: "170px" },
-                { field: "ITEM_NAME", title: "Tên Sản Phẩm", width: "200px" },                
-                { field: "UNIT_PRICE", title: "Đơn Giá" },
-                { field: "QUANTITY", title: "Số Lượng" },
-                { field: "AMOUNT", title: "Thành Tiền" },
-                { field: "VAT_TAX_RATE", title: "Thuế Suất VAT" },
-                { field: "VAT_TAX_AMOUNT", title: "Thuế VAT" },
-                { field: "TOTAL_AMOUNT", title: "Tổng Tiền" },
-                {
-                    command: [{
-                        name: "Delete",
-                        text: "Xóa",
-                        imageClass: "k-icon k-i-close",
-                        click: deleteSaleDetail
-                    }],
-                    title: "&nbsp;",
-                    width: "100px"
-                }]'
-            data-editable="true"
-            data-selectable="cell"
-            data-navigatable="true"
-            data-sortable="true"
-            data-save=editSaleDetail
-        ></div>
-     
-    
-    <div class="k-edit-buttons k-state-default customer-section">
-        <a class="k-button k-button-icontext k-primary k-grid-update" href="#"  data-bind="click: save, enabled: hasChanges">
-            <span class="k-icon k-update"></span>
-                Cập Nhật
-        </a>
-        <a class="k-button k-button-icontext k-grid-cancel" href="#"  data-bind="click: cancelChange">
-            <span class="k-icon k-cancel"></span>
-                Bỏ Qua
-        </a>
-    </div>
-
-    <div id="invoiceWindow">
-        <div id="invoiceSelectGrid"></div>
-    </div>
-
-    <div id="customerWindow">
-        <div id="customerSelectGrid"></div>
-    </div>
-
-    <div id="productWindow">
-        <div id="productSelectGrid"></div>
-    </div>
-</div>
-</script>
 
 <div id="application"></div>
 
@@ -782,6 +646,10 @@
         //close the windows if there is one
         if ($('#invoiceWindow').data().kendoWindow)
             $('#invoiceWindow').data().kendoWindow.close();
+        
+      
+        //e.preventDefault();
+
     }
 
     function removeInvoice(e) {
@@ -800,6 +668,8 @@
 
             viewModel.thisSaleSource.sync();
         }
+       
+       // e.preventDefault();
 
     }
 
@@ -1059,81 +929,24 @@
 
 
     });
+    
 
-    //layouting the form 
-    var layoutView = new kendo.Layout("application_layout_template");
+    templateLoader.loadExtTemplate("/Scripts/template/invoiceListView.tmpl.htm");
 
-    //invoice list view
-    var invoiceListView = new kendo.View("invoiceListView_Template", { model: invoiceListModel });
+    templateLoader.loadExtTemplate("/Scripts/template/invoiceDetailView.tmpl.htm");
 
-    //invoice detal view 
-    var invoiceDetailView = new kendo.View("invoiceDetailView_Template", { model: viewModel });
+    //clear sale selector
+    $("#TRAN_NO").val("");
 
-    //layout
-    var invoiceRouter = new kendo.Router({
-        init: function () {
-            layoutView.render("#application");
-        }
-    });
+    //load data from server
+    viewModel.thisSaleSource.read();
+    customerSource.read();
+    viewModel.thisSaleDetailSource.read();
+    invoiceSearchSource.read();
+    salePriceSource.read();
+    
+    $("a[href='#']").attr("href", "#a");//prevent scrolling to top by empty href
+    
 
-    invoiceRouter.route("/SaleDetail/SaleDetailList", function () {
-        layoutView.showIn("#mainView", invoiceListView);
-        var win = $("#dialogViews").data("kendoWindow");
-        if (win) {
-            win.close();
-        }
-       
-        $(".myAdd").off("click").on ("click", function () {
-            invoiceRouter.navigate("/SaleDetail/SaleDetailList/edit");
-            viewModel.createNew();
-        });
-    });
-
-    invoiceRouter.route("/SaleDetail/SaleDetailList/edit", function () {
-
-        var win = $("#dialogViews").data("kendoWindow");
-
-        if (!win) {
-            //initialize invoice search windows
-            win = $("#dialogViews").kendoWindow({
-
-                title: "Chứng từ #",
-                visible: true,
-                modal: true,
-                height: "500px",
-                width: "900px",
-                minHeight: 500,
-                minWidth: 600,
-                resizable: true,
-
-            }).data("kendoWindow");
-        }
-
-        win.center();
-        win.open();
-
-        invoiceDetailView.render($("#dialogViews"));
-        // layoutView.showIn("#mainView", invoiceDetailView);
-
-    });
-
-    //fisrt binding of the form
-    //kendo.bind($("#form-container"), viewModel);
-
-    $(document).ready(function () {
-        //clear sale selector
-        $("#TRAN_NO").val("");
-
-        //load data from server
-        viewModel.thisSaleSource.read();
-        customerSource.read();
-        viewModel.thisSaleDetailSource.read();
-        invoiceSearchSource.read();
-        salePriceSource.read();
-
-        //start routing to invoice list screen
-        invoiceRouter.start();
-        invoiceRouter.navigate("/SaleDetail/SaleDetailList");
-    });
-
+   
 </script>

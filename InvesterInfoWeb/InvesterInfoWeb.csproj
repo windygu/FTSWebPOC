@@ -408,6 +408,8 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\template\invoiceDetailView.tmpl.htm" />
+    <Content Include="Scripts\template\invoiceListView.tmpl.htm" />
     <Content Include="Scripts\widget\ftsTemplatedWidget.js" />
     <Content Include="Scripts\datasource\invoiceSearchSource.js" />
     <Content Include="Scripts\datasource\saleSource.js" />

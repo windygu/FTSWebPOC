@@ -1,0 +1,116 @@
+﻿<script type="text/kendo-template" id="invoiceListView_Template">  
+
+ <style scoped>
+     .customer-section label {
+         display: inline-block;
+         width: 200px;
+         line-height: 30px;
+         height: 30px;
+     }
+
+     .customer-section li {
+         padding-bottom: 5px;
+         list-style: none;
+     }
+
+     .customer-section button {
+         float: right;
+        
+     }
+ </style>   
+
+<div>
+         <div class="k-header customer-section">
+           <ul>
+            <li>
+                <label>Kỳ Số Liệu</label>
+    
+                 <input data-role="combobox"
+                   data-placeholder="Chọn một kỳ số liệu..."
+                   data-value-primitive="true"
+                   data-text-field="QNAME"
+                   data-value-field="QNAME"
+                   data-bind="value: selectedQuarter,
+    source: quarters,
+    events: {
+        change: change
+    }"
+                   style="width: 300px"
+               />
+              </li>
+            <li>
+                <label>Từ Ngày</label>
+                 <input    id="FROM_DATE"
+                          data-role="datepicker"
+                          data-bind="value: fromDate, events: { change: onChange }"
+                          style="width: 180px"
+                /></li>
+            <li>
+                <label >Đến Ngày</label>
+                <input    id="THRU_DATE"
+                          data-role="datepicker"
+                          data-bind="value: thruDate, events: { change: onChange }"
+                          style="width: 180px"
+                 />
+                    &nbsp;&nbsp;&nbsp; <button data-bind="click: fillInvoice" class="k-button" style="float: none; width:100px">  &nbsp;&nbsp; <span class="k-icon k-filter"></span> Lọc  &nbsp;&nbsp;</button>
+             </li>
+            </ul>
+         </div>   
+        <div id="invoiceListGrid"
+            data-role="grid"
+            data-sortable="true"
+            data-pagable="true"
+            data-filterable= '{
+                                messages: {
+                                    and: "Và",
+                                    or: "Hoặc",
+                                    filter: "Lọc",
+                                    clear: "Bỏ qua",
+                                    info: "Đang lọc"
+                                },
+                                extra: true, //do not show extra filters
+                                operators: { // redefine the string operators
+                                    string: {
+                                        contains: "Có chứa",
+                                        doesnotcontain: "Không chứa",
+                                        startswith: "Bắt đầu bằng",
+                                        endswith: "Kết thúc bằng"
+                                    },
+                                    number: {
+                                        eq: "Bằng",
+                                        neq: "Không bằng",
+                                        gte: "Lớn hơn hoặc bằng",
+                                        lte: "Nhỏ hơn hoặc bằng",
+                                        gt: "Lớn hơn",
+                                        lt: "Nhỏ hơn"
+                                    },
+                                    
+                                    date: {
+                                        eq: "Trong ngày",
+                                        neq: "Khác ngày",
+                                        gte: "Từ ngày",
+                                        lte: "Đến ngày",
+                                        gt: "Sau ngày",
+                                        lt: "Trước ngày"
+                                    }                                    
+                                }
+                            }'
+            data-groupable="true"
+            data-editable="false"
+            data-toolbar='[{name: "myAdd",text: "Nhập Chứng Từ", className: "myAdd", imageClass: "k-icon k-add"}]'
+            data-columns='[
+                { field: "TRAN_NO", title: "Số", type: "number" },
+                { field: "TRAN_DATE", title: "Ngày", type: "date", format: "{0:MM/dd/yyyy}" },
+                { field: "PR_DETAIL_ID", title: "Khách Hàng", type: "string" },
+                { field: "PR_DETAIL_NAME", title: "Tên Khách Hàng", type: "string" },
+                { field: "ITEM_ID", title: "Mã Sản Phẩm", type: "string" },
+                { field: "QUANTITY", title: "Số Lượng", type: "number" },
+                { field: "UNIT_PRICE", title: "Đơn Giá", type: "number" },
+                { field: "TOTAL_AMOUNT", title: "Tổng Tiền", type: "number" },
+                { command: [{ name: "select", text: "Chọn", click: selectInvoice, imageClass: "k-icon k-select"}, { name: "mydelete", text: "Xóa", click: removeInvoice, imageClass: "k-icon k-delete"}], title: "&nbsp;", width: "160px" }    
+            ]'
+            data-bind="source: items"></div>
+    
+        </div>
+    
+    </script>
