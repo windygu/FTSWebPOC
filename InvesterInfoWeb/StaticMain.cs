@@ -116,7 +116,8 @@ namespace FTS.InvesterInfoWeb
         
 
             var stringBuilder = new StringBuilder("{\"Errors\":");
-
+            //message = message.Replace("'", string.Empty).Replace("(", string.Empty).Replace(")", string.Empty).Replace(":", string.Empty).Replace("\r\n", string.Empty);
+            message = message.Replace("\r\n", string.Empty);
             string fieldName = errorSource;
             stringBuilder.Append("{").Append("\"").Append(fieldName).Append("\":{");
             stringBuilder.Append("\"").Append("errors").Append("\":[");

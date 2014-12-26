@@ -40,5 +40,6 @@
                 STATUS: { editable: true, nullable: true, type: "boolean" },
             }
         }
-    }
+    },
+    error: handleError, 
 })

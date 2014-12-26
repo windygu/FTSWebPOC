@@ -8,34 +8,72 @@
 <br />
 
 <div id="example">
-    
+
     <div id="serverValidationMessage">
     </div>
     <div id="grid"></div>
-   
-    
+
+
     <script type="text/kendo-template" id="validation_template">       
-        <div id="#=field#_validationMessage" class="k-widget k-tooltip k-tooltip-validation k-invalid-msg field-validation-error" style="margin: 0.5em; display: block;" data-for="#=field#" data-valmsg-for="#=field#" role="alert"><span class="k-icon k-warning"></span>Có lỗi ở #=field#<div class="k-callout k-callout-n"></div></div>
+        <div id="#=field#_validationMessage" class="k-widget k-tooltip k-tooltip-validation k-invalid-msg field-validation-error" style="margin: 0.5em; display: block;" data-for="#=field#" data-valmsg-for="#=field#" role="alert"><span class="k-icon k-warning"></span>Có lỗi ở #=field# : #=message#<div class="k-callout k-callout-n"></div></div>
     </script>
 
     <script src="@Url.Content("~/Scripts/datasource/productSource.js")"></script>
-    <script src="@Url.Content("~/Scripts/datasource/salePriceSource.js")"></script>
-    
     <script>
-     
+        var salePriceSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: "/Price/Read",
+                    dataType: "jsonp"
+                },
+                update: {
+                    url: "/Price/Update",
+                    dataType: "jsonp"
+                },
+                destroy: {
+                    url: "/Price/Destroy",
+                    dataType: "jsonp"
+                },
+                create: {
+                    url: "/Price/Create",
+                    dataType: "jsonp"
+                },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return { models: kendo.stringify(options.models) };
+                    }
+                }
+            },
+            batch: true,
+            pageSize: 10,
+            schema: {
+                errors: "Errors",
+                model: {
+                    id: "PR_KEY",
+                    fields: {
+                        PR_KEY: { editable: false, nullable: false, validation: { required: true } },
+                        ITEM_ID: { type: "string", validation: { required: true } },
+                        UNIT_PRICE: { type: "number" },
+                        VALID_DATE: { type: "date", validation: { required: true } }
+                    }
+                }
+            },
+            error: handleError
+        });
+
         var validationMessageTmpl = kendo.template($("#validation_template").html());
 
         function handleError(args) {
             if (args.errors) {
                 var grid = $("#grid").data("kendoGrid");
-                
+
                 grid.one("dataBinding", function (e) {
                     e.preventDefault();   // cancel grid rebind if error occurs                             
 
                     for (var error in args.errors) {
                         showMessage(grid, error, args.errors[error].errors);
                     }
-                    
+
                 });
             }
         }
@@ -47,8 +85,6 @@
         }
 
         $(document).ready(function () {
-            salePriceSource.error = handleError;
-               
             $("#grid").kendoGrid({
                 dataSource: salePriceSource,
                 navigatable: true,
@@ -66,33 +102,41 @@
                 editable: true
             });
         });
-       
-            function getProductName(itemId) {
+
+        function getProductName(itemId) {
+            if (itemId) {
                 var products = productSource.data();
                 for (var j = 0; j < products.length; j++) {
                     if (products[j].ITEM_ID === itemId) {
                         return products[j].ITEM_NAME;
                     }
                 }
-
-                return itemId;
             }
-        
-        
+
+            return "";
+        }
 
         function productDropDownEditor(container, options) {
-            $('<input required name="' + options.field + '"  data-bind="value:' + options.field + '" data-value-field="ITEM_ID" data-text-field="ITEM_NAME"/>')
+            var uid = options.model.uid;
+            if (!options.model.ITEM_ID) {
+                options.model.ITEM_ID = "00";
+            }
+            $('<input required id="' + uid + '" name="' + options.field + '"  data-bind="value:' + options.field + '"/>')
                 .appendTo(container)
                 .kendoDropDownList({
                     autoBind: false,
-                    dataSource: productSource
+                    dataSource: productSource,
+                    dataTextField: "ITEM_NAME",
+                    dataValueField: "ITEM_ID",
+                    
                 });
+                 
         }
 
         productSource.read();
     </script>
-    
-    
+
+
 
 </div>
 
