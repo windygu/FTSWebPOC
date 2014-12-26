@@ -40,5 +40,6 @@
                 TOTAL_AMOUNT: { editable: true, nullable: false, validation: { required: true } }
             }
         }
-    }
+    },
+    error: handleError, 
 })

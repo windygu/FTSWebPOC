@@ -4,7 +4,36 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<style scoped>
+
+
+<h2>Quản Lý Chứng Từ</h2>
+<br />
+<div id="serverValidationMessageContainer">
+    <div id="serverValidationMessage">
+    </div>
+
+</div>
+<div id="progressBar"></div>
+<br />
+<script type="text/kendo-template" id="validation_template">       
+        <div id="#=field#_validationMessage" class="k-widget k-tooltip k-tooltip-validation k-invalid-msg field-validation-error" style="margin: 0.5em; display: block;" data-for="#=field#" data-valmsg-for="#=field#" role="alert"><span class="k-icon k-warning"></span>Có lỗi ở #=field# : #=message#<div class="k-callout k-callout-n"></div></div>
+</script>
+
+<script type="text/x-kendo-template" id="grid_toolbar">
+        <button class="k-button" id="grid_toolbar_addButton">Thêm Mới</button>
+</script>
+
+<script type="text/kendo-template" id="application_layout_template">       
+        <div >
+            <section id="mainView"> </section>    
+        </div>
+        <div>
+            <section id="dialogViews"> </section>
+        </div>
+</script>
+
+<script type="text/kendo-template" id="invoiceListView_Template">     
+  <style scoped>
     .customer-section label {
         display: inline-block;
         width: 200px;
@@ -21,30 +50,7 @@
         float: right;
         
     }
-</style>
-
-<h2>Quản Lý Chứng Từ</h2>
-<br />
-
-<div id="serverValidationMessage">
-</div>
-<div id="progressBar"></div>
-<br />
-<script type="text/kendo-template" id="validation_template">       
-        <div id="#=field#_validationMessage" class="k-widget k-tooltip k-tooltip-validation k-invalid-msg field-validation-error" style="margin: 0.5em; display: block;" data-for="#=field#" data-valmsg-for="#=field#" role="alert"><span class="k-icon k-warning"></span>Có lỗi ở #=field# : #=message#<div class="k-callout k-callout-n"></div></div>
-</script>
-
-<script type="text/x-kendo-template" id="grid_toolbar">
-        <button class="k-button" id="grid_toolbar_addButton">Thêm Mới</button>
-</script>
-
-<script type="text/kendo-template" id="application_layout_template">       
-        <div >
-            <section id="mainView"> </section>    
-        </div>
-</script>
-
-<script type="text/kendo-template" id="invoiceListView_Template">     
+   </style>   
         <div>
          <div class="k-header customer-section">
            <ul>
@@ -78,9 +84,8 @@
                           data-bind="value: thruDate, events: { change: onChange }"
                           style="width: 180px"
                  />
-                    &nbsp;&nbsp;&nbsp; <button data-bind="click: fillInvoice" class="k-button" style="float: none; width:100px"> &nbsp;&nbsp;Lọc &nbsp;&nbsp;</button>
-                    &nbsp;&nbsp;&nbsp; <button data-bind="click: addInvoice" class="k-button" style="float: none"> Nhập Chứng Từ </button>
-                </li>
+                    &nbsp;&nbsp;&nbsp; <button data-bind="click: fillInvoice" class="k-button" style="float: none; width:100px">  &nbsp;&nbsp; <span class="k-icon k-filter"></span> Lọc  &nbsp;&nbsp;</button>
+             </li>
             </ul>
          </div>   
         <div id="invoiceListGrid"
@@ -124,6 +129,7 @@
                             }'
             data-groupable="true"
             data-editable="false"
+            data-toolbar='[{name: "myAdd",text: "Nhập Chứng Từ", className: "myAdd", imageClass: "k-icon k-add"}]'
             data-columns='[
                 { field: "TRAN_NO", title: "Số", type: "number" },
                 { field: "TRAN_DATE", title: "Ngày", type: "date", format: "{0:MM/dd/yyyy}" },
@@ -133,14 +139,37 @@
                 { field: "QUANTITY", title: "Số Lượng", type: "number" },
                 { field: "UNIT_PRICE", title: "Đơn Giá", type: "number" },
                 { field: "TOTAL_AMOUNT", title: "Tổng Tiền", type: "number" },
-                { command: [{ name: "select", text: "Chọn", click: selectInvoice }], title: "&nbsp;", width: "100px" }    
+                { command: [{ name: "select", text: "Chọn", click: selectInvoice, imageClass: "k-icon k-select"}, { name: "mydelete", text: "Xóa", click: removeInvoice, imageClass: "k-icon k-delete"}], title: "&nbsp;", width: "160px" }    
             ]'
             data-bind="source:items"></div>
     
         </div>
 </script>
 
-<script type="text/kendo-template" id="invoiceDetailView_Template">       
+<script type="text/kendo-template" id="invoiceDetailView_Template">    
+    <style scoped>
+    .customer-section label {
+        display: inline-block;
+        width: 200px;
+        line-height: 30px;
+        height: 30px;
+    }
+
+    .customer-section li {
+        padding-bottom: 5px;
+        list-style: none;
+    }
+
+    .customer-section button {
+        float: right;
+        
+    }
+    
+    .customer-section a {
+        float: right;
+        
+    }
+   </style>   
    <div id="form-container">    
      <div class="k-header customer-section">
         <ul>
@@ -183,14 +212,7 @@
                 <input type="text" class="k-textbox" id="TAX_FILE_NUMBER" data-bind="value: selectedSale.TAX_FILE_NUMBER, events: { change: change }" /></li>
             <li>
                 <label>Ghi Chú</label>
-                <input type="text" class="k-textbox" id="COMMENTS" data-bind="value: selectedSale.COMMENTS, events: { change: change }" />
-                 <button data-bind="click: cancelChange, enabled: hasChanges" class="k-button">Bỏ qua</button>
-                &nbsp;
-                <button data-bind="click: createNew" class="k-button">Thêm bản ghi mới</button>
-                &nbsp;
-                <button data-bind="click: save, enabled: hasChanges" class="k-button">Lưu Bản Ghi</button>
-                &nbsp;
-                <button data-bind="click: remove, enabled: saleBinded" class="k-button">Xóa Bản Ghi</button>
+                <input type="text" class="k-textbox" id="COMMENTS" data-bind="value: selectedSale.COMMENTS, events: { change: change }" />              
             </li>
         </ul>
     </div>
@@ -198,7 +220,7 @@
     <div id="saleDetailGrid"
          data-role="grid"
          data-pageable="true"
-         data-height="350"
+         data-height="250"
          data-toolbar='[{ name: "create", text: "Thêm Mới" }]'
          data-columns='[
                 { field: "ITEM_ID", title: "Mã Khóa", editor: productEditor, width: "170px" },
@@ -212,6 +234,7 @@
                 {
                     command: [{
                         name: "Delete",
+                        text: "Xóa",
                         imageClass: "k-icon k-i-close",
                         click: deleteSaleDetail
                     }],
@@ -225,6 +248,18 @@
             data-save=editSaleDetail
         ></div>
      
+    
+    <div class="k-edit-buttons k-state-default customer-section">
+        <a class="k-button k-button-icontext k-primary k-grid-update" href="#"  data-bind="click: save, enabled: hasChanges">
+            <span class="k-icon k-update"></span>
+                Cập Nhật
+        </a>
+        <a class="k-button k-button-icontext k-grid-cancel" href="#"  data-bind="click: cancelChange">
+            <span class="k-icon k-cancel"></span>
+                Bỏ Qua
+        </a>
+    </div>
+
     <div id="invoiceWindow">
         <div id="invoiceSelectGrid"></div>
     </div>
@@ -241,9 +276,129 @@
 
 <div id="application"></div>
 
-<script src="@Url.Content("~/Scripts/datasource/invoiceSource.js")"></script>
+
+<script>
+    var validationMessageTmpl = kendo.template($("#validation_template").html());
+
+    function hideErrors() {
+        var message = $("#SERVER_validationMessage");
+        if (message) {
+            message.replaceWith('<div id="serverValidationMessage"><div>');
+        }
+
+    }
+
+    function handleError(args) {
+        if (args.errors) {
+            var keys = Object.keys(args.errors);
+            var fieldName = keys[0];//select only first error field. 
+            showMessage($("#serverValidationMessageContainer"), fieldName, args.errors[fieldName].errors[0]);//show only first error. 
+        }
+    }
+
+    function showMessage(container, fieldName, error) {
+        //add the validation message to the form
+        container.find("#serverValidationMessage")
+            .replaceWith(validationMessageTmpl({ field: fieldName, message: error }));
+    }
+
+    var invoiceSource = new kendo.data.DataSource({
+        transport: {
+            read: {
+                url: "/SaleDetail/Read",
+                dataType: "jsonp"
+            },
+            update: {
+                url: "/SaleDetail/Update",
+                dataType: "jsonp"
+            },
+            destroy: {
+                url: "/SaleDetail/Destroy",
+                dataType: "jsonp"
+            },
+            create: {
+                url: "/SaleDetail/Create",
+                dataType: "jsonp"
+            },
+            parameterMap: function (options, operation) {
+                if (operation !== "read" && options.models) {
+                    return { models: kendo.stringify(options.models) };
+                }
+            }
+        },
+        batch: true,
+        schema: {
+            errors: "Errors",
+            model: {
+                id: "PR_KEY",
+                fields: {
+                    FR_KEY: { editable: true, nullable: true },
+                    LIST_ORDER: { editable: true, nullable: true },
+                    ITEM_ID: { editable: true, nullable: false, validation: { required: true } },
+                    ITEM_NAME: { editable: true, nullable: false, validation: { required: true } },
+                    QUANTITY: { editable: true, nullable: false, validation: { required: true } },
+                    UNIT_PRICE: { editable: true, nullable: false, validation: { required: true } },
+                    AMOUNT: { editable: true, nullable: false, validation: { required: true } },
+                    VAT_TAX_RATE: { editable: true, nullable: true },
+                    VAT_TAX_AMOUNT: { editable: true, nullable: true },
+                    TOTAL_AMOUNT: { editable: true, nullable: false, validation: { required: true } }
+                }
+            }
+        },
+        error: handleError,
+
+    });
+
+    var saleSource = new kendo.data.DataSource({
+        transport: {
+            read: {
+                url: "/Sale/Read",
+                dataType: "jsonp"
+            },
+            update: {
+                url: "/Sale/Update",
+                dataType: "jsonp"
+            },
+            destroy: {
+                url: "/Sale/Destroy",
+                dataType: "jsonp"
+            },
+            create: {
+                url: "/Sale/Create",
+                dataType: "jsonp"
+            },
+            parameterMap: function (options, operation) {
+                if (operation !== "read" && options.models) {
+                    return { models: kendo.stringify(options.models) };
+                }
+            }
+        },
+        batch: true,
+        schema: {
+            errors: "Errors",
+            model: {
+                id: "PR_KEY",
+                fields: {
+                    PR_KEY: { editable: false, nullable: true, type: "string" },
+                    ORGANIZATION_ID: { editable: true, nullable: true, type: "string" },
+                    TRAN_ID: { editable: true, nullable: true, type: "string" },
+                    TRAN_DATE: { editable: true, nullable: true, type: "date" },
+                    TRAN_NO: { editable: true, nullable: false, validation: { required: true }, type: "string" },
+                    PR_DETAIL_ID: { editable: true, nullable: false, validation: { required: true }, type: "string" },
+                    ADDRESS: { editable: true, nullable: false, validation: { required: true }, type: "string" },
+                    TAX_FILE_NUMBER: { editable: true, nullable: false, validation: { required: true }, type: "string" },
+                    COMMENTS: { editable: true, nullable: true, type: "string" },
+                    STATUS: { editable: true, nullable: true, type: "boolean" },
+                }
+            }
+        },
+        error: handleError,
+
+    });
+</script>
+
+
 <script src="@Url.Content("~/Scripts/datasource/customerSource.js")"></script>
-<script src="@Url.Content("~/Scripts/datasource/saleSource.js")"></script>
 <script src="@Url.Content("~/Scripts/datasource/invoiceSearchSource.js")"></script>
 <script src="@Url.Content("~/Scripts/datasource/productSource.js")"></script>
 <script src="@Url.Content("~/Scripts/datasource/salePriceSource.js")"></script>
@@ -270,21 +425,7 @@
         }
     }
 
-    var validationMessageTmpl = kendo.template($("#validation_template").html());
 
-    function handleError(args) {
-        if (args.errors) {
-            var keys = Object.keys(args.errors);
-            var fieldName = keys[0];//select only first error field. 
-            showMessage($("#form-container"), fieldName, args.errors[fieldName].errors[0]);//show only first error. 
-        }
-    }
-
-    function showMessage(container, fieldName, error) {
-        //add the validation message to the form
-        container.find("#serverValidationMessage")
-            .replaceWith(validationMessageTmpl({ field: fieldName, message: error }));
-    }
 
     //initilize view model
     var viewModel = kendo.observable({
@@ -299,9 +440,10 @@
         selectedCustomer: null,
         hasChanges: false,
         isAddingNew: false,
-       
-        
+
+
         cancelChange: function () {
+            hideErrors();
             this.thisSaleSource.cancelChanges();
             this.thisSaleDetailSource.cancelChanges();
             var tranNo = $("#TRAN_NO").val();
@@ -317,6 +459,8 @@
                 }
 
             }
+
+            invoiceRouter.navigate("/SaleDetail/SaleDetailList");
         },
 
         createNew: function () {
@@ -361,6 +505,7 @@
         },
 
         save: function () {
+            hideErrors();
             //merge sale details to datasource
             this.thisSaleDetailSource.data(this.get("selectedSaleDetails").data());
             //merge sale to data sources
@@ -384,7 +529,8 @@
 
                 this.thisSaleSource.sync();
 
-                invoiceRouter.navigate("/SaleDetail/SaleDetailList");
+
+
 
             } else {//updating
 
@@ -401,11 +547,13 @@
 
             this.set("hasChanges", false);
             this.set("isAddingNew", false);
+
+            invoiceRouter.navigate("/SaleDetail/SaleDetailList");
         },
 
         remove: function () {
             if (confirm("Xóa đơn hàng và chứng từ này?")) {
-
+                hideErrors();
                 //search for deleting sale in sale source
                 var sales = this.thisSaleSource.data();
                 var selectedSale = this.get("selectedSale");
@@ -429,7 +577,7 @@
                 $("#TRAN_NO").val("");
                 $("#PR_DETAIL_ID").val("");
 
-                invoiceRouter.navigate("/SaleDetail/SaleDetailList");
+
             }
         },
 
@@ -493,10 +641,8 @@
             if (!win) {
                 //initialize invoice search windows
                 win = $("#invoiceWindow").kendoWindow({
-
                     title: "Tìm Kiếm Mã Chứng Từ",
                     visible: false
-
                 }).data("kendoWindow");
 
 
@@ -527,10 +673,8 @@
             var win = $("#customerWindow").data("kendoWindow");
             if (!win) {
                 win = $("#customerWindow").kendoWindow({
-
                     title: "Tìm Kiếm Khách Hàng",
                     visible: false
-
                 }).data("kendoWindow");
 
                 $("#customerSelectGrid").kendoGrid({
@@ -548,30 +692,26 @@
             win.center();
             win.open();
         }
-
     });
 
-    viewModel.thisSaleSource.bind("error", handleError);
-    viewModel.thisSaleDetailSource.bind("error", handleError);
 
     viewModel.thisSaleSource.bind("requestEnd", function (e) {
         if (e.type === "create" || e.type === "update") {
-            viewModel.thisSaleDetailSource.sync();//sync changed data
+            viewModel.thisSaleDetailSource.sync(); //sync changed data
         }
 
-        if (e.type === "create") {//created, re-read to sync changes
+        if (e.type === "create") { //created, re-read to sync changes
             viewModel.thisSaleSource.read();
         }
 
 
-
         if (e.type === "destroy") {
-            viewModel.thisSaleDetailSource.read();//sync deleted data by server. 
+            viewModel.thisSaleDetailSource.read(); //sync deleted data by server. 
             invoiceSearchSource.read(); //when deleting a sale, invoice search results should be updated accrodingly
             clearForm();
         }
 
-        if (e.type === "read") {//freshing the list so clear the screen. 
+        if (e.type === "read") { //freshing the list so clear the screen. 
             clearForm();
         }
 
@@ -633,12 +773,37 @@
 
     function selectInvoice(e) {
         var saleSearchRecord = this.dataItem($(e.currentTarget).closest("tr"));
+
         invoiceRouter.navigate("/SaleDetail/SaleDetailList/edit");
+
         bindSale(saleSearchRecord.PR_KEY);
+
+
         //close the windows if there is one
         if ($('#invoiceWindow').data().kendoWindow)
             $('#invoiceWindow').data().kendoWindow.close();
     }
+
+    function removeInvoice(e) {
+        var saleSearchRecord = this.dataItem($(e.currentTarget).closest("tr"));
+
+        if (confirm("Chú ý, đơn hàng chứa bản ghi này sẽ bị xóa")) {
+
+            var sales = viewModel.thisSaleSource.data();
+
+            for (var i = 0; i < sales.length ; i++) {
+                if (sales[i].PR_KEY === saleSearchRecord.PR_KEY) {
+                    viewModel.thisSaleSource.remove(sales[i]);
+                    break;
+                }
+            }
+
+            viewModel.thisSaleSource.sync();
+        }
+
+    }
+
+
 
     function bindSale(saleKey) {
         //set selected sale
@@ -865,7 +1030,7 @@
                 }
             }
         }),
-        change: function(e) {
+        change: function (e) {
             var quarterData = this.get("quarters").data();
             for (var i = 0; i < quarterData.length; i++) {
                 if (quarterData[i].QNAME === this.get("selectedQuarter")) {
@@ -875,7 +1040,7 @@
                 }
             }
         },
-        
+
         fillInvoice: function () {
             invoiceSearchSource.filter({
                 "logic": "and",
@@ -886,13 +1051,13 @@
             });
 
         },
-        
+
         addInvoice: function () {
             invoiceRouter.navigate("/SaleDetail/SaleDetailList/edit");
             viewModel.createNew();
         }
-        
-        
+
+
     });
 
     //layouting the form 
@@ -913,10 +1078,43 @@
 
     invoiceRouter.route("/SaleDetail/SaleDetailList", function () {
         layoutView.showIn("#mainView", invoiceListView);
+        var win = $("#dialogViews").data("kendoWindow");
+        if (win) {
+            win.close();
+        }
+       
+        $(".myAdd").off("click").on ("click", function () {
+            invoiceRouter.navigate("/SaleDetail/SaleDetailList/edit");
+            viewModel.createNew();
+        });
     });
 
     invoiceRouter.route("/SaleDetail/SaleDetailList/edit", function () {
-        layoutView.showIn("#mainView", invoiceDetailView);
+
+        var win = $("#dialogViews").data("kendoWindow");
+
+        if (!win) {
+            //initialize invoice search windows
+            win = $("#dialogViews").kendoWindow({
+
+                title: "Chứng từ #",
+                visible: true,
+                modal: true,
+                height: "500px",
+                width: "900px",
+                minHeight: 500,
+                minWidth: 600,
+                resizable: true,
+
+            }).data("kendoWindow");
+        }
+
+        win.center();
+        win.open();
+
+        invoiceDetailView.render($("#dialogViews"));
+        // layoutView.showIn("#mainView", invoiceDetailView);
+
     });
 
     //fisrt binding of the form

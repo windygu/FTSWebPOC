@@ -73,7 +73,6 @@
                     }
                 }
             }
-            
         });
         
     
@@ -83,14 +82,12 @@
             if (args.errors) {
                 var grid = $("#grid").data("kendoGrid");
                 
-               
                 grid.one("dataBinding", function (e) {
                     e.preventDefault();   // cancel grid rebind if error occurs                             
 
                     for (var error in args.errors) {
                         showMessage(grid.editable.element, error, args.errors[error].errors);
                     }
-                    
                 });
             }
         }
@@ -158,12 +155,9 @@
                     { command: ["edit", "destroy"], title: "&nbsp;", width: "200px" }],
                 editable: {
                     mode: "popup",
-                    template: kendo.template($("#popup_editor").html())
-
+                    template: kendo.template($("#popup_editor").html()),
+                    confirmation: "Xóa sản phẩm này?"
                 },
-                
-            });
-            $("grid").on("focus", function(e) {
                 
             });
         });
